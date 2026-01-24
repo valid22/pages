@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Vigneshwaran Siva Sankaran | Portfolio</title>
+    <script type='text/javascript' nonce='u+6qCym4mTI3nZDONDFwBg==' src='https://contribution.usercontent.google.com/gxrYeyBJ6y8Ok0onAO2Afd6y6Q9OC4iXNWR1faFpffEJJYOicBGwPwCu_lUGiKlG0PMjkhglWBJ4fRdbw7zV6oSbr5d8m6EIogg5MftR8d177yqHAm-64yyJx4B9Qk4rbS8NGI6hPf_u1DGWIvQ6zdxZlPspMdaBM5xvpxyz9xw='></script><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@100..900&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#3b82f6",
+                        "background-light": "#f8fafc",
+                        "background-dark": "#0f172a",
+                        "card-dark": "#1e293b",
+                        "surface-dark": "#111827",
+                        "accent": "#60a5fa"
+                    },
+                    fontFamily: {
+                        "display": ["Public Sans", "sans-serif"],
+                        "sans": ["Public Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "md": "0.375rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1rem",
+                        "3xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer base {
+            body {
+                @apply bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 selection:bg-primary/30 antialiased;
+                font-family: 'Public Sans', sans-serif;
+            }
+        }
+        .data-grid-bg {
+            background-image: radial-gradient(circle at 2px 2px, rgba(59, 130, 246, 0.05) 1px, transparent 0);
+            background-size: 40px 40px;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        .timeline-line::before {
+            content: '';
+            position: absolute;
+            left: -1px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, transparent, #3b82f6, #3b82f6, transparent);
+        }
+        .skill-card {
+            @apply bg-surface-dark border border-white/5 rounded-lg p-6 transition-all duration-300 hover:border-primary/30 hover:shadow-[0_0_30px_rgba(236,91,19,0.05)];
+        }
+        .project-card:hover .project-image {
+            @apply scale-105;
+        }
+        input:-webkit-autofill,
+        input:-webkit-autofill:hover, 
+        input:-webkit-autofill:focus,
+        textarea:-webkit-autofill,
+        textarea:-webkit-autofill:hover,
+        textarea:-webkit-autofill:focus {
+            -webkit-text-fill-color: white;
+            -webkit-box-shadow: 0 0 0px 1000px #11141a inset;
+            transition: background-color 5000s ease-in-out 0s;
+        }
+    </style>
+
+    <!-- React and Dependencies -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/history@5/umd/history.development.js"></script>
+    <script src="https://unpkg.com/react-router@6.3.0/umd/react-router.development.js"></script>
+    <script src="https://unpkg.com/react-router-dom@6.3.0/umd/react-router-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+</head>
+<body class="dark">
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const { useState, useEffect } = React;
+        const { createRoot } = ReactDOM;
+        const { MemoryRouter, Routes, Route, Link, useNavigate, useLocation } = ReactRouterDOM;
+
+        // --- Shared Components ---
+
+        const Navbar = () => {
+            const navigate = useNavigate();
+            const location = useLocation();
+            
+            const navItems = [
+                { label: 'Home', path: '/' },
+                { label: 'Experience', path: '/experience' },
+                { label: 'Skills', path: '/skills' },
+                { label: 'Projects', path: '/projects' },
+                { label: 'Contact', path: '/contact' }
+            ];
+
+            return (
+                <header class="sticky top-0 z-50 w-full border-b border-slate-200 dark:border-white/5 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md">
+                    <div class="max-w-6xl mx-auto px-6 h-16 md:h-20 flex items-center justify-between">
+                        <div class="flex items-center gap-3 cursor-pointer" onClick={() => navigate('/')}>
+                            <div class="text-primary flex items-center">
+                                <span class="material-symbols-outlined block">auto_awesome</span>
+                            </div>
+                            <span class="text-xl font-bold tracking-tight uppercase dark:text-white">VS</span>
+                        </div>
+                        <nav class="hidden md:flex items-center gap-8 lg:gap-10">
+                            {navItems.map(item => (
+                                <Link 
+                                    key={item.path}
+                                    to={item.path} 
+                                    class={`text-sm font-medium transition-colors hover:text-primary ${location.pathname === item.path ? 'text-primary' : 'text-slate-600 dark:text-slate-400 dark:hover:text-white'}`}
+                                >
+                                    {item.label}
+                                </Link>
+                            ))}
+                        </nav>
+                        <div class="flex items-center gap-5">
+                            <div class="flex items-center gap-3 mr-2">
+                                <a href="https://github.com/valid22" target="_blank" rel="noopener noreferrer" class="text-slate-600 dark:text-slate-400 hover:text-primary transition-colors" title="GitHub">
+                                    <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+                                </a>
+                                <a href="https://linkedin.com/in/dote10110" target="_blank" rel="noopener noreferrer" class="text-slate-600 dark:text-slate-400 hover:text-primary transition-colors" title="LinkedIn">
+                                    <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                                </a>
+                            </div>
+                            <button onClick={() => navigate('/contact')} class="bg-primary hover:bg-primary/90 text-white px-5 py-2.5 rounded-lg text-sm font-bold transition-all transform active:scale-95 shadow-lg shadow-primary/20">
+                                Contact
+                            </button>
+                        </div>
+                    </div>
+                </header>
+            );
+        };
+
+        const Footer = () => (
+            <footer class="border-t border-slate-200 dark:border-white/5 bg-background-light dark:bg-surface-dark/30 py-12">
+                <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-8">
+                    <div class="flex flex-col gap-2">
+                        <p class="text-xs font-bold text-slate-500 uppercase tracking-widest mt-2">
+                            © 2024 Vigneshwaran Siva Sankaran
+                        </p>
+                        <p class="text-[10px] text-slate-600 uppercase tracking-[0.2em]">
+                            Engineered for High-Performance Data Solutions
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-8">
+                        <a class="text-slate-500 hover:text-primary transition-colors flex items-center" href="mailto:hi@itsdote.tech" title="Email">
+                            <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                            </svg>
+                        </a>
+                        <a class="text-slate-500 hover:text-primary transition-colors" href="https://github.com/valid22" target="_blank" title="GitHub">
+                            <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+                        </a>
+                        <a class="text-slate-500 hover:text-primary transition-colors" href="https://linkedin.com/in/dote10110" target="_blank" title="LinkedIn">
+                            <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                        </a>
+                    </div>
+                </div>
+            </footer>
+        );
+
+        // --- Pages ---
+
+        const HomePage = () => {
+            const navigate = useNavigate();
+            return (
+                <div class="data-grid-bg min-h-screen">
+                    <Navbar />
+                    <main class="flex-1">
+                        <section class="max-w-6xl mx-auto px-6 pt-24 pb-32">
+                            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                                <div class="lg:col-span-8 flex flex-col gap-8">
+                                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-bold tracking-widest uppercase w-fit">
+                                        <span class="relative flex h-2 w-2">
+                                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                                            <span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+                                        </span>
+                                        Extracting Insights from Complexity
+                                    </div>
+                                    <h1 class="text-5xl md:text-7xl font-black leading-[1.1] tracking-tight text-slate-900 dark:text-white">
+                                        Vigneshwaran <br/>
+                                        <span class="text-primary">Siva Sankaran</span>
+                                    </h1>
+                                    <p class="text-xl md:text-2xl text-slate-600 dark:text-slate-400 max-w-2xl leading-relaxed">
+                                        Architecting Data & Intelligence. Transforming complex datasets into actionable narratives through engineering and advanced analytics.
+                                    </p>
+                                    <div class="flex flex-wrap gap-4 pt-4">
+                                        <button onClick={() => navigate('/projects')} class="bg-primary text-white px-8 py-4 rounded-xl font-bold flex items-center gap-2 group shadow-xl shadow-primary/20">
+                                            View Projects
+                                            <span class="material-symbols-outlined transition-transform group-hover:translate-x-1">arrow_forward</span>
+                                        </button>
+                                        <button class="bg-slate-200 dark:bg-slate-800 text-slate-900 dark:text-white px-8 py-4 rounded-xl font-bold flex items-center gap-2 border border-transparent hover:border-primary/50 transition-all">
+                                            Download Resume
+                                            <span class="material-symbols-outlined">download</span>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="lg:col-span-4 hidden lg:block">
+                                    <div class="relative h-full flex items-center justify-center">
+                                        <div class="absolute inset-0 bg-primary/5 rounded-full blur-3xl"></div>
+                                        <div class="relative grid grid-cols-3 gap-4">
+                                            {[...Array(9)].map((_, i) => (
+                                                <div 
+                                                    key={i} 
+                                                    class={`w-12 h-12 rounded-xl border border-primary/20 bg-surface-dark/50 flex items-center justify-center transition-all duration-700 animate-pulse`}
+                                                    style={{ animationDelay: `${i * 150}ms` }}
+                                                >
+                                                    <div class="w-2 h-2 rounded-full bg-primary/40"></div>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section class="py-24" id="skills">
+                            <div class="max-w-6xl mx-auto px-6">
+                                <div class="text-center mb-20">
+                                    <h3 class="text-primary font-bold tracking-widest uppercase text-sm mb-4">Core Competencies</h3>
+                                    <h2 class="text-4xl font-bold text-slate-900 dark:text-white">Technical Proficiency</h2>
+                                </div>
+                                <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
+                                    {[
+                                        {icon: 'code', name: 'Python'}, {icon: 'storage', name: 'SQL'}, {icon: 'cloud', name: 'AWS'},
+                                        {icon: 'hub', name: 'Spark'}, {icon: 'neurology', name: 'TensorFlow'}, {icon: 'bar_chart', name: 'Tableau'}
+                                    ].map((s, idx) => (
+                                        <div key={idx} onClick={() => navigate('/skills')} class="cursor-pointer flex flex-col items-center justify-center p-8 bg-white dark:bg-card-dark rounded-lg border border-slate-200 dark:border-slate-800 transition-all hover:border-primary group">
+                                            <div class="w-12 h-12 mb-4 flex items-center justify-center text-slate-400 group-hover:text-primary transition-colors">
+                                                <span class="material-symbols-outlined text-4xl">{s.icon}</span>
+                                            </div>
+                                            <span class="font-bold text-sm tracking-tight dark:text-white">{s.name}</span>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        </section>
+
+                        <section class="max-w-6xl mx-auto px-6 mb-24">
+                            <div class="bg-primary rounded-lg p-12 md:p-20 text-center relative overflow-hidden">
+                                <div class="absolute top-0 right-0 opacity-10 pointer-events-none translate-x-1/4 -translate-y-1/4">
+                                    <span class="material-symbols-outlined text-[400px]">mail</span>
+                                </div>
+                                <div class="relative z-10 flex flex-col items-center gap-8 text-white">
+                                    <h2 class="text-4xl md:text-6xl font-black tracking-tight">Ready to build something intelligent?</h2>
+                                    <p class="text-white/80 text-lg md:text-xl max-w-2xl leading-relaxed">
+                                        Currently exploring new opportunities and collaborations in Data Engineering, AI, and Product Analytics.
+                                    </p>
+                                    <div class="flex flex-wrap justify-center gap-6 mt-4">
+                                        <Link to="/contact" class="bg-white text-primary px-10 py-5 rounded-lg font-black text-lg hover:bg-slate-50 transition-colors shadow-xl shadow-black/20">
+                                            Start a Conversation
+                                        </Link>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </main>
+                    <Footer />
+                </div>
+            );
+        };
+
+        const ExperiencePage = () => (
+            <div class="bg-background-dark min-h-screen">
+                <Navbar />
+                <main class="max-w-[1100px] mx-auto px-6 py-20">
+                    <div class="mb-24 flex flex-col items-center text-center">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-[10px] font-bold uppercase tracking-widest mb-6">
+                            <span class="relative flex h-2 w-2">
+                                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                                <span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+                            </span>
+                            My Professional Journey
+                        </div>
+                        <h1 class="text-5xl md:text-6xl font-black text-white mb-6 tracking-tight">
+                            Experience <span class="text-primary">&amp;</span> Education
+                        </h1>
+                        <p class="text-slate-400 text-lg max-w-2xl leading-relaxed">
+                            Architecting scalable data systems and engineering high-performance software solutions for the next generation of intelligence.
+                        </p>
+                    </div>
+
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+                        <div class="lg:col-span-8">
+                            <div class="mb-16">
+                                <div class="flex items-center gap-4 mb-10 group">
+                                    <div class="w-10 h-10 rounded-lg bg-surface-dark border border-white/5 flex items-center justify-center group-hover:border-primary/50 transition-colors">
+                                        <span class="material-symbols-outlined text-primary">work</span>
+                                    </div>
+                                    <h2 class="text-2xl font-bold text-white tracking-tight">Work Experience</h2>
+                                </div>
+                                <div class="relative pl-10 timeline-line flex flex-col gap-16">
+                                    {/* RSKD Labs */}
+                                    <div class="relative group">
+                                        <div class="absolute -left-[45px] top-1.5 w-3 h-3 rounded-full bg-primary shadow-[0_0_15px_rgba(59,130,246,0.5)] border-2 border-background-dark z-10 transition-transform group-hover:scale-125"></div>
+                                        <div class="space-y-4">
+                                            <div class="flex flex-wrap items-center justify-between gap-4">
+                                                <h3 class="text-xl font-bold text-white group-hover:text-primary transition-colors">Software Engineer at RSKD Labs</h3>
+                                                <span class="text-[10px] font-bold px-2 py-1 bg-surface-dark border border-white/5 text-slate-400 rounded uppercase tracking-widest">Jul 2023 — Jun 2025</span>
+                                            </div>
+                                            <p class="text-slate-400 text-sm leading-relaxed">Pioneering core data infrastructure and machine learning deployment pipelines for enterprise-grade analytics.</p>
+                                            <ul class="space-y-4">
+                                                <li class="flex gap-4"><span class="text-primary mt-1 font-mono text-xs">01</span><p class="text-sm text-slate-300">Designed and optimized <span class="text-white font-medium">high-throughput data processing pipelines</span> using Python and FastAPI, handling real-time telemetry from security simulation systems with sub-second latency.</p></li>
+                                                <li class="flex gap-4"><span class="text-primary mt-1 font-mono text-xs">02</span><p class="text-sm text-slate-300">Engineered advanced <span class="text-white font-medium">Drone & Security simulation</span> backend architectures, integrating real-time computer vision data with cloud-native storage solutions.</p></li>
+                                                <li class="flex gap-4"><span class="text-primary mt-1 font-mono text-xs">03</span><p class="text-sm text-slate-300">Engineered advanced <span class="text-white font-medium">ML monitoring dashboards</span> using Plotly and Chart.js, visualizing model drift and KPIs for predictive security models.</p></li>
+                                                <li class="flex gap-4"><span class="text-primary mt-1 font-mono text-xs">04</span><p class="text-sm text-slate-300">Implemented horizontal scaling strategies and containerized deployments on AWS, achieving a <span class="text-primary font-bold">30%</span> improvement in system reliability.</p></li>
+                                            </ul>
+                                            <div class="flex flex-wrap gap-2 pt-2">
+                                                <span class="px-2 py-1 bg-white/5 text-slate-400 text-[9px] font-bold rounded-lg uppercase">Go</span>
+                                                <span class="px-2 py-1 bg-white/5 text-slate-400 text-[9px] font-bold rounded-lg uppercase">Python</span>
+                                                <span class="px-2 py-1 bg-white/5 text-slate-400 text-[9px] font-bold rounded-lg uppercase">Kubernetes</span>
+                                                <span class="px-2 py-1 bg-white/5 text-slate-400 text-[9px] font-bold rounded-lg uppercase">Kafka</span>
+                                                <span class="px-2 py-1 bg-white/5 text-slate-400 text-[9px] font-bold rounded-lg uppercase">Terraform</span>
+                                                <span class="px-2 py-1 bg-white/5 text-slate-400 text-[9px] font-bold rounded-lg uppercase">AWS</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    {/* Zoho Internship */}
+                                    <div class="relative group">
+                                        <div class="absolute -left-[45px] top-1.5 w-3 h-3 rounded-full bg-slate-700 border-2 border-background-dark z-10 transition-transform group-hover:scale-125 group-hover:bg-primary/50"></div>
+                                        <div class="space-y-4">
+                                            <div class="flex flex-wrap items-center justify-between gap-4">
+                                                <h3 class="text-xl font-bold text-white group-hover:text-primary transition-colors">Software Development Intern at Zoho Corporation</h3>
+                                                <span class="text-[10px] font-bold px-2 py-1 bg-surface-dark border border-white/5 text-slate-400 rounded uppercase tracking-widest">Jan 2023 — May 2023</span>
+                                            </div>
+                                            <p class="text-slate-400 text-sm leading-relaxed">I worked at ZOHO Payroll team using SAS, Java and RestAPI.</p>
+                                            <ul class="space-y-4">
+                                                <li class="flex gap-4"><span class="text-primary mt-1 font-mono text-xs">01</span><p class="text-sm text-slate-300">Created and optimized existing <span class="text-white font-medium">SQL Queries</span> increasing performance by <span class="text-primary font-bold">10%</span>.</p></li>
+                                                <li class="flex gap-4"><span class="text-primary mt-1 font-mono text-xs">02</span><p class="text-sm text-slate-300">Developed RESTful APIs in <span class="text-white font-medium">Java</span> to synchronize user data across multi-tenant database clusters.</p></li>
+                                            </ul>
+                                            <div class="flex flex-wrap gap-2 pt-2">
+                                                <span class="px-2 py-1 bg-white/5 text-slate-400 text-[9px] font-bold rounded-lg uppercase">SAS</span>
+                                                <span class="px-2 py-1 bg-white/5 text-slate-400 text-[9px] font-bold rounded-lg uppercase">Java</span>
+                                                <span class="px-2 py-1 bg-white/5 text-slate-400 text-[9px] font-bold rounded-lg uppercase">RestAPI</span>
+                                                <span class="px-2 py-1 bg-white/5 text-slate-400 text-[9px] font-bold rounded-lg uppercase">SQL</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <div class="flex items-center gap-4 mb-10 group">
+                                    <div class="w-10 h-10 rounded-lg bg-surface-dark border border-white/5 flex items-center justify-center group-hover:border-primary/50 transition-colors">
+                                        <span class="material-symbols-outlined text-primary">school</span>
+                                    </div>
+                                    <h2 class="text-2xl font-bold text-white tracking-tight">Academic History</h2>
+                                </div>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    <div class="p-6 bg-surface-dark border border-white/5 rounded-lg hover:border-primary/20 transition-all group">
+                                        <div class="text-primary mb-4 font-mono text-xs tracking-widest uppercase">July 2025 — Dec 2026</div>
+                                        <h3 class="text-lg font-bold text-white mb-1 group-hover:text-primary transition-colors">University of California - San Diego</h3>
+                                        <p class="text-sm text-slate-400 mb-4">MS Business Analytics</p>
+                                    </div>
+                                    <div class="p-6 bg-surface-dark border border-white/5 rounded-lg hover:border-primary/20 transition-all group">
+                                        <div class="text-slate-500 mb-4 font-mono text-xs tracking-widest uppercase">2019 — 2023</div>
+                                        <h3 class="text-lg font-bold text-white mb-1 group-hover:text-primary transition-colors">SASTRA University</h3>
+                                        <p class="text-sm text-slate-400 mb-4">B.Tech in Biotechnology (First Class with Distinction) minor in AI</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="lg:col-span-4 space-y-8">
+                            <div class="bg-surface-dark border border-white/5 rounded-lg p-8">
+                                <h3 class="text-xs font-black text-white uppercase tracking-[0.2em] mb-8 flex items-center gap-2">
+                                    <span class="w-1 h-4 bg-primary rounded-full"></span> Impact Metrics
+                                </h3>
+                                <div class="space-y-10">
+                                    <div class="group">
+                                        <div class="text-4xl font-black text-white mb-2 group-hover:text-primary transition-colors">30%</div>
+                                        <div class="text-[10px] font-bold text-primary uppercase tracking-widest mb-1">System Reliability</div>
+                                    </div>
+                                    <div class="group">
+                                        <div class="text-4xl font-black text-white mb-2 group-hover:text-primary transition-colors">10M+</div>
+                                        <div class="text-[10px] font-bold text-primary uppercase tracking-widest mb-1">Events Handled</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="relative rounded-lg overflow-hidden border border-white/5 group h-56">
+                                <img alt="Location" class="w-full h-full object-cover grayscale transition-all group-hover:grayscale-0 duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDoA9Gia8hqB4gOMty9So5PdGjYc_r6WiVAM7b91PPgJJyVRJ26mSx0WTyxXnhCFddOFgPLxo-95PoQJ74hDF6cAvKn7WWwArirfsmiV0fcn0_EuIYdBPCWPvRHtYKpoU18wlpF7xGZeALo_2aR1XoabGGrLKYBgGbiuLdiflqJxzpg1GDGFOb8XIzM8vu7ANr2lwChDytKdF3MkPq_AEB4__M1NMhdkCHTkMz-sBTHYovg6p0FIsnj-LkMqNLtxiQCe3okaw5HUzU"/>
+                                <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent flex flex-col justify-end p-6 text-white">
+                                    <div class="flex items-center gap-2 mb-1">
+                                        <span class="material-symbols-outlined text-sm text-primary">location_on</span>
+                                        <span class="text-xs font-bold uppercase tracking-widest">Currently Based In</span>
+                                    </div>
+                                    <p class="text-xl font-bold">San Francisco, CA</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+                <Footer />
+            </div>
+        );
+
+        const SkillsPage = () => (
+            <div class="bg-background-dark min-h-screen">
+                <Navbar />
+                <main class="max-w-[1100px] mx-auto px-6 py-20">
+                    <div class="mb-20 flex flex-col items-center text-center">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-[10px] font-bold uppercase tracking-widest mb-6">
+                            <span class="relative flex h-2 w-2">
+                                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                                <span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+                            </span>
+                            Core Competencies
+                        </div>
+                        <h1 class="text-5xl md:text-6xl font-black text-white mb-6 tracking-tight">
+                            Technical <span class="text-primary">Skills</span> Matrix
+                        </h1>
+                        <p class="text-slate-400 text-lg max-w-2xl leading-relaxed">
+                            A comprehensive overview of my technical stack, specializing in large-scale machine learning, robust software architecture, and cloud infrastructure.
+                        </p>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+                        {[
+                            { title: 'Data Science & ML', icon: 'neurology', tags: ['TensorFlow', 'PyTorch', 'Scikit-learn', 'Pandas / NumPy', 'NLP / LLMs', 'Spark ML'] },
+                            { title: 'Software Engineering', icon: 'developer_mode', tags: ['Microservices', 'REST / gRPC', 'PostgreSQL', 'Redis', 'System Design', 'Kafka'] },
+                            { title: 'Cloud & Data Ops', icon: 'cloud_sync', tags: ['AWS / GCP', 'Docker', 'Kubernetes', 'Terraform', 'CI/CD', 'Airflow'] },
+                            { title: 'Languages', icon: 'code', tags: ['Python', 'Go', 'Java', 'SQL', 'Bash', 'JavaScript'] }
+                        ].map((cat, idx) => (
+                            <div key={idx} class="skill-card group">
+                                <div class="flex items-center gap-4 mb-8">
+                                    <div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center border border-primary/20 group-hover:scale-110 transition-transform">
+                                        <span class="material-symbols-outlined text-primary text-2xl">{cat.icon}</span>
+                                    </div>
+                                    <div>
+                                        <h3 class="text-xl font-bold text-white tracking-tight">{cat.title}</h3>
+                                        <p class="text-xs text-slate-500 font-medium uppercase tracking-wider">Expertise Area</p>
+                                    </div>
+                                </div>
+                                <div class="flex flex-wrap gap-3">
+                                    {cat.tags.map(tag => (
+                                        <div key={tag} class="px-4 py-2 bg-white/5 border border-white/10 rounded-lg flex items-center gap-2 hover:border-primary/50 transition-colors">
+                                            <span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                                            <span class="text-sm font-medium text-slate-300">{tag}</span>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+
+                    <div class="mt-20 grid grid-cols-1 lg:grid-cols-1 gap-8">
+                        <div class="bg-surface-dark border border-white/5 rounded-lg p-8 flex flex-col md:flex-row gap-8 items-center">
+                            <div class="flex-1">
+                                <h4 class="text-xl font-bold text-white mb-2">Continuous Learning</h4>
+                                <p class="text-sm text-slate-400 leading-relaxed">
+                                    The tech landscape evolves daily. Exploring <strong>Rust</strong> for high-performance systems and <strong>Vector Databases</strong> for RAG.
+                                </p>
+                            </div>
+                            <button class="w-full md:w-auto px-8 py-4 bg-white/5 hover:bg-white/10 border border-white/10 text-white text-[10px] font-black uppercase tracking-widest rounded-lg transition-all flex items-center justify-center gap-3">
+                                <span class="material-symbols-outlined text-lg">terminal</span> View Github
+                            </button>
+                        </div>
+                    </div>
+                </main>
+                <Footer />
+            </div>
+        );
+
+        const ProjectsPage = () => (
+            <div class="bg-background-dark min-h-screen">
+                <Navbar />
+                <main class="max-w-[1100px] mx-auto px-6 py-20">
+                    <div class="mb-20 flex flex-col items-center text-center">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-[10px] font-bold uppercase tracking-widest mb-6">
+                            <span class="relative flex h-2 w-2">
+                                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                                <span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+                            </span>
+                            Innovation Gallery
+                        </div>
+                        <h1 class="text-5xl md:text-6xl font-black text-white mb-6 tracking-tight">
+                            Engineering <span class="text-primary">&amp;</span> Data Projects
+                        </h1>
+                    </div>
+
+                    <div class="flex flex-col gap-12">
+                        {/* Project 1 */}
+                        <article class="project-card group grid grid-cols-1 lg:grid-cols-12 bg-surface-dark rounded-lg border border-white/5 overflow-hidden hover:border-primary/30 transition-all duration-500 shadow-2xl">
+                            <div class="lg:col-span-7 overflow-hidden relative">
+                                <img class="project-image w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC94f1ZJL9rOWLbh4al04FVhkzR34myYz0UnIV7NE0eK2dIO-sUvQWhNosWfin0-rjIYyGijAJyTVwr8BzRaygO5Juv7VXNvXR3HBjehPjsGAZxk5G_6TRG-a0_rJxkcel4IfO1wRBNgMwYE9yPT5o6nN4-Qk0rqSWEpvl9LkRQFKuisV29TgFw1o17fBPz65fbkFvvhN81KG-RwkoTX1pxUGge0rDF25gyx56J18YwynMggvTS_Kdj0dM_PeG3SihzWQm8b_Dad1o" />
+                                <div class="absolute inset-0 bg-gradient-to-r from-surface-dark via-transparent to-transparent opacity-60"></div>
+                            </div>
+                            <div class="lg:col-span-5 p-8 md:p-12 flex flex-col justify-center">
+                                <div class="flex items-center gap-2 mb-4">
+                                    <span class="px-2 py-1 bg-primary/10 text-primary text-[9px] font-bold rounded-lg uppercase border border-primary/20">Deep Learning</span>
+                                </div>
+                                <h2 class="text-3xl font-bold text-white mb-4 group-hover:text-primary transition-colors">RiboSense: BiLSTM pipeline for Riboswitch Annotation</h2>
+                                <p class="text-slate-400 text-sm leading-relaxed mb-8">Developed a state-of-the-art Bidirectional LSTM architecture to predict ribosomal binding sites with 0.98 AUC-ROC.</p>
+                                <div class="flex items-center gap-6">
+                                    <a class="flex items-center gap-2 text-white text-xs font-bold uppercase hover:text-primary transition-colors" href="https://github.com/APalaniaLab/RiboSense" target="_blank" rel="noopener noreferrer"><span class="material-symbols-outlined text-lg">code</span> GitHub</a>
+                                </div>
+                            </div>
+                        </article>
+
+                        {/* Project 2 */}
+                        <article class="project-card group grid grid-cols-1 lg:grid-cols-12 bg-surface-dark rounded-lg border border-white/5 overflow-hidden hover:border-primary/30 transition-all duration-500 shadow-2xl">
+                            <div class="lg:col-span-5 p-8 md:p-12 flex flex-col justify-center order-2 lg:order-1">
+                                <div class="flex items-center gap-2 mb-4">
+                                    <span class="px-2 py-1 bg-primary/10 text-primary text-[9px] font-bold rounded-lg uppercase border border-primary/20">Data Visualization</span>
+                                </div>
+                                <h2 class="text-3xl font-bold text-white mb-4 group-hover:text-primary transition-colors">Energy Consumption Dashboard</h2>
+                                <p class="text-slate-400 text-sm leading-relaxed mb-8">End-to-end Tableau BI solution integrated with Python-based regression for forecasting seasonal energy spikes.</p>
+                            </div>
+                            <div class="lg:col-span-7 overflow-hidden relative order-1 lg:order-2">
+                                <img class="project-image w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAxcUOvk6Azm88NFhpOcOiF7bb1jakdx16DzI7l9sOS3ckJfw2OSDOXIeLlK1QhjhSpYrOfygfK-mnDLtPAXYe6oRs1PkHCSK13JdTvWKgnldpawcvKN5NdUa5XyWz1UXAgvtY0H6exKnjETN7J6LINIOhGBBwwIHK5AUdvvbrYT_9yw40-GbyU9TfccVAIWpXPEcJtCI50aoMgXLoAVWPZUFJN7drl7t5Ht1CyyRW0sbvyAarL8vKi2_WyB9eIUPaZg9To-y5tlRI" />
+                                <div class="absolute inset-0 bg-gradient-to-l from-surface-dark via-transparent to-transparent opacity-60"></div>
+                            </div>
+                        </article>
+
+                        {/* Project 3 (Analytics Project) */}
+                        <article class="project-card group grid grid-cols-1 lg:grid-cols-12 bg-surface-dark rounded-lg border border-white/5 overflow-hidden hover:border-primary/30 transition-all duration-500 shadow-2xl">
+                            <div class="lg:col-span-7 overflow-hidden relative">
+                                <img class="project-image w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuABZwPYl4vwr9mVvO1yl0ENdlTd15gaB52BjbkruFWIbH5bRJD6YPryW0k6mwLQ2A1UcSccyMWJ11jktW13AUkWbcKk8qc17_RtEIvkD9rvQbdPQuFBdxzNE7RQ0jy9hi_EO01PbiR00WBNqbovHPGXyAEkvChImf_ReyqYRwdxBNaTQciXiRph5Q4uKoVWURQ0KK9Vq4ndTZr-h2Bd2JK0xFkJxicjIqRYVTkJYXUpwcOSY0_bRMmkwFVp0-QLb3tiCmVTNNmR8H0" />
+                                <div class="absolute inset-0 bg-gradient-to-r from-surface-dark via-transparent to-transparent opacity-60"></div>
+                            </div>
+                            <div class="lg:col-span-5 p-8 md:p-12 flex flex-col justify-center">
+                                <div class="flex items-center gap-2 mb-4">
+                                    <span class="px-2 py-1 bg-primary/10 text-primary text-[9px] font-bold rounded-lg uppercase border border-primary/20">Analytics & Forecasting</span>
+                                    <span class="text-slate-500 text-[9px] font-bold uppercase tracking-widest ml-auto">Sep 2025 – Dec 2025</span>
+                                </div>
+                                <h2 class="text-3xl font-bold text-white mb-2 group-hover:text-primary transition-colors">Analytics Project</h2>
+                                <p class="text-primary text-xs font-bold mb-4">Python (Pandas, NumPy), ARIMA, Statistics, Streamlit</p>
+                                <p class="text-slate-400 text-sm leading-relaxed mb-8">Leveraged Python and ARIMA to analyze airline datasets, building regression models to quantify delay impacts and forecast seasonal flight trends.</p>
+                                <div class="flex items-center gap-6">
+                                    <a class="flex items-center gap-2 text-white text-xs font-bold uppercase hover:text-primary transition-colors" href="https://airline-x.streamlit.app/" target="_blank" rel="noopener noreferrer">
+                                        <span class="material-symbols-outlined text-lg">monitoring</span> View App
+                                    </a>
+                                    <a class="flex items-center gap-2 text-white text-xs font-bold uppercase hover:text-primary transition-colors" href="https://github.com/valid22/airline-x" target="_blank" rel="noopener noreferrer">
+                                        <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+                                        GitHub
+                                    </a>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </main>
+                <Footer />
+            </div>
+        );
+
+        const ContactPage = () => {
+            const [submitted, setSubmitted] = useState(false);
+            const handleSubmit = (e) => {
+                e.preventDefault();
+                const formData = new FormData(e.target);
+                const name = formData.get('name');
+                const email = formData.get('email');
+                const message = formData.get('message');
+                
+                const mailtoUrl = `mailto:hi@itsdote.tech?subject=Contact from ${encodeURIComponent(name)}&body=${encodeURIComponent(`From: ${name} (${email})\n\n${message}`)}`;
+                window.location.href = mailtoUrl;
+                
+                setSubmitted(true);
+            };
+
+            return (
+                <div class="bg-background-dark min-h-screen flex flex-col">
+                    <Navbar />
+                    <main class="flex-grow flex items-center justify-center py-20">
+                        <div class="max-w-[1100px] w-full mx-auto px-6">
+                            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+                                <div class="space-y-12">
+                                    <div class="space-y-6">
+                                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-[10px] font-bold uppercase tracking-widest">
+                                            Available for Collaboration
+                                        </div>
+                                        <h1 class="text-5xl md:text-7xl font-black text-white leading-[1.1] tracking-tight">
+                                            Let's build something <span class="text-primary italic">intelligent</span> together
+                                        </h1>
+                                        <p class="text-slate-400 text-lg max-w-lg leading-relaxed">
+                                            Currently exploring new opportunities in Data Engineering and Machine Learning.
+                                        </p>
+                                    </div>
+                                    <div class="flex flex-col gap-6">
+                                        <a class="group flex items-center gap-4 text-white hover:text-primary transition-colors" href="mailto:vignesh@ucsd.edu">
+                                            <div class="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center group-hover:border-primary/50 transition-colors">
+                                                <span class="material-symbols-outlined text-xl">mail</span>
+                                            </div>
+                                            <div>
+                                                <p class="text-[10px] font-bold text-slate-500 uppercase tracking-[0.2em] mb-0.5">Email Me</p>
+                                                <p class="text-lg font-medium">hi@itsdote.tech</p>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <div class="bg-surface-dark/50 border border-white/5 p-8 md:p-12 rounded-lg backdrop-blur-sm relative overflow-hidden group">
+                                    {submitted ? (
+                                        <div class="text-center py-20 space-y-4">
+                                            <div class="w-20 h-20 bg-primary/20 text-primary rounded-full flex items-center justify-center mx-auto mb-6">
+                                                <span class="material-symbols-outlined text-4xl">check_circle</span>
+                                            </div>
+                                            <h3 class="text-2xl font-bold text-white">Message Sent!</h3>
+                                            <p class="text-slate-400">I'll get back to you within 24 hours.</p>
+                                            <button onClick={() => setSubmitted(false)} class="text-primary font-bold hover:underline">Send another message</button>
+                                        </div>
+                                    ) : (
+                                        <form class="space-y-8 relative z-10" onSubmit={handleSubmit}>
+                                            <div class="space-y-2">
+                                                <label class="text-[10px] font-black text-slate-500 uppercase tracking-[0.2em]">Full Name</label>
+                                                <input name="name" required class="w-full bg-surface-dark border-x-0 border-t-0 border-b border-white/10 focus:border-primary focus:ring-0 text-white placeholder:text-slate-700 transition-colors py-3 px-0" placeholder="John Doe" type="text"/>
+                                            </div>
+                                            <div class="space-y-2">
+                                                <label class="text-[10px] font-black text-slate-500 uppercase tracking-[0.2em]">Email Address</label>
+                                                <input name="email" required class="w-full bg-surface-dark border-x-0 border-t-0 border-b border-white/10 focus:border-primary focus:ring-0 text-white placeholder:text-slate-700 transition-colors py-3 px-0" placeholder="john@example.com" type="email"/>
+                                            </div>
+                                            <div class="space-y-2">
+                                                <label class="text-[10px] font-black text-slate-500 uppercase tracking-[0.2em]">Message</label>
+                                                <textarea name="message" required class="w-full bg-surface-dark border-x-0 border-t-0 border-b border-white/10 focus:border-primary focus:ring-0 text-white placeholder:text-slate-700 transition-colors py-3 px-0 resize-none" placeholder="Tell me about your project..." rows="4"></textarea>
+                                            </div>
+                                            <button class="w-full py-5 bg-white text-black text-xs font-black uppercase tracking-[0.3em] rounded-lg hover:bg-primary hover:text-white transition-all transform active:scale-[0.98] flex items-center justify-center gap-3" type="submit">
+                                                Send Message <span class="material-symbols-outlined text-sm">north_east</span>
+                                            </button>
+                                        </form>
+                                    )}
+                                </div>
+                            </div>
+                        </div>
+                    </main>
+                    <footer class="py-12 border-t border-white/5">
+                        <div class="max-w-[1100px] mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-8">
+                            <div class="flex items-center gap-3 text-slate-500">
+                                <span class="material-symbols-outlined text-primary text-sm">location_on</span>
+                                <span class="text-[10px] font-bold uppercase tracking-[0.2em]">Based in La Jolla, CA</span>
+                            </div>
+                            <div class="flex flex-col md:items-end gap-2">
+                                <p class="text-xs font-bold text-slate-500 uppercase tracking-widest">© 2024 Vigneshwaran Siva Sankaran</p>
+                            </div>
+                        </div>
+                    </footer>
+                </div>
+            );
+        };
+
+        // --- Main App Component ---
+
+        const App = () => {
+            return (
+                <MemoryRouter>
+                    <Routes>
+                        <Route path="/" element={<HomePage />} />
+                        <Route path="/experience" element={<ExperiencePage />} />
+                        <Route path="/skills" element={<SkillsPage />} />
+                        <Route path="/projects" element={<ProjectsPage />} />
+                        <Route path="/contact" element={<ContactPage />} />
+                    </Routes>
+                </MemoryRouter>
+            );
+        };
+
+        const root = createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
+</html>

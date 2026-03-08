@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import AmbientMusic from './AmbientMusic'
 
 const navItems = ['Home', 'About', 'Skills', 'Experience', 'Projects', 'Contact']
 
@@ -79,14 +80,7 @@ export default function Navbar() {
 
           {/* Desktop CTA */}
           <div className="hidden md:block">
-            <a
-              href="/resume.pdf"
-              target="_blank"
-              rel="noreferrer"
-              className="val-btn text-xs"
-            >
-              Resume
-            </a>
+            <AmbientMusic />
           </div>
 
           {/* Mobile hamburger */}
@@ -134,17 +128,14 @@ export default function Navbar() {
                   {item}
                 </motion.button>
               ))}
-              <motion.a
+              <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.5 }}
-                href="/resume.pdf"
-                target="_blank"
-                rel="noreferrer"
-                className="val-btn mt-4"
+                className="mt-4"
               >
-                Resume
-              </motion.a>
+                <AmbientMusic />
+              </motion.div>
             </div>
             {/* Close button */}
             <div className="p-6 flex justify-end">

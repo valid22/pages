@@ -29,7 +29,7 @@ export default function Hero() {
     <section
       id="home"
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
-      style={{ background: 'linear-gradient(135deg, #070D12 0%, #0F1923 60%, #0a1520 100%)' }}
+      style={{ background: 'linear-gradient(135deg, #060b10 0%, #070D12 50%, #07111a 100%)' }}
     >
       {/* Decorative background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">

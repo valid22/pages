@@ -144,7 +144,7 @@ export default function Hero() {
               transition={{ duration: 0.7, delay: 0.3 }}
               className="mb-3"
             >
-              <p className="font-['Share_Tech_Mono'] text-xs text-[#FF4655] tracking-[6px] mb-3">CODENAME: ARCHITECT</p>
+              <p className="font-['Share_Tech_Mono'] text-xs text-[#FF4655] tracking-[6px] mb-3">CODENAME: DOTE</p>
               <h1
                 className="font-['Rajdhani'] text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-bold text-[#ECE8E1] tracking-tight leading-none glitch-text"
                 data-text="VIGNESHWARAN"
@@ -170,15 +170,15 @@ export default function Hero() {
                 <span className="font-['Share_Tech_Mono'] text-[#FF4655] text-sm">{'>'}</span>
                 <TypeAnimation
                   sequence={[
-                    'Software Engineer',
-                    2000,
-                    'Full Stack Developer',
-                    2000,
-                    'Cloud Architect',
-                    2000,
-                    'Systems Builder',
-                    2000,
                     'ML Engineer',
+                    2000,
+                    'Data Scientist',
+                    2000,
+                    'AI Engineer',
+                    2000,
+                    'Research Engineer',
+                    2000,
+                    'Data Engineer',
                     2000,
                   ]}
                   wrapper="span"
@@ -189,8 +189,8 @@ export default function Hero() {
                 <span className="w-0.5 h-6 bg-[#FF4655] inline-block" style={{ animation: 'blink 1s step-start infinite' }} />
               </div>
               <p className="font-['Inter'] text-sm sm:text-base text-[rgba(236,232,225,0.6)] max-w-lg leading-relaxed mt-4">
-                Building scalable systems at the intersection of performance and design. Based in{' '}
-                <span className="text-[#FF4655]">San Diego, CA</span> — deploying solutions that matter.
+                Building intelligent systems across ML, AI, and data. Based in{' '}
+                <span className="text-[#FF4655]">La Jolla, CA</span> — from model pipelines to agentic AI.
               </p>
             </motion.div>
 
@@ -224,9 +224,9 @@ export default function Hero() {
               className="mt-12 flex flex-wrap gap-6 sm:gap-10"
             >
               {[
-                { label: 'Projects Shipped', value: '20+' },
-                { label: 'Technologies', value: '15+' },
-                { label: 'Location', value: 'SAN DIEGO' },
+                { label: 'ML / AI Projects', value: '6+' },
+                { label: 'Yrs Industry Exp.', value: '2+' },
+                { label: 'Location', value: 'LA JOLLA' },
               ].map(stat => (
                 <div key={stat.label}>
                   <div className="font-['Rajdhani'] text-2xl sm:text-3xl font-bold text-[#FF4655]">{stat.value}</div>
@@ -282,7 +282,7 @@ export default function Hero() {
                     transition={{ duration: 2, repeat: Infinity }}
                   >
                     {/* VS monogram */}
-                    <span className="font-['Rajdhani'] text-5xl font-bold text-[#FF4655] opacity-80">VS</span>
+                    <span className="font-['Rajdhani'] text-5xl font-bold text-[#FF4655] opacity-80">D</span>
                   </motion.div>
                   {/* Rank badge */}
                   <div
@@ -299,7 +299,7 @@ export default function Hero() {
                 <h3 className="font-['Rajdhani'] text-lg font-bold text-[#ECE8E1] tracking-widest text-center">
                   VIGNESHWARAN
                 </h3>
-                <p className="font-['Share_Tech_Mono'] text-[10px] text-[#FF4655] tracking-[2px] mb-5">SOFTWARE ENGINEER</p>
+                <p className="font-['Share_Tech_Mono'] text-[10px] text-[#FF4655] tracking-[2px] mb-5">DS & ML ENGINEER</p>
 
                 {/* Stats */}
                 <div className="w-full space-y-2">
@@ -327,7 +327,7 @@ export default function Hero() {
 
                 {/* Tags */}
                 <div className="flex flex-wrap gap-1.5 mt-4 justify-center">
-                  {['REACT', 'PYTHON', 'AWS', 'ML'].map(tag => (
+                  {['PYTHON', 'ML', 'AI', 'DATA'].map(tag => (
                     <span
                       key={tag}
                       className="font-['Share_Tech_Mono'] text-[9px] text-[#FF4655] tracking-wider px-2 py-0.5"
@@ -344,8 +344,8 @@ export default function Hero() {
 
               {/* Card footer */}
               <div className="px-5 pb-4 pt-2 border-t border-[rgba(255,70,85,0.1)] flex justify-between items-center">
-                <span className="font-['Share_Tech_Mono'] text-[9px] text-[rgba(236,232,225,0.3)]">SAN DIEGO // CA</span>
-                <span className="font-['Share_Tech_Mono'] text-[9px] text-[rgba(255,70,85,0.5)]">ID:VSS-001</span>
+                <span className="font-['Share_Tech_Mono'] text-[9px] text-[rgba(236,232,225,0.3)]">LA JOLLA // CA</span>
+                <span className="font-['Share_Tech_Mono'] text-[9px] text-[rgba(255,70,85,0.5)]">ID:DOTE-001</span>
               </div>
             </div>
 

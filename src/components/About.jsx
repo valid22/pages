@@ -2,10 +2,10 @@ import { useInView } from 'react-intersection-observer'
 import { motion } from 'framer-motion'
 
 const facts = [
-  { label: 'LOCATION', value: 'San Diego, CA' },
+  { label: 'LOCATION', value: 'La Jolla, CA' },
   { label: 'STATUS', value: 'Open to Opportunities' },
-  { label: 'SPECIALIZATION', value: 'Full Stack & Cloud' },
-  { label: 'AVAILABILITY', value: 'Immediate' },
+  { label: 'SPECIALIZATION', value: 'ML, AI & Data Science' },
+  { label: 'EDUCATION', value: 'M.S. @ UCSD' },
 ]
 
 export default function About() {
@@ -58,20 +58,20 @@ export default function About() {
 
             <div className="space-y-5 font-['Inter'] text-[rgba(236,232,225,0.75)] leading-relaxed text-sm md:text-base">
               <p>
-                I'm a <span className="text-[#FF4655] font-semibold">Software Engineer</span> with a passion for building
-                systems that are as precise as they are powerful. I specialize in crafting full-stack applications
-                that combine clean architecture with exceptional user experiences.
+                I'm a <span className="text-[#FF4655] font-semibold">DS/AI/ML Engineer</span> with a track record
+                of building and shipping intelligent systems across diverse domains — from defense-grade autonomous
+                drones to healthcare imaging agents and game analytics platforms.
               </p>
               <p>
-                My expertise spans across <span className="text-[#C89B3C]">React</span>,{' '}
-                <span className="text-[#C89B3C]">Python</span>,{' '}
-                <span className="text-[#C89B3C]">Node.js</span>, and cloud platforms like{' '}
-                <span className="text-[#C89B3C]">AWS</span>. I thrive in environments where technical depth
-                meets real-world impact — building tools that solve meaningful problems at scale.
+                My work spans <span className="text-[#C89B3C]">agentic AI</span>,{' '}
+                <span className="text-[#C89B3C]">LLM orchestration</span>,{' '}
+                <span className="text-[#C89B3C]">statistical experimentation</span>, and{' '}
+                <span className="text-[#C89B3C]">production ML pipelines</span>. I thrive at the intersection of
+                rigorous data science and real-world engineering — building systems that reason, adapt, and scale.
               </p>
               <p>
-                When not engineering solutions, I'm studying systems design, contributing to open-source projects,
-                and exploring the intersection of <span className="text-[#FF4655]">AI/ML</span> with practical applications.
+                Currently pursuing an <span className="text-[#FF4655]">M.S. in Business Analytics at UCSD</span>,
+                with a focus on Machine Learning, Agentic AI Systems, and Data-Driven Decision Systems.
               </p>
             </div>
 
@@ -104,9 +104,9 @@ export default function About() {
               className="mt-8 flex flex-wrap gap-3"
             >
               {[
-                { label: 'GITHUB', href: 'https://github.com/vigneshss' },
-                { label: 'LINKEDIN', href: 'https://linkedin.com/in/vigneshwaran-siva-sankaran' },
-                { label: 'EMAIL', href: 'mailto:vignesh@example.com' },
+                { label: 'LINKEDIN', href: 'https://linkedin.com/in/dote10110' },
+                { label: 'EMAIL', href: 'mailto:hi@itsdote.tech' },
+                { label: 'WEBSITE', href: 'https://itsdote.tech' },
               ].map(link => (
                 <a
                   key={link.label}
@@ -154,11 +154,11 @@ export default function About() {
                 <div className="font-['Share_Tech_Mono'] text-xs space-y-2">
                   {[
                     { key: 'name', val: '"Vigneshwaran Siva Sankaran"', color: '#C89B3C' },
-                    { key: 'role', val: '"Software Engineer"', color: '#7B73FF' },
-                    { key: 'location', val: '"San Diego, CA"', color: '#C89B3C' },
-                    { key: 'stack', val: '["React", "Python", "AWS"]', color: '#00D4AA' },
+                    { key: 'role', val: '"DS & ML Engineer"', color: '#7B73FF' },
+                    { key: 'location', val: '"La Jolla, CA"', color: '#C89B3C' },
+                    { key: 'stack', val: '["Python", "PyTorch", "LangChain"]', color: '#00D4AA' },
                     { key: 'available', val: 'true', color: '#00D4AA' },
-                    { key: 'passion', val: '"Building scalable systems"', color: '#C89B3C' },
+                    { key: 'focus', val: '"ML, Agentic AI & Data Science"', color: '#C89B3C' },
                   ].map((line, i) => (
                     <motion.div
                       key={line.key}

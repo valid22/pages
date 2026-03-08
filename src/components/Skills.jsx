@@ -4,64 +4,64 @@ import { useState } from 'react'
 
 const skillCategories = [
   {
-    id: 'frontend',
-    label: 'SOVA // FRONTEND',
-    icon: '⬡',
-    color: '#7B73FF',
-    description: 'Precision-built UIs with surgical accuracy',
-    skills: [
-      { name: 'React / Next.js', level: 92 },
-      { name: 'TypeScript', level: 85 },
-      { name: 'Tailwind CSS', level: 90 },
-      { name: 'Three.js / WebGL', level: 70 },
-      { name: 'Redux / Zustand', level: 82 },
-    ],
-  },
-  {
-    id: 'backend',
-    label: 'BREACH // BACKEND',
-    icon: '◈',
-    color: '#FF4655',
-    description: 'Powerful server-side systems built to scale',
-    skills: [
-      { name: 'Python / FastAPI', level: 90 },
-      { name: 'Node.js / Express', level: 85 },
-      { name: 'PostgreSQL / MySQL', level: 82 },
-      { name: 'MongoDB / Redis', level: 78 },
-      { name: 'REST / GraphQL', level: 88 },
-    ],
-  },
-  {
-    id: 'cloud',
-    label: 'OMEN // CLOUD & DEVOPS',
-    icon: '⬟',
-    color: '#C89B3C',
-    description: 'Shadow infrastructure across cloud platforms',
-    skills: [
-      { name: 'AWS (EC2/S3/Lambda)', level: 85 },
-      { name: 'Docker / Kubernetes', level: 78 },
-      { name: 'CI/CD (GitHub Actions)', level: 82 },
-      { name: 'Terraform / IaC', level: 72 },
-      { name: 'Linux / Bash', level: 85 },
-    ],
-  },
-  {
     id: 'ml',
-    label: 'CYPHER // AI & DATA',
+    label: 'CYPHER // ML & AI',
     icon: '◇',
     color: '#00D4AA',
-    description: 'Intelligence gathering through data & models',
+    description: 'Deep learning, agents, vision & LLM systems',
     skills: [
-      { name: 'PyTorch / TensorFlow', level: 75 },
-      { name: 'Scikit-learn / Pandas', level: 82 },
-      { name: 'LLM / Prompt Eng.', level: 78 },
-      { name: 'Data Pipelines (ETL)', level: 80 },
-      { name: 'Computer Vision', level: 70 },
+      { name: 'Agentic AI / LLM Orchestration', level: 88 },
+      { name: 'PyTorch / TensorFlow', level: 85 },
+      { name: 'RAG / NLP / Prompt Engineering', level: 86 },
+      { name: 'CNN / RNN / LSTM', level: 83 },
+      { name: 'MC Dropout / Model Calibration', level: 80 },
+    ],
+  },
+  {
+    id: 'ds',
+    label: 'SOVA // DATA SCIENCE',
+    icon: '⬡',
+    color: '#7B73FF',
+    description: 'Experimentation, statistics & behavioral modeling',
+    skills: [
+      { name: 'Feature Engineering / EDA', level: 90 },
+      { name: 'A/B Testing / CUPED / Power Analysis', level: 87 },
+      { name: 'Statistical Inference / Bayesian', level: 85 },
+      { name: 'Skill Rating (Elo / Glicko-2)', level: 82 },
+      { name: 'Time Series Forecasting', level: 78 },
+    ],
+  },
+  {
+    id: 'eng',
+    label: 'BREACH // ENGINEERING',
+    icon: '◈',
+    color: '#FF4655',
+    description: 'Pipelines, infrastructure & production systems',
+    skills: [
+      { name: 'Python / SQL', level: 93 },
+      { name: 'Spark (PySpark) / Pandas / Polars', level: 88 },
+      { name: 'AWS / Docker / Kubernetes', level: 85 },
+      { name: 'CI/CD / ETL Pipelines', level: 83 },
+      { name: 'FastAPI / REST APIs', level: 82 },
+    ],
+  },
+  {
+    id: 'frameworks',
+    label: 'OMEN // FRAMEWORKS',
+    icon: '⬟',
+    color: '#C89B3C',
+    description: 'ML stack, orchestration & data tooling',
+    skills: [
+      { name: 'scikit-learn / Spark MLlib', level: 87 },
+      { name: 'LangChain / LlamaIndex', level: 85 },
+      { name: 'NumPy / Polars / Pandas', level: 90 },
+      { name: 'C/C++ / Java / JavaScript', level: 72 },
+      { name: 'Linux / Bash / Git', level: 85 },
     ],
   },
 ]
 
-const tools = ['Git', 'VS Code', 'Postman', 'Figma', 'Jira', 'Notion', 'Slack', 'Jupyter']
+const tools = ['Python', 'SQL', 'PyTorch', 'Spark', 'LangChain', 'Jupyter', 'Git', 'Docker', 'AWS', 'VS Code']
 
 function SkillBar({ name, level, color, inView, delay }) {
   return (
@@ -85,7 +85,7 @@ function SkillBar({ name, level, color, inView, delay }) {
 
 export default function Skills() {
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 })
-  const [activeCategory, setActiveCategory] = useState('frontend')
+  const [activeCategory, setActiveCategory] = useState('ml')
   const active = skillCategories.find(c => c.id === activeCategory)
 
   return (

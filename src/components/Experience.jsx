@@ -3,60 +3,61 @@ import { motion } from 'framer-motion'
 
 const experiences = [
   {
-    role: 'Software Engineer',
-    company: 'Company Name',
-    period: '2023 — Present',
-    location: 'San Diego, CA',
+    role: 'Founding Innovation & Development Engineer',
+    company: 'RSKD Labs Pvt Ltd.',
+    period: 'Jul 2023 — Jun 2025',
+    location: 'Chennai, India',
     type: 'Full-time',
     color: '#FF4655',
     highlights: [
-      'Architected and deployed scalable microservices handling 10k+ req/s using Python and FastAPI',
-      'Led frontend development of React dashboards, reducing load time by 40%',
-      'Implemented CI/CD pipelines with GitHub Actions and Docker, cutting deploy time by 60%',
-      'Collaborated with cross-functional teams in an Agile environment',
+      'Architected multi-step agentic AI workflows across 10+ system components: integrated RAG retrieval, LLM reasoning, and tool-using agents; applied prompt engineering and built evaluation datasets to reduce hallucination risk in production.',
+      'Led ML design of Vimaan, a defense-grade autonomous drone system for the Indian Navy — owning navigation model architecture, MC Dropout uncertainty estimation, and UE4 simulation-based pre-production validation.',
+      'Owned end-to-end design of a personalized learning path recommendation system: compared deep learning classifier vs. LLM agent, tracked accuracy/precision/business outcomes, and built performance dashboards for non-technical clients.',
+      'Optimized ML inference and data-processing pipelines across 600k–800k records, reducing end-to-end latency by ~30% and increasing production value by ~25%.',
+      'Built real-time computer vision inference pipelines at 30 FPS on continuous video streams, achieving 600ms end-to-end latency through GPU and memory footprint optimization.',
     ],
-    tags: ['Python', 'React', 'FastAPI', 'Docker', 'AWS'],
+    tags: ['Python', 'PyTorch', 'LangChain', 'RAG', 'AWS', 'Docker', 'CI/CD'],
   },
   {
-    role: 'Software Engineering Intern',
-    company: 'Tech Company',
-    period: 'Summer 2022',
-    location: 'Remote',
+    role: 'Member Technical Staff Intern',
+    company: 'Zoho Corporation',
+    period: 'Jan 2023 — May 2023',
+    location: 'Kattankulathur, India',
     type: 'Internship',
     color: '#C89B3C',
     highlights: [
-      'Built RESTful APIs with Node.js and Express serving 50k+ daily active users',
-      'Designed and optimized PostgreSQL schemas, improving query performance by 35%',
-      'Developed responsive React components and integrated with backend APIs',
-      'Participated in code reviews and engineering best practices discussions',
+      'Executed staged A/B rollout comparing optimized vs. baseline payroll API versions across production traffic for 1M+ users, validating correctness and reducing load latency from 5s to 2s before full deployment.',
+      'Optimized SQL execution paths and backend data-access layers, reducing query execution time by 15% within payroll pipelines processing tens of millions of records.',
+      'Implemented scalable backend data-processing logic within payroll pipelines, ensuring low-latency, correctness, and reliability under high-volume transactional workloads.',
     ],
-    tags: ['Node.js', 'React', 'PostgreSQL', 'Express', 'REST'],
-  },
-  {
-    role: 'Research Assistant',
-    company: 'University Lab',
-    period: '2021 — 2022',
-    location: 'San Diego, CA',
-    type: 'Part-time',
-    color: '#7B73FF',
-    highlights: [
-      'Conducted ML research on computer vision models for real-time object detection',
-      'Implemented and benchmarked models using PyTorch, achieving 15% accuracy improvement',
-      'Authored technical documentation and presented findings to research group',
-      'Contributed to published paper on deep learning applications',
-    ],
-    tags: ['PyTorch', 'Python', 'CV', 'ML', 'Research'],
+    tags: ['SQL', 'A/B Testing', 'Python', 'Backend', 'ETL'],
   },
 ]
 
 const education = [
   {
-    degree: 'B.S. Computer Science',
-    school: 'University of California',
-    period: '2019 — 2023',
-    location: 'San Diego, CA',
-    gpa: '3.8 GPA',
+    degree: 'M.S. in Business Analytics',
+    school: 'University of California, San Diego',
+    period: 'Jul 2025 — Dec 2026',
+    location: 'La Jolla, CA',
+    note: 'Focus: ML, Agentic AI Systems & Data-Driven Decision Systems',
     color: '#00D4AA',
+  },
+  {
+    degree: 'Diploma in Data Science & Programming',
+    school: 'Indian Institute of Technology, Madras',
+    period: 'Aug 2020 — Dec 2022',
+    location: 'Chennai, India',
+    note: '',
+    color: '#7B73FF',
+  },
+  {
+    degree: 'Bachelor of Technology',
+    school: 'SASTRA University',
+    period: 'Jun 2019 — May 2023',
+    location: 'Thanjavur, India',
+    note: '',
+    color: '#C89B3C',
   },
 ]
 
@@ -216,12 +217,13 @@ export default function Experience() {
                 <p className="font-['Share_Tech_Mono'] text-xs" style={{ color: edu.color }}>{edu.school}</p>
                 <div className="flex justify-between mt-2">
                   <span className="font-['Inter'] text-xs text-[rgba(236,232,225,0.4)]">{edu.period}</span>
-                  <span className="font-['Rajdhani'] text-sm font-bold" style={{ color: edu.color }}>{edu.gpa}</span>
+                  <span className="font-['Inter'] text-xs text-[rgba(236,232,225,0.4)]">{edu.location}</span>
                 </div>
+                {edu.note ? <p className="font-['Inter'] text-[11px] text-[rgba(236,232,225,0.4)] mt-1 leading-snug">{edu.note}</p> : null}
               </motion.div>
             ))}
 
-            {/* Certifications */}
+            {/* Domains */}
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               animate={inView ? { opacity: 1, x: 0 } : {}}
@@ -235,16 +237,17 @@ export default function Experience() {
               }}
             >
               <span className="font-['Share_Tech_Mono'] text-[9px] tracking-[3px] mb-3 block text-[#C89B3C]">
-                CERTIFICATIONS
+                DOMAIN INTERESTS
               </span>
               {[
-                { name: 'AWS Cloud Practitioner', org: 'Amazon Web Services' },
-                { name: 'Professional Scrum Master', org: 'Scrum.org' },
-                { name: 'Meta React Developer', org: 'Meta' },
-              ].map((cert, i) => (
+                { name: 'Gaming & Esports Analytics', tag: 'VALORANT, Matchmaking' },
+                { name: 'Healthcare AI', tag: 'Medical Imaging, Agents' },
+                { name: 'Autonomous Systems', tag: 'Drones, CV, Navigation' },
+                { name: 'Infrastructure Optimization', tag: 'LLM Agents, Cost Modeling' },
+              ].map((d, i) => (
                 <div key={i} className="mb-3 last:mb-0">
-                  <div className="font-['Rajdhani'] text-sm font-semibold text-[#ECE8E1]">{cert.name}</div>
-                  <div className="font-['Share_Tech_Mono'] text-[9px] text-[rgba(236,232,225,0.4)]">{cert.org}</div>
+                  <div className="font-['Rajdhani'] text-sm font-semibold text-[#ECE8E1]">{d.name}</div>
+                  <div className="font-['Share_Tech_Mono'] text-[9px] text-[rgba(236,232,225,0.4)]">{d.tag}</div>
                 </div>
               ))}
             </motion.div>

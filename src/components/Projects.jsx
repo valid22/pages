@@ -5,88 +5,88 @@ import { useState } from 'react'
 const projects = [
   {
     id: 'P-001',
-    name: 'NeuralScope',
-    subtitle: 'AI-Powered Analytics Platform',
+    name: 'LungeScape AI',
+    subtitle: 'Medical Imaging Agentic System — Hackathon Finalist',
     description:
-      'Real-time analytics platform leveraging ML models to surface insights from streaming data. Built with React, FastAPI, and deployed on AWS with auto-scaling infrastructure handling 100k+ events/day.',
-    tags: ['React', 'FastAPI', 'PyTorch', 'AWS', 'Redis', 'PostgreSQL'],
+      'Goal-driven 4-agent healthcare AI system: X-ray reading, anomaly understanding, 3D model generation, and RAG-based diagnosis chat agents. Applied prompt engineering and LLM orchestration to detect pulmonary anomalies and deliver patient-facing clinical reasoning.',
+    tags: ['Python', 'OpenAI API', 'Claude API', 'LangChain', 'Computer Vision'],
     color: '#FF4655',
-    status: 'DEPLOYED',
-    stars: 142,
-    links: { github: '#', live: '#' },
-    features: ['Real-time ML inference', 'Auto-scaling AWS infra', 'Interactive dashboards'],
+    status: 'HACKATHON',
+    year: 'Feb 2026',
+    links: { github: null, live: null },
+    features: ['4-agent multi-agent pipeline', 'Hallucination risk evaluation', 'Structured 3D lung parameter output'],
   },
   {
     id: 'P-002',
-    name: 'Nexus CLI',
-    subtitle: 'Developer Productivity Tool',
+    name: 'AI-IaSS',
+    subtitle: 'Agentic AI System for Infra Optimization — Hackathon Winner',
     description:
-      'Full-featured CLI toolkit for developer workflows — project scaffolding, API testing, Git hooks management, and environment orchestration in a single unified tool.',
-    tags: ['Python', 'Click', 'Docker', 'Bash', 'Git'],
-    color: '#7B73FF',
-    status: 'OPEN SOURCE',
-    stars: 89,
-    links: { github: '#', live: null },
-    features: ['Project scaffolding', 'API testing suite', 'Git hooks manager'],
+      'Goal-driven agentic AI system with multi-step planning, decision-making frameworks, validation guardrails, and tool integration (APIs, databases, structured retrieval). Orchestrated LLM workflows evaluating 100+ configurations per request, estimating 20–30% cost reduction.',
+    tags: ['Python', 'LangChain', 'LLM Agents', 'RAG', 'AWS', 'SQL'],
+    color: '#C89B3C',
+    status: 'HACKATHON',
+    year: 'Jan 2026',
+    links: { github: null, live: null },
+    features: ['100+ config evaluation per request', '50+ security rules integrated', '20–30% cost reduction estimate'],
   },
   {
     id: 'P-003',
-    name: 'Aegis Auth',
-    subtitle: 'Zero-Trust Auth Service',
+    name: 'Cache-Aware Routing',
+    subtitle: 'Distributed Inference Optimization',
     description:
-      'Microservice-based authentication system implementing OAuth 2.0, JWT, and MFA with Redis session management. Serves as a plug-and-play auth layer for distributed applications.',
-    tags: ['Node.js', 'Redis', 'JWT', 'OAuth', 'Docker', 'PostgreSQL'],
-    color: '#C89B3C',
-    status: 'DEPLOYED',
-    stars: 67,
-    links: { github: '#', live: null },
-    features: ['OAuth 2.0 + MFA', 'Redis session store', 'Rate limiting'],
+      'Cache-aware request routing PoC for multi-worker ML inference, improving average latency by 12.6× vs random routing under repeated-query workloads. Benchmarked hash/heuristic routing policies, achieving 100% cache efficiency.',
+    tags: ['Python', 'Distributed Systems', 'Benchmarking'],
+    color: '#7B73FF',
+    status: 'RESEARCH',
+    year: 'Feb 2026',
+    links: { github: null, live: null },
+    features: ['12.6× latency improvement', '100% cache efficiency', 'Hit-rate vs latency trade-off analysis'],
   },
   {
     id: 'P-004',
-    name: 'DataPulse',
-    subtitle: 'ETL Pipeline Orchestrator',
+    name: 'RiboSense',
+    subtitle: 'Large-Scale Training & Data Pipeline Optimization',
     description:
-      'Lightweight ETL orchestration tool for data engineering teams. Enables visual pipeline design, scheduling, and monitoring of data flows across multiple sources and destinations.',
-    tags: ['Python', 'Airflow', 'Pandas', 'React', 'PostgreSQL'],
+      'Scaled model training on 64-core Google TPU via batch/input-pipeline tuning, increasing throughput by 150% and reducing epoch time by 5×. Deduplicated sequences using CD-HIT (similarity 0.96) and parallel preprocessing, cutting preprocessing time by 40%. Achieved 0.98 AUC-ROC.',
+    tags: ['Python', 'TensorFlow', 'Google TPU', 'CD-HIT', 'Mixed Precision'],
     color: '#00D4AA',
-    status: 'IN PROGRESS',
-    stars: 34,
-    links: { github: '#', live: null },
-    features: ['Visual pipeline builder', 'Multi-source connectors', 'Real-time monitoring'],
+    status: 'RESEARCH',
+    year: 'Jul 2025',
+    links: { github: null, live: null },
+    features: ['150% throughput increase on 64-core TPU', '40% preprocessing time cut', '0.98 AUC-ROC'],
   },
   {
     id: 'P-005',
-    name: 'FrameForge',
-    subtitle: '3D Portfolio Builder',
+    name: 'Skill Rating & Matchmaking',
+    subtitle: 'Elo / Glicko-2 System with Experimentation',
     description:
-      'No-code 3D portfolio builder using Three.js and React. Users can create immersive 3D portfolio showcases with drag-and-drop components, custom shaders, and animations.',
-    tags: ['React', 'Three.js', 'GLSL', 'Node.js', 'MongoDB'],
+      'Implemented Elo and Glicko-2 rating systems with volatility and uncertainty tracking per player. Reduced win-probability calibration error by 8% vs static MMR baselines. Designed matchmaking optimizer reducing mean skill variance per match by 15% under 1K+ concurrent user load.',
+    tags: ['Python', 'SQL', 'Elo', 'Glicko-2', 'A/B Testing', 'CUPED'],
     color: '#FF4655',
-    status: 'DEPLOYED',
-    stars: 198,
-    links: { github: '#', live: '#' },
-    features: ['3D drag-and-drop', 'Custom GLSL shaders', 'Export to web'],
+    status: 'PROJECT',
+    year: '2026',
+    links: { github: null, live: null },
+    features: ['8% calibration error reduction', '15% skill variance improvement', 'Validated on 10K+ simulated matches'],
   },
   {
     id: 'P-006',
-    name: 'PatchTracker',
-    subtitle: 'OSS Vulnerability Monitor',
+    name: 'VALORANT Player Intelligence',
+    subtitle: 'Segmentation & Outcome Modeling',
     description:
-      'Automated vulnerability tracking system for open-source dependencies. Integrates with GitHub, npm, PyPI to alert teams about CVEs and suggest safe upgrade paths.',
-    tags: ['Python', 'FastAPI', 'React', 'GraphQL', 'Redis'],
+      'Pulled live match data via public Riot API; engineered per-player behavioral features and applied unsupervised clustering to segment players into 5 distinct play-style archetypes across 10K+ matches. Built win-probability model improving calibration by 10% vs static rank-difference baseline.',
+    tags: ['Python', 'Riot API', 'scikit-learn', 'Clustering', 'Win Probability'],
     color: '#7B73FF',
-    status: 'OPEN SOURCE',
-    stars: 55,
-    links: { github: '#', live: null },
-    features: ['CVE monitoring', 'Auto PR generation', 'Slack/Teams alerts'],
+    status: 'PROJECT',
+    year: '2025',
+    links: { github: null, live: null },
+    features: ['5 play-style archetypes identified', '10% calibration improvement', 'Reliability diagrams & Brier score'],
   },
 ]
 
 const statusColors = {
-  'DEPLOYED': '#00D4AA',
-  'OPEN SOURCE': '#7B73FF',
-  'IN PROGRESS': '#C89B3C',
+  'HACKATHON': '#FF4655',
+  'RESEARCH': '#00D4AA',
+  'PROJECT': '#7B73FF',
 }
 
 function ProjectCard({ project, index, inView }) {
@@ -132,10 +132,10 @@ function ProjectCard({ project, index, inView }) {
               {project.status}
             </span>
           </div>
-          {/* Stars */}
+          {/* Year */}
           <div className="flex items-center gap-1">
             <div className="w-2 h-2" style={{ background: project.color, transform: 'rotate(45deg)', opacity: 0.7 }} />
-            <span className="font-['Share_Tech_Mono'] text-[10px] text-[rgba(236,232,225,0.4)]">{project.stars}</span>
+            <span className="font-['Share_Tech_Mono'] text-[10px] text-[rgba(236,232,225,0.4)]">{project.year}</span>
           </div>
         </div>
 
@@ -243,7 +243,7 @@ export default function Projects() {
           <h2 className="section-title text-4xl md:text-5xl">TACTICAL OPERATIONS</h2>
           <div className="mt-3 w-20 h-0.5 bg-gradient-to-r from-[#FF4655] to-transparent" />
           <p className="font-['Inter'] text-sm text-[rgba(236,232,225,0.5)] mt-4 max-w-xl">
-            A selection of projects demonstrating technical depth across frontend, backend, cloud infrastructure, and AI/ML.
+            A selection of projects across ML systems, agentic AI, data science, gaming analytics, and distributed infrastructure.
           </p>
         </motion.div>
 
@@ -262,12 +262,12 @@ export default function Projects() {
           className="mt-12 text-center"
         >
           <a
-            href="https://github.com/vigneshss"
+            href="https://linkedin.com/in/dote10110"
             target="_blank"
             rel="noreferrer"
             className="val-btn inline-block"
           >
-            View All Projects
+            View on LinkedIn
           </a>
         </motion.div>
       </div>

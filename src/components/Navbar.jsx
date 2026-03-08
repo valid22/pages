@@ -56,10 +56,10 @@ export default function Navbar() {
               <div className="absolute inset-0 border border-[#FF4655] group-hover:border-[#C89B3C] transition-colors duration-300"
                 style={{ clipPath: 'polygon(0 0, calc(100% - 6px) 0, 100% 6px, 100% 100%, 6px 100%, 0 calc(100% - 6px))' }}
               />
-              <span className="absolute inset-0 flex items-center justify-center font-['Rajdhani'] font-bold text-sm text-[#FF4655] group-hover:text-[#C89B3C] transition-colors">VS</span>
+              <span className="absolute inset-0 flex items-center justify-center font-['Rajdhani'] font-bold text-sm text-[#FF4655] group-hover:text-[#C89B3C] transition-colors">D</span>
             </div>
             <div>
-              <div className="font-['Rajdhani'] font-bold text-sm text-[#ECE8E1] tracking-[2px] leading-none">VIGNESH</div>
+              <div className="font-['Rajdhani'] font-bold text-sm text-[#ECE8E1] tracking-[2px] leading-none">DOTE</div>
               <div className="font-['Share_Tech_Mono'] text-[9px] text-[#FF4655] tracking-[3px] leading-none">// AGENT</div>
             </div>
           </button>

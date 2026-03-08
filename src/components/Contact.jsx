@@ -5,27 +5,27 @@ import { useState } from 'react'
 const contactLinks = [
   {
     label: 'EMAIL',
-    value: 'vignesh@example.com',
-    href: 'mailto:vignesh@example.com',
+    value: 'hi@itsdote.tech',
+    href: 'mailto:hi@itsdote.tech',
     icon: '✉',
     color: '#FF4655',
     desc: 'Direct line — fastest response',
   },
   {
     label: 'LINKEDIN',
-    value: 'linkedin.com/in/vigneshwaran',
-    href: 'https://linkedin.com/in/vigneshwaran-siva-sankaran',
+    value: 'linkedin.com/in/dote10110',
+    href: 'https://linkedin.com/in/dote10110',
     icon: '⬡',
     color: '#7B73FF',
     desc: 'Professional network',
   },
   {
-    label: 'GITHUB',
-    value: 'github.com/vigneshss',
-    href: 'https://github.com/vigneshss',
+    label: 'WEBSITE',
+    value: 'itsdote.tech',
+    href: 'https://itsdote.tech',
     icon: '◈',
     color: '#C89B3C',
-    desc: 'Code & open source',
+    desc: 'Portfolio & projects',
   },
 ]
 

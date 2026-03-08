@@ -20,12 +20,12 @@ export default function Footer() {
                 clipPath: 'polygon(0 0, calc(100% - 6px) 0, 100% 6px, 100% 100%, 6px 100%, 0 calc(100% - 6px))',
               }}
             >
-              <span className="font-['Rajdhani'] text-xs font-bold text-[#FF4655]">VS</span>
+              <span className="font-['Rajdhani'] text-xs font-bold text-[#FF4655]">D</span>
             </div>
             <div>
               <p className="font-['Rajdhani'] text-xs font-bold text-[#ECE8E1] tracking-[2px]">VIGNESHWARAN SIVA SANKARAN</p>
               <p className="font-['Share_Tech_Mono'] text-[9px] text-[rgba(255,70,85,0.5)] tracking-[3px]">
-                // SOFTWARE ENGINEER
+                // DS & ML ENGINEER
               </p>
             </div>
           </div>

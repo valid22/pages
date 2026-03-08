@@ -5,7 +5,7 @@ import { useState } from 'react'
 const skillCategories = [
   {
     id: 'ml',
-    label: 'CYPHER // ML & AI',
+    label: 'SIGNATURE // ML & AI',
     icon: '◇',
     color: '#00D4AA',
     description: 'Deep learning, agents, vision & LLM systems',
@@ -19,7 +19,7 @@ const skillCategories = [
   },
   {
     id: 'ds',
-    label: 'SOVA // DATA SCIENCE',
+    label: 'ULTIMATE // DATA SCIENCE',
     icon: '⬡',
     color: '#7B73FF',
     description: 'Experimentation, statistics & behavioral modeling',
@@ -33,7 +33,7 @@ const skillCategories = [
   },
   {
     id: 'eng',
-    label: 'BREACH // ENGINEERING',
+    label: 'TACTICAL // ENGINEERING',
     icon: '◈',
     color: '#FF4655',
     description: 'Pipelines, infrastructure & production systems',
@@ -47,7 +47,7 @@ const skillCategories = [
   },
   {
     id: 'frameworks',
-    label: 'OMEN // FRAMEWORKS',
+    label: 'COMBAT // FRAMEWORKS',
     icon: '⬟',
     color: '#C89B3C',
     description: 'ML stack, orchestration & data tooling',

@@ -34,16 +34,37 @@ export default function Contact() {
   const [formState, setFormState] = useState({ name: '', email: '', subject: '', message: '' })
   const [sending, setSending] = useState(false)
   const [sent, setSent] = useState(false)
+  const [error, setError] = useState(false)
 
   const handleSubmit = async (e) => {
     e.preventDefault()
     setSending(true)
-    // Simulate send — replace with actual API call
-    await new Promise(r => setTimeout(r, 1500))
-    setSending(false)
-    setSent(true)
-    setFormState({ name: '', email: '', subject: '', message: '' })
-    setTimeout(() => setSent(false), 4000)
+    setError(false)
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          access_key: '4e409044-554b-40b7-b3d2-9bda1c962aab',
+          name: formState.name,
+          email: formState.email,
+          subject: formState.subject,
+          message: formState.message,
+        }),
+      })
+      const data = await res.json()
+      if (data.success) {
+        setSent(true)
+        setFormState({ name: '', email: '', subject: '', message: '' })
+        setTimeout(() => setSent(false), 5000)
+      } else {
+        setError(true)
+      }
+    } catch {
+      setError(true)
+    } finally {
+      setSending(false)
+    }
   }
 
   const inputStyle = {
@@ -282,6 +303,12 @@ export default function Contact() {
                       'SEND TRANSMISSION'
                     )}
                   </button>
+
+                  {error && (
+                    <p className="font-['Share_Tech_Mono'] text-[10px] text-[#FF4655] tracking-[2px] text-center">
+                      TRANSMISSION FAILED — please try again or email directly.
+                    </p>
+                  )}
                 </form>
               )}
 

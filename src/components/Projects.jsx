@@ -239,8 +239,8 @@ export default function Projects() {
           transition={{ duration: 0.6 }}
           className="mb-16"
         >
-          <p className="section-label mb-2">// 04 — INTEL</p>
-          <h2 className="section-title text-4xl md:text-5xl">TACTICAL OPERATIONS</h2>
+          <p className="section-label mb-2">// 04 — PROJECTS</p>
+          <h2 className="section-title text-4xl md:text-5xl">SHIPPED SYSTEMS</h2>
           <div className="mt-3 w-20 h-0.5 bg-gradient-to-r from-[#FF4655] to-transparent" />
           <p className="font-['Inter'] text-sm text-[rgba(236,232,225,0.5)] mt-4 max-w-xl">
             A selection of projects across ML systems, agentic AI, data science, gaming analytics, and distributed infrastructure.

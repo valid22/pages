@@ -132,7 +132,7 @@ export default function Hero() {
                 }}
               >
                 <div className="w-2 h-2 bg-[#00D4AA] rounded-full" style={{ boxShadow: '0 0 6px #00D4AA' }} />
-                <span className="font-['Share_Tech_Mono'] text-xs text-[#ECE8E1] tracking-[3px]">AGENT // ONLINE</span>
+                <span className="font-['Share_Tech_Mono'] text-xs text-[#ECE8E1] tracking-[3px]">ENGINEER // ONLINE</span>
               </div>
               <div className="flex-1 h-px bg-gradient-to-r from-[rgba(255,70,85,0.3)] to-transparent" />
             </motion.div>
@@ -260,7 +260,7 @@ export default function Hero() {
               {/* Card header */}
               <div className="px-5 pt-4 pb-3 border-b border-[rgba(255,70,85,0.15)]">
                 <div className="flex items-center justify-between">
-                  <span className="font-['Share_Tech_Mono'] text-[10px] text-[#FF4655] tracking-[3px]">AGENT CARD</span>
+                  <span className="font-['Share_Tech_Mono'] text-[10px] text-[#FF4655] tracking-[3px]">PLAYER CARD</span>
                   <div className="flex gap-1">
                     <div className="w-2 h-2 bg-[#FF4655] opacity-60" style={{ clipPath: 'polygon(50% 0, 100% 100%, 0 100%)' }} />
                     <div className="w-2 h-2 bg-[#C89B3C] opacity-60" style={{ clipPath: 'polygon(50% 0, 100% 100%, 0 100%)' }} />
@@ -292,7 +292,7 @@ export default function Hero() {
                       clipPath: 'polygon(0 0, 100% 0, 100% calc(100% - 4px), calc(100% - 4px) 100%, 0 100%)',
                     }}
                   >
-                    <span className="font-['Share_Tech_Mono'] text-[9px] text-[#070D12] font-bold tracking-wider">RADIANT</span>
+                    <span className="font-['Share_Tech_Mono'] text-[9px] text-[#070D12] font-bold tracking-wider">RANKED</span>
                   </div>
                 </div>
 

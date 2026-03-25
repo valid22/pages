@@ -61,7 +61,7 @@ export default function Navbar() {
             </div>
             <div>
               <div className="font-['Rajdhani'] font-bold text-sm text-[#ECE8E1] tracking-[2px] leading-none">DOTE</div>
-              <div className="font-['Share_Tech_Mono'] text-[9px] text-[#FF4655] tracking-[3px] leading-none">// AGENT</div>
+              <div className="font-['Share_Tech_Mono'] text-[9px] text-[#FF4655] tracking-[3px] leading-none">// DEV</div>
             </div>
           </button>
 

@@ -5,7 +5,7 @@ import { useState } from 'react'
 const skillCategories = [
   {
     id: 'ml',
-    label: 'SIGNATURE // ML & AI',
+    label: 'PRIMARY // ML & AI',
     icon: '◇',
     color: '#00D4AA',
     description: 'Deep learning, agents, vision & LLM systems',
@@ -19,7 +19,7 @@ const skillCategories = [
   },
   {
     id: 'ds',
-    label: 'ULTIMATE // DATA SCIENCE',
+    label: 'RANKED // DATA SCIENCE',
     icon: '⬡',
     color: '#7B73FF',
     description: 'Experimentation, statistics & behavioral modeling',
@@ -33,7 +33,7 @@ const skillCategories = [
   },
   {
     id: 'eng',
-    label: 'TACTICAL // ENGINEERING',
+    label: 'PRECISION // ENGINEERING',
     icon: '◈',
     color: '#FF4655',
     description: 'Pipelines, infrastructure & production systems',
@@ -47,7 +47,7 @@ const skillCategories = [
   },
   {
     id: 'frameworks',
-    label: 'COMBAT // FRAMEWORKS',
+    label: 'UTILITY // FRAMEWORKS',
     icon: '⬟',
     color: '#C89B3C',
     description: 'ML stack, orchestration & data tooling',
@@ -105,8 +105,8 @@ export default function Skills() {
           transition={{ duration: 0.6 }}
           className="mb-16"
         >
-          <p className="section-label mb-2">// 02 — LOADOUT</p>
-          <h2 className="section-title text-4xl md:text-5xl">ABILITIES & SKILLS</h2>
+          <p className="section-label mb-2">// 02 — ARSENAL</p>
+          <h2 className="section-title text-4xl md:text-5xl">SKILLS & TOOLS</h2>
           <div className="mt-3 w-20 h-0.5 bg-gradient-to-r from-[#FF4655] to-transparent" />
         </motion.div>
 
@@ -153,7 +153,7 @@ export default function Skills() {
                   className="absolute top-2 right-3 font-['Share_Tech_Mono'] text-[9px] tracking-widest"
                   style={{ color: cat.color, opacity: 0.5 }}
                 >
-                  {['Q', 'E', 'C', 'X'][i]}
+                  {['01', '02', '03', '04'][i]}
                 </div>
               </motion.button>
             ))}

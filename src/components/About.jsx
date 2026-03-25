@@ -33,8 +33,8 @@ export default function About() {
           transition={{ duration: 0.6 }}
           className="mb-16"
         >
-          <p className="section-label mb-2">// 01 — BRIEFING</p>
-          <h2 className="section-title text-4xl md:text-5xl">ABOUT THE AGENT</h2>
+          <p className="section-label mb-2">// 01 — ABOUT</p>
+          <h2 className="section-title text-4xl md:text-5xl">THE PLAYER</h2>
           <div className="mt-3 w-20 h-0.5 bg-gradient-to-r from-[#FF4655] to-transparent" />
         </motion.div>
 
@@ -53,14 +53,14 @@ export default function About() {
                 borderLeft: '2px solid #FF4655',
               }}
             >
-              <span className="font-['Share_Tech_Mono'] text-[10px] text-[#FF4655] tracking-[4px]">MISSION BRIEFING // DECLASSIFIED</span>
+              <span className="font-['Share_Tech_Mono'] text-[10px] text-[#FF4655] tracking-[4px]">PLAYER BIO // LOADED</span>
             </div>
 
             <div className="space-y-5 font-['Inter'] text-[rgba(236,232,225,0.75)] leading-relaxed text-sm md:text-base">
               <p>
                 I'm a <span className="text-[#FF4655] font-semibold">DS/AI/ML Engineer</span> with a track record
                 of building and shipping intelligent systems across diverse domains — from defense-grade autonomous
-                drones to healthcare imaging agents and game analytics platforms.
+                drones to healthcare imaging agents and esports analytics platforms.
               </p>
               <p>
                 My work spans <span className="text-[#C89B3C]">agentic AI</span>,{' '}
@@ -72,6 +72,12 @@ export default function About() {
               <p>
                 Currently pursuing an <span className="text-[#FF4655]">M.S. in Business Analytics at UCSD</span>,
                 with a focus on Machine Learning, Agentic AI Systems, and Data-Driven Decision Systems.
+              </p>
+              <p>
+                Off the clock I'm a competitive player — <span className="text-[#7B73FF]">Valorant</span>,{' '}
+                <span className="text-[#7B73FF]">CS2</span>, and{' '}
+                <span className="text-[#7B73FF]">Chess</span>. The same instincts — pattern recognition,
+                decision-making under pressure, reading systems before others do — are what I bring to data and AI.
               </p>
             </div>
 
@@ -142,7 +148,7 @@ export default function About() {
               >
                 {/* Header */}
                 <div className="flex items-center justify-between mb-6 pb-3" style={{ borderBottom: '1px solid rgba(255,70,85,0.1)' }}>
-                  <span className="font-['Share_Tech_Mono'] text-[10px] text-[#FF4655] tracking-[3px]">AGENT_PROFILE.exe</span>
+                  <span className="font-['Share_Tech_Mono'] text-[10px] text-[#FF4655] tracking-[3px]">PLAYER_PROFILE.exe</span>
                   <div className="flex gap-1.5">
                     <div className="w-2.5 h-2.5 rounded-full bg-[#FF4655] opacity-70" />
                     <div className="w-2.5 h-2.5 rounded-full bg-[#C89B3C] opacity-70" />
@@ -157,6 +163,7 @@ export default function About() {
                     { key: 'role', val: '"DS & ML Engineer"', color: '#7B73FF' },
                     { key: 'location', val: '"La Jolla, CA"', color: '#C89B3C' },
                     { key: 'stack', val: '["Python", "PyTorch", "LangChain"]', color: '#00D4AA' },
+                    { key: 'games', val: '["Valorant", "CS2", "Chess"]', color: '#7B73FF' },
                     { key: 'available', val: 'true', color: '#00D4AA' },
                     { key: 'focus', val: '"ML, Agentic AI & Data Science"', color: '#C89B3C' },
                   ].map((line, i) => (

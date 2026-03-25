@@ -161,8 +161,8 @@ export default function Experience() {
           transition={{ duration: 0.6 }}
           className="mb-16"
         >
-          <p className="section-label mb-2">// 03 — MISSION LOG</p>
-          <h2 className="section-title text-4xl md:text-5xl">OPERATIONS HISTORY</h2>
+          <p className="section-label mb-2">// 03 — HISTORY</p>
+          <h2 className="section-title text-4xl md:text-5xl">CAREER LOG</h2>
           <div className="mt-3 w-20 h-0.5 bg-gradient-to-r from-[#FF4655] to-transparent" />
         </motion.div>
 
@@ -174,7 +174,7 @@ export default function Experience() {
               animate={inView ? { opacity: 1 } : {}}
               className="font-['Share_Tech_Mono'] text-[10px] text-[rgba(255,70,85,0.5)] tracking-[4px] mb-8"
             >
-              WORK EXPERIENCE // CLASSIFIED
+              WORK EXPERIENCE // LOADED
             </motion.p>
             {experiences.map((exp, i) => (
               <TimelineItem key={i} exp={exp} index={i} inView={inView} />
@@ -236,7 +236,7 @@ export default function Experience() {
                 DOMAIN INTERESTS
               </span>
               {[
-                { name: 'Gaming & Esports Analytics', tag: 'VALORANT, Matchmaking' },
+                { name: 'Gaming & Esports Analytics', tag: 'Esports, Skill Rating, Analytics' },
                 { name: 'Healthcare AI', tag: 'Medical Imaging, Agents' },
                 { name: 'Autonomous Systems', tag: 'Drones, CV, Navigation' },
                 { name: 'Infrastructure Optimization', tag: 'LLM Agents, Cost Modeling' },

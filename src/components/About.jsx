@@ -17,11 +17,11 @@ export default function About() {
       <div className="absolute inset-0 pointer-events-none">
         <div
           className="absolute left-0 top-0 bottom-0 w-px opacity-20"
-          style={{ background: 'linear-gradient(180deg, transparent, #FF4655, transparent)' }}
+          style={{ background: 'linear-gradient(180deg, transparent, #22D3EE, transparent)' }}
         />
         <div
           className="absolute right-0 top-0 bottom-0 w-px opacity-20"
-          style={{ background: 'linear-gradient(180deg, transparent, #C89B3C, transparent)' }}
+          style={{ background: 'linear-gradient(180deg, transparent, #FB923C, transparent)' }}
         />
       </div>
 
@@ -35,7 +35,7 @@ export default function About() {
         >
           <p className="section-label mb-2">// 01 — ABOUT</p>
           <h2 className="section-title text-4xl md:text-5xl">THE PLAYER</h2>
-          <div className="mt-3 w-20 h-0.5 bg-gradient-to-r from-[#FF4655] to-transparent" />
+          <div className="mt-3 w-20 h-0.5 bg-gradient-to-r from-[#22D3EE] to-transparent" />
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
@@ -49,28 +49,28 @@ export default function About() {
             <div
               className="px-4 py-2 mb-5 flex items-center gap-3"
               style={{
-                background: 'rgba(255, 70, 85, 0.05)',
-                borderLeft: '2px solid #FF4655',
+                background: 'rgba(34, 211, 238, 0.05)',
+                borderLeft: '2px solid #22D3EE',
               }}
             >
-              <span className="font-['Share_Tech_Mono'] text-[10px] text-[#FF4655] tracking-[4px]">PLAYER BIO // LOADED</span>
+              <span className="font-['Share_Tech_Mono'] text-[10px] text-[#22D3EE] tracking-[4px]">PLAYER BIO // LOADED</span>
             </div>
 
             <div className="space-y-5 font-['Inter'] text-[rgba(236,232,225,0.75)] leading-relaxed text-sm md:text-base">
               <p>
-                I'm a <span className="text-[#FF4655] font-semibold">DS/AI/ML Engineer</span> with a track record
+                I'm a <span className="text-[#22D3EE] font-semibold">DS/AI/ML Engineer</span> with a track record
                 of building and shipping intelligent systems across diverse domains — from defense-grade autonomous
                 drones to healthcare imaging agents and esports analytics platforms.
               </p>
               <p>
-                My work spans <span className="text-[#C89B3C]">agentic AI</span>,{' '}
-                <span className="text-[#C89B3C]">LLM orchestration</span>,{' '}
-                <span className="text-[#C89B3C]">statistical experimentation</span>, and{' '}
-                <span className="text-[#C89B3C]">production ML pipelines</span>. I thrive at the intersection of
+                My work spans <span className="text-[#FB923C]">agentic AI</span>,{' '}
+                <span className="text-[#FB923C]">LLM orchestration</span>,{' '}
+                <span className="text-[#FB923C]">statistical experimentation</span>, and{' '}
+                <span className="text-[#FB923C]">production ML pipelines</span>. I thrive at the intersection of
                 rigorous data science and real-world engineering — building systems that reason, adapt, and scale.
               </p>
               <p>
-                Currently pursuing an <span className="text-[#FF4655]">M.S. in Business Analytics at UCSD</span>,
+                Currently pursuing an <span className="text-[#22D3EE]">M.S. in Business Analytics at UCSD</span>,
                 with a focus on Machine Learning, Agentic AI Systems, and Data-Driven Decision Systems.
               </p>
               <p>
@@ -91,12 +91,12 @@ export default function About() {
                   transition={{ duration: 0.4, delay: 0.5 + i * 0.1 }}
                   className="p-3"
                   style={{
-                    background: 'rgba(27, 36, 46, 0.5)',
-                    borderLeft: '1px solid rgba(255, 70, 85, 0.2)',
-                    borderTop: '1px solid rgba(255, 70, 85, 0.1)',
+                    background: 'rgba(14, 26, 42, 0.5)',
+                    borderLeft: '1px solid rgba(34, 211, 238, 0.2)',
+                    borderTop: '1px solid rgba(34, 211, 238, 0.1)',
                   }}
                 >
-                  <div className="font-['Share_Tech_Mono'] text-[9px] text-[rgba(255,70,85,0.6)] tracking-[3px] mb-1">{fact.label}</div>
+                  <div className="font-['Share_Tech_Mono'] text-[9px] text-[rgba(34,211,238,0.6)] tracking-[3px] mb-1">{fact.label}</div>
                   <div className="font-['Rajdhani'] text-sm font-semibold text-[#ECE8E1] tracking-wide">{fact.value}</div>
                 </motion.div>
               ))}
@@ -119,9 +119,9 @@ export default function About() {
                   href={link.href}
                   target="_blank"
                   rel="noreferrer"
-                  className="font-['Share_Tech_Mono'] text-[10px] tracking-[3px] text-[rgba(236,232,225,0.5)] hover:text-[#FF4655] transition-colors flex items-center gap-2 cursor-none"
+                  className="font-['Share_Tech_Mono'] text-[10px] tracking-[3px] text-[rgba(236,232,225,0.5)] hover:text-[#22D3EE] transition-colors flex items-center gap-2 cursor-none"
                 >
-                  <span className="text-[#FF4655]">{'>'}</span>
+                  <span className="text-[#22D3EE]">{'>'}</span>
                   {link.label}
                 </a>
               ))}
@@ -140,18 +140,18 @@ export default function About() {
               <div
                 className="relative p-6"
                 style={{
-                  background: 'rgba(27, 36, 46, 0.6)',
-                  border: '1px solid rgba(255, 70, 85, 0.2)',
+                  background: 'rgba(14, 26, 42, 0.6)',
+                  border: '1px solid rgba(34, 211, 238, 0.2)',
                   clipPath: 'polygon(0 0, calc(100% - 24px) 0, 100% 24px, 100% 100%, 24px 100%, 0 calc(100% - 24px))',
                   backdropFilter: 'blur(10px)',
                 }}
               >
                 {/* Header */}
-                <div className="flex items-center justify-between mb-6 pb-3" style={{ borderBottom: '1px solid rgba(255,70,85,0.1)' }}>
-                  <span className="font-['Share_Tech_Mono'] text-[10px] text-[#FF4655] tracking-[3px]">PLAYER_PROFILE.exe</span>
+                <div className="flex items-center justify-between mb-6 pb-3" style={{ borderBottom: '1px solid rgba(34,211,238,0.1)' }}>
+                  <span className="font-['Share_Tech_Mono'] text-[10px] text-[#22D3EE] tracking-[3px]">PLAYER_PROFILE.exe</span>
                   <div className="flex gap-1.5">
-                    <div className="w-2.5 h-2.5 rounded-full bg-[#FF4655] opacity-70" />
-                    <div className="w-2.5 h-2.5 rounded-full bg-[#C89B3C] opacity-70" />
+                    <div className="w-2.5 h-2.5 rounded-full bg-[#22D3EE] opacity-70" />
+                    <div className="w-2.5 h-2.5 rounded-full bg-[#FB923C] opacity-70" />
                     <div className="w-2.5 h-2.5 rounded-full bg-[#00D4AA] opacity-70" />
                   </div>
                 </div>
@@ -159,13 +159,13 @@ export default function About() {
                 {/* Code-style content */}
                 <div className="font-['Share_Tech_Mono'] text-xs space-y-2">
                   {[
-                    { key: 'name', val: '"Vigneshwaran Siva Sankaran"', color: '#C89B3C' },
+                    { key: 'name', val: '"Vigneshwaran Siva Sankaran"', color: '#FB923C' },
                     { key: 'role', val: '"DS & ML Engineer"', color: '#7B73FF' },
-                    { key: 'location', val: '"La Jolla, CA"', color: '#C89B3C' },
+                    { key: 'location', val: '"La Jolla, CA"', color: '#FB923C' },
                     { key: 'stack', val: '["Python", "PyTorch", "LangChain"]', color: '#00D4AA' },
                     { key: 'games', val: '["Valorant", "CS2", "Chess"]', color: '#7B73FF' },
                     { key: 'available', val: 'true', color: '#00D4AA' },
-                    { key: 'focus', val: '"ML, Agentic AI & Data Science"', color: '#C89B3C' },
+                    { key: 'focus', val: '"ML, Agentic AI & Data Science"', color: '#FB923C' },
                   ].map((line, i) => (
                     <motion.div
                       key={line.key}
@@ -175,7 +175,7 @@ export default function About() {
                       className="flex items-start gap-2"
                     >
                       <span className="text-[rgba(236,232,225,0.3)] min-w-4 text-right">{i + 1}</span>
-                      <span className="text-[rgba(255,70,85,0.8)]">  {line.key}</span>
+                      <span className="text-[rgba(34,211,238,0.8)]">  {line.key}</span>
                       <span className="text-[rgba(236,232,225,0.4)]">:</span>
                       <span style={{ color: line.color }}>{line.val}</span>
                     </motion.div>
@@ -184,7 +184,7 @@ export default function About() {
 
                 {/* Decorative corner */}
                 <div className="absolute bottom-0 right-0 w-6 h-6 overflow-hidden">
-                  <div className="absolute bottom-0 right-0 w-full h-full bg-[#FF4655] opacity-20"
+                  <div className="absolute bottom-0 right-0 w-full h-full bg-[#22D3EE] opacity-20"
                     style={{ clipPath: 'polygon(100% 0, 100% 100%, 0 100%)' }} />
                 </div>
               </div>
@@ -193,7 +193,7 @@ export default function About() {
               <motion.div
                 className="absolute -top-4 -right-4 w-16 h-16"
                 style={{
-                  border: '1px solid rgba(200,155,60,0.2)',
+                  border: '1px solid rgba(251,146,60,0.2)',
                   clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)',
                 }}
                 animate={{ rotate: [0, 90, 180, 270, 360] }}
@@ -201,7 +201,7 @@ export default function About() {
               />
               <motion.div
                 className="absolute -bottom-4 -left-4 w-10 h-10"
-                style={{ border: '1px solid rgba(255,70,85,0.2)' }}
+                style={{ border: '1px solid rgba(34,211,238,0.2)' }}
                 animate={{ rotate: [0, -90, -180, -270, -360] }}
                 transition={{ duration: 15, repeat: Infinity, ease: 'linear' }}
               />

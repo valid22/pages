@@ -69,7 +69,7 @@ export default function Cursor() {
           style={{
             width: isClicking ? '4px' : isHovering ? '12px' : '8px',
             height: isClicking ? '4px' : isHovering ? '12px' : '8px',
-            background: isHovering ? '#ECE8E1' : '#FF4655',
+            background: isHovering ? '#ECE8E1' : '#22D3EE',
             borderRadius: '50%',
             position: 'absolute',
             transform: 'translate(-50%, -50%)',
@@ -89,7 +89,7 @@ export default function Cursor() {
           style={{
             width: isHovering ? '48px' : isClicking ? '20px' : '32px',
             height: isHovering ? '48px' : isClicking ? '20px' : '32px',
-            border: `1.5px solid ${isHovering ? '#ECE8E1' : '#FF4655'}`,
+            border: `1.5px solid ${isHovering ? '#ECE8E1' : '#22D3EE'}`,
             position: 'absolute',
             transform: 'translate(-50%, -50%) rotate(45deg)',
             transition: 'all 0.2s ease',
@@ -100,7 +100,7 @@ export default function Cursor() {
         <div style={{
           width: isHovering ? '0' : '10px',
           height: '1px',
-          background: '#FF4655',
+          background: '#22D3EE',
           position: 'absolute',
           top: '0',
           left: '-20px',
@@ -111,7 +111,7 @@ export default function Cursor() {
         <div style={{
           width: isHovering ? '0' : '10px',
           height: '1px',
-          background: '#FF4655',
+          background: '#22D3EE',
           position: 'absolute',
           top: '0',
           right: '-20px',
@@ -122,7 +122,7 @@ export default function Cursor() {
         <div style={{
           width: '1px',
           height: isHovering ? '0' : '10px',
-          background: '#FF4655',
+          background: '#22D3EE',
           position: 'absolute',
           left: '0',
           top: '-20px',
@@ -133,7 +133,7 @@ export default function Cursor() {
         <div style={{
           width: '1px',
           height: isHovering ? '0' : '10px',
-          background: '#FF4655',
+          background: '#22D3EE',
           position: 'absolute',
           left: '0',
           bottom: '-20px',

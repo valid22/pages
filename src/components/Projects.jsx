@@ -10,7 +10,7 @@ const projects = [
     description:
       'Implemented 5 rating systems from scratch (Elo, Glicko-2, Contrastive Skill Embedding, DualMMR, Performance-Weighted Elo) benchmarked on 10K synthetic 5v5 matches across 500 players; DualMMR mirrors VALORANT\'s hidden MMR and 27-tier rank architecture. Built greedy SBMM optimizer reducing mean skill disparity from 100.1 → 1.4 (99.53% variance drop). A/B experiment with SRM detection, CUPED, and power analysis yielded Cohen\'s d of 1.007, p=0.000, power=1.0. Deployed 4-signal smurf detection ensemble achieving 54.7% recall at 23.4% precision on 75 injected smurfs across an 80K+ match simulation.',
     tags: ['Python', 'PyTorch', 'Elo', 'Glicko-2', 'Contrastive Learning', 'A/B Testing', 'CUPED'],
-    color: '#FF4655',
+    color: '#22D3EE',
     status: 'PROJECT',
     year: '2026',
     links: { github: 'https://github.com/valid22/project-skill', live: 'https://project-skills.itsdote.tech/' },
@@ -36,7 +36,7 @@ const projects = [
     description:
       'Goal-driven agentic AI system with multi-step planning, decision-making frameworks, validation guardrails, and tool integration (APIs, databases, structured retrieval). Orchestrated LLM workflows evaluating 100+ configurations per request, estimating 20–30% cost reduction.',
     tags: ['Python', 'LangChain', 'LLM Agents', 'RAG', 'AWS', 'SQL'],
-    color: '#C89B3C',
+    color: '#FB923C',
     status: 'HACKATHON',
     year: 'Jan 2026',
     links: { github: 'https://github.com/valid22/SDx-v0', live: 'https://masda.itsdote.tech/' },
@@ -75,7 +75,7 @@ const projects = [
     description:
       'Goal-driven 4-agent healthcare AI system: X-ray reading, anomaly understanding, 3D model generation, and RAG-based diagnosis chat agents. Applied prompt engineering and LLM orchestration to detect pulmonary anomalies and deliver patient-facing clinical reasoning.',
     tags: ['Python', 'OpenAI API', 'Claude API', 'LangChain', 'Computer Vision'],
-    color: '#FF4655',
+    color: '#22D3EE',
     status: 'HACKATHON',
     year: 'Feb 2026',
     links: { github: null, live: null },
@@ -84,7 +84,7 @@ const projects = [
 ]
 
 const statusColors = {
-  'HACKATHON': '#FF4655',
+  'HACKATHON': '#22D3EE',
   'RESEARCH': '#00D4AA',
   'PROJECT': '#7B73FF',
 }
@@ -104,7 +104,7 @@ function ProjectCard({ project, index, inView }) {
       <div
         className="h-full p-5 relative overflow-hidden transition-all duration-300 cursor-none"
         style={{
-          background: hovered ? `${project.color}08` : 'rgba(27, 36, 46, 0.5)',
+          background: hovered ? `${project.color}08` : 'rgba(14, 26, 42, 0.5)',
           border: `1px solid ${hovered ? project.color + '40' : 'rgba(255,255,255,0.05)'}`,
           clipPath: 'polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 16px 100%, 0 calc(100% - 16px))',
           backdropFilter: 'blur(10px)',
@@ -228,7 +228,7 @@ export default function Projects() {
       <div
         className="absolute inset-0 pointer-events-none opacity-30"
         style={{
-          background: 'radial-gradient(ellipse at center, rgba(255,70,85,0.05) 0%, transparent 70%)',
+          background: 'radial-gradient(ellipse at center, rgba(34,211,238,0.05) 0%, transparent 70%)',
         }}
       />
       <div className="max-w-7xl mx-auto px-6" ref={ref}>
@@ -241,7 +241,7 @@ export default function Projects() {
         >
           <p className="section-label mb-2">// 04 — PROJECTS</p>
           <h2 className="section-title text-4xl md:text-5xl">SHIPPED SYSTEMS</h2>
-          <div className="mt-3 w-20 h-0.5 bg-gradient-to-r from-[#FF4655] to-transparent" />
+          <div className="mt-3 w-20 h-0.5 bg-gradient-to-r from-[#22D3EE] to-transparent" />
           <p className="font-['Inter'] text-sm text-[rgba(236,232,225,0.5)] mt-4 max-w-xl">
             A selection of projects across ML systems, agentic AI, data science, gaming analytics, and distributed infrastructure.
           </p>

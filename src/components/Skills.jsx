@@ -35,7 +35,7 @@ const skillCategories = [
     id: 'eng',
     label: 'PRECISION // ENGINEERING',
     icon: '◈',
-    color: '#FF4655',
+    color: '#22D3EE',
     description: 'Pipelines, infrastructure & production systems',
     skills: [
       { name: 'Python / SQL', level: 93 },
@@ -49,7 +49,7 @@ const skillCategories = [
     id: 'frameworks',
     label: 'UTILITY // FRAMEWORKS',
     icon: '⬟',
-    color: '#C89B3C',
+    color: '#FB923C',
     description: 'ML stack, orchestration & data tooling',
     skills: [
       { name: 'scikit-learn / Spark MLlib', level: 87 },
@@ -107,7 +107,7 @@ export default function Skills() {
         >
           <p className="section-label mb-2">// 02 — ARSENAL</p>
           <h2 className="section-title text-4xl md:text-5xl">SKILLS & TOOLS</h2>
-          <div className="mt-3 w-20 h-0.5 bg-gradient-to-r from-[#FF4655] to-transparent" />
+          <div className="mt-3 w-20 h-0.5 bg-gradient-to-r from-[#22D3EE] to-transparent" />
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
@@ -123,8 +123,8 @@ export default function Skills() {
                 className="text-left p-4 transition-all duration-300 relative overflow-hidden cursor-none"
                 style={{
                   background: activeCategory === cat.id
-                    ? `rgba(${cat.color === '#FF4655' ? '255,70,85' : cat.color === '#7B73FF' ? '123,115,255' : cat.color === '#C89B3C' ? '200,155,60' : '0,212,170'}, 0.1)`
-                    : 'rgba(27, 36, 46, 0.4)',
+                    ? `rgba(${cat.color === '#22D3EE' ? '34,211,238' : cat.color === '#7B73FF' ? '123,115,255' : cat.color === '#FB923C' ? '251,146,60' : '0,212,170'}, 0.1)`
+                    : 'rgba(14, 26, 42, 0.4)',
                   borderLeft: `2px solid ${activeCategory === cat.id ? cat.color : 'rgba(255,255,255,0.05)'}`,
                   clipPath: 'polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px))',
                 }}
@@ -167,14 +167,14 @@ export default function Skills() {
             transition={{ duration: 0.4 }}
             className="lg:col-span-3 p-6 relative"
             style={{
-              background: 'rgba(27, 36, 46, 0.5)',
-              border: '1px solid rgba(255, 70, 85, 0.1)',
+              background: 'rgba(14, 26, 42, 0.5)',
+              border: '1px solid rgba(34, 211, 238, 0.1)',
               backdropFilter: 'blur(10px)',
               clipPath: 'polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 16px 100%, 0 calc(100% - 16px))',
             }}
           >
             {/* Panel header */}
-            <div className="flex items-center justify-between mb-6 pb-3" style={{ borderBottom: '1px solid rgba(255,70,85,0.1)' }}>
+            <div className="flex items-center justify-between mb-6 pb-3" style={{ borderBottom: '1px solid rgba(34,211,238,0.1)' }}>
               <span className="font-['Share_Tech_Mono'] text-[10px] tracking-[3px]" style={{ color: active.color }}>
                 {active.label}
               </span>
@@ -210,7 +210,7 @@ export default function Skills() {
           transition={{ duration: 0.5, delay: 0.7 }}
           className="mt-12"
         >
-          <p className="font-['Share_Tech_Mono'] text-[10px] text-[rgba(255,70,85,0.6)] tracking-[4px] mb-4">
+          <p className="font-['Share_Tech_Mono'] text-[10px] text-[rgba(34,211,238,0.6)] tracking-[4px] mb-4">
             TOOLS & UTILITIES
           </p>
           <div className="flex flex-wrap gap-3">
@@ -220,9 +220,9 @@ export default function Skills() {
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={inView ? { opacity: 1, scale: 1 } : {}}
                 transition={{ delay: 0.8 + i * 0.05 }}
-                className="font-['Rajdhani'] text-sm font-semibold text-[rgba(236,232,225,0.6)] hover:text-[#FF4655] transition-colors tracking-wider px-3 py-1.5 cursor-none"
+                className="font-['Rajdhani'] text-sm font-semibold text-[rgba(236,232,225,0.6)] hover:text-[#22D3EE] transition-colors tracking-wider px-3 py-1.5 cursor-none"
                 style={{
-                  background: 'rgba(27, 36, 46, 0.6)',
+                  background: 'rgba(14, 26, 42, 0.6)',
                   border: '1px solid rgba(255, 255, 255, 0.06)',
                   clipPath: 'polygon(0 0, calc(100% - 6px) 0, 100% 6px, 100% 100%, 6px 100%, 0 calc(100% - 6px))',
                 }}

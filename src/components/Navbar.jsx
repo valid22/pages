@@ -42,9 +42,9 @@ export default function Navbar() {
           scrolled ? 'py-3' : 'py-5'
         }`}
         style={{
-          background: scrolled ? 'rgba(7, 13, 18, 0.95)' : 'transparent',
+          background: scrolled ? 'rgba(6, 10, 16, 0.95)' : 'transparent',
           backdropFilter: scrolled ? 'blur(20px)' : 'none',
-          borderBottom: scrolled ? '1px solid rgba(255, 70, 85, 0.1)' : 'none',
+          borderBottom: scrolled ? '1px solid rgba(34, 211, 238, 0.1)' : 'none',
         }}
       >
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
@@ -54,14 +54,14 @@ export default function Navbar() {
             className="flex items-center gap-3 group cursor-none"
           >
             <div className="relative w-8 h-8">
-              <div className="absolute inset-0 border border-[#FF4655] group-hover:border-[#C89B3C] transition-colors duration-300"
+              <div className="absolute inset-0 border border-[#22D3EE] group-hover:border-[#FB923C] transition-colors duration-300"
                 style={{ clipPath: 'polygon(0 0, calc(100% - 6px) 0, 100% 6px, 100% 100%, 6px 100%, 0 calc(100% - 6px))' }}
               />
-              <span className="absolute inset-0 flex items-center justify-center font-['Rajdhani'] font-bold text-sm text-[#FF4655] group-hover:text-[#C89B3C] transition-colors">D</span>
+              <span className="absolute inset-0 flex items-center justify-center font-['Rajdhani'] font-bold text-sm text-[#22D3EE] group-hover:text-[#FB923C] transition-colors">D</span>
             </div>
             <div>
               <div className="font-['Rajdhani'] font-bold text-sm text-[#ECE8E1] tracking-[2px] leading-none">DOTE</div>
-              <div className="font-['Share_Tech_Mono'] text-[9px] text-[#FF4655] tracking-[3px] leading-none">// DEV</div>
+              <div className="font-['Share_Tech_Mono'] text-[9px] text-[#22D3EE] tracking-[3px] leading-none">// DEV</div>
             </div>
           </button>
 
@@ -89,15 +89,15 @@ export default function Navbar() {
             onClick={() => setMenuOpen(!menuOpen)}
           >
             <motion.div
-              className="w-6 h-0.5 bg-[#FF4655]"
+              className="w-6 h-0.5 bg-[#22D3EE]"
               animate={{ rotate: menuOpen ? 45 : 0, y: menuOpen ? 8 : 0 }}
             />
             <motion.div
-              className="w-6 h-0.5 bg-[#FF4655]"
+              className="w-6 h-0.5 bg-[#22D3EE]"
               animate={{ opacity: menuOpen ? 0 : 1, scaleX: menuOpen ? 0 : 1 }}
             />
             <motion.div
-              className="w-6 h-0.5 bg-[#FF4655]"
+              className="w-6 h-0.5 bg-[#22D3EE]"
               animate={{ rotate: menuOpen ? -45 : 0, y: menuOpen ? -8 : 0 }}
             />
           </button>
@@ -113,7 +113,7 @@ export default function Navbar() {
             exit={{ opacity: 0, x: '100%' }}
             transition={{ duration: 0.3 }}
             className="fixed inset-0 z-40 md:hidden flex flex-col"
-            style={{ background: 'rgba(7, 13, 18, 0.98)', backdropFilter: 'blur(20px)' }}
+            style={{ background: 'rgba(6, 10, 16, 0.98)', backdropFilter: 'blur(20px)' }}
           >
             <div className="flex flex-col items-center justify-center flex-1 gap-8">
               {navItems.map((item, i) => (
@@ -123,7 +123,7 @@ export default function Navbar() {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: i * 0.08 }}
                   onClick={() => scrollTo(item)}
-                  className="font-['Rajdhani'] text-3xl font-bold text-[#ECE8E1] hover:text-[#FF4655] transition-colors tracking-widest uppercase"
+                  className="font-['Rajdhani'] text-3xl font-bold text-[#ECE8E1] hover:text-[#22D3EE] transition-colors tracking-widest uppercase"
                 >
                   {item}
                 </motion.button>
@@ -141,7 +141,7 @@ export default function Navbar() {
             <div className="p-6 flex justify-end">
               <button
                 onClick={() => setMenuOpen(false)}
-                className="font-['Share_Tech_Mono'] text-xs text-[#FF4655] tracking-widest"
+                className="font-['Share_Tech_Mono'] text-xs text-[#22D3EE] tracking-widest"
               >
                 [ CLOSE ]
               </button>

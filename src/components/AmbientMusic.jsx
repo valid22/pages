@@ -151,14 +151,14 @@ export default function AmbientMusic() {
       transition={{ delay: 1.2 }}
       title={playing ? 'Mute BGM' : 'Play ambient BGM'}
       className="cursor-none flex items-center gap-2 transition-colors duration-300"
-      style={{ color: playing ? '#C89B3C' : 'rgba(236,232,225,0.35)' }}
+      style={{ color: playing ? '#FB923C' : 'rgba(236,232,225,0.35)' }}
     >
       <span className="flex items-end gap-[2px]" style={{ height: 14 }}>
         {bars.map((h, i) =>
           playing ? (
             <motion.span
               key={i}
-              className="w-[2px] rounded-sm bg-[#C89B3C]"
+              className="w-[2px] rounded-sm bg-[#FB923C]"
               animate={{ height: [h, h * 2, h] }}
               transition={{ duration: 0.5 + i * 0.1, repeat: Infinity, delay: i * 0.12, ease: 'easeInOut' }}
               style={{ display: 'inline-block' }}

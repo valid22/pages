@@ -3,12 +3,12 @@ import { motion } from 'framer-motion'
 import { TypeAnimation } from 'react-type-animation'
 
 const floatingShapes = [
-  { size: 6, x: '10%', y: '20%', delay: 0, color: '#FF4655' },
-  { size: 4, x: '85%', y: '30%', delay: 1, color: '#C89B3C' },
-  { size: 8, x: '75%', y: '70%', delay: 2, color: '#FF4655' },
-  { size: 3, x: '20%', y: '75%', delay: 0.5, color: '#C89B3C' },
+  { size: 6, x: '10%', y: '20%', delay: 0, color: '#22D3EE' },
+  { size: 4, x: '85%', y: '30%', delay: 1, color: '#FB923C' },
+  { size: 8, x: '75%', y: '70%', delay: 2, color: '#22D3EE' },
+  { size: 3, x: '20%', y: '75%', delay: 0.5, color: '#FB923C' },
   { size: 5, x: '50%', y: '15%', delay: 1.5, color: '#7B73FF' },
-  { size: 4, x: '90%', y: '60%', delay: 2.5, color: '#FF4655' },
+  { size: 4, x: '90%', y: '60%', delay: 2.5, color: '#22D3EE' },
 ]
 
 export default function Hero() {
@@ -29,7 +29,7 @@ export default function Hero() {
     <section
       id="home"
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
-      style={{ background: 'linear-gradient(135deg, #060b10 0%, #070D12 50%, #07111a 100%)' }}
+      style={{ background: 'linear-gradient(135deg, #060b10 0%, #060A10 50%, #07111a 100%)' }}
     >
       {/* Decorative background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -39,7 +39,7 @@ export default function Hero() {
           style={{
             width: '200vw',
             height: '1px',
-            background: 'linear-gradient(90deg, transparent, rgba(255,70,85,0.15), transparent)',
+            background: 'linear-gradient(90deg, transparent, rgba(34,211,238,0.15), transparent)',
             top: '35%',
             left: '-50%',
             transform: 'rotate(-15deg)',
@@ -50,7 +50,7 @@ export default function Hero() {
           style={{
             width: '200vw',
             height: '1px',
-            background: 'linear-gradient(90deg, transparent, rgba(200,155,60,0.1), transparent)',
+            background: 'linear-gradient(90deg, transparent, rgba(251,146,60,0.1), transparent)',
             top: '65%',
             left: '-50%',
             transform: 'rotate(-15deg)',
@@ -59,19 +59,19 @@ export default function Hero() {
 
         {/* Corner frame top-left */}
         <div className="absolute top-6 left-6 md:top-12 md:left-12">
-          <div className="w-16 h-16 border-t-2 border-l-2 border-[#FF4655] opacity-30" />
+          <div className="w-16 h-16 border-t-2 border-l-2 border-[#22D3EE] opacity-30" />
         </div>
         {/* Corner frame bottom-right */}
         <div className="absolute bottom-6 right-6 md:bottom-12 md:right-12">
-          <div className="w-16 h-16 border-b-2 border-r-2 border-[#FF4655] opacity-30" />
+          <div className="w-16 h-16 border-b-2 border-r-2 border-[#22D3EE] opacity-30" />
         </div>
         {/* Corner frame top-right */}
         <div className="absolute top-6 right-6 md:top-12 md:right-12">
-          <div className="w-10 h-10 border-t border-r border-[#C89B3C] opacity-20" />
+          <div className="w-10 h-10 border-t border-r border-[#FB923C] opacity-20" />
         </div>
         {/* Corner frame bottom-left */}
         <div className="absolute bottom-6 left-6 md:bottom-12 md:left-12">
-          <div className="w-10 h-10 border-b border-l border-[#C89B3C] opacity-20" />
+          <div className="w-10 h-10 border-b border-l border-[#FB923C] opacity-20" />
         </div>
 
         {/* Floating geometric shapes */}
@@ -105,7 +105,7 @@ export default function Hero() {
         {/* Right side decorative vertical line */}
         <motion.div
           className="absolute right-0 top-0 bottom-0 w-px"
-          style={{ background: 'linear-gradient(180deg, transparent, rgba(255,70,85,0.3), transparent)' }}
+          style={{ background: 'linear-gradient(180deg, transparent, rgba(34,211,238,0.3), transparent)' }}
           animate={{ opacity: [0.3, 0.7, 0.3] }}
           transition={{ duration: 3, repeat: Infinity }}
         />
@@ -126,15 +126,15 @@ export default function Hero() {
             >
               <div className="flex items-center gap-2 px-3 py-1.5"
                 style={{
-                  background: 'rgba(255, 70, 85, 0.1)',
-                  border: '1px solid rgba(255, 70, 85, 0.3)',
+                  background: 'rgba(34, 211, 238, 0.1)',
+                  border: '1px solid rgba(34, 211, 238, 0.3)',
                   clipPath: 'polygon(0 0, calc(100% - 6px) 0, 100% 6px, 100% 100%, 6px 100%, 0 calc(100% - 6px))',
                 }}
               >
                 <div className="w-2 h-2 bg-[#00D4AA] rounded-full" style={{ boxShadow: '0 0 6px #00D4AA' }} />
                 <span className="font-['Share_Tech_Mono'] text-xs text-[#ECE8E1] tracking-[3px]">ENGINEER // ONLINE</span>
               </div>
-              <div className="flex-1 h-px bg-gradient-to-r from-[rgba(255,70,85,0.3)] to-transparent" />
+              <div className="flex-1 h-px bg-gradient-to-r from-[rgba(34,211,238,0.3)] to-transparent" />
             </motion.div>
 
             {/* Name */}
@@ -144,16 +144,16 @@ export default function Hero() {
               transition={{ duration: 0.7, delay: 0.3 }}
               className="mb-3"
             >
-              <p className="font-['Share_Tech_Mono'] text-xs text-[#FF4655] tracking-[6px] mb-3">CODENAME: DOTE</p>
+              <p className="font-['Share_Tech_Mono'] text-xs text-[#22D3EE] tracking-[6px] mb-3">CODENAME: DOTE</p>
               <h1
                 className="font-['Rajdhani'] text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-bold text-[#ECE8E1] tracking-tight leading-none glitch-text"
                 data-text="VIGNESHWARAN"
-                style={{ textShadow: '0 0 40px rgba(255,70,85,0.2)' }}
+                style={{ textShadow: '0 0 40px rgba(34,211,238,0.2)' }}
               >
                 VIGNESHWARAN
               </h1>
               <h2 className="font-['Rajdhani'] text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight leading-tight"
-                style={{ color: '#FF4655' }}
+                style={{ color: '#22D3EE' }}
               >
                 SIVA SANKARAN
               </h2>
@@ -167,7 +167,7 @@ export default function Hero() {
               className="mb-8"
             >
               <div className="flex items-center gap-3 mb-2">
-                <span className="font-['Share_Tech_Mono'] text-[#FF4655] text-sm">{'>'}</span>
+                <span className="font-['Share_Tech_Mono'] text-[#22D3EE] text-sm">{'>'}</span>
                 <TypeAnimation
                   sequence={[
                     'ML Engineer',
@@ -186,11 +186,11 @@ export default function Hero() {
                   repeat={Infinity}
                   className="font-['Rajdhani'] text-xl sm:text-2xl font-semibold text-[#ECE8E1] tracking-widest"
                 />
-                <span className="w-0.5 h-6 bg-[#FF4655] inline-block" style={{ animation: 'blink 1s step-start infinite' }} />
+                <span className="w-0.5 h-6 bg-[#22D3EE] inline-block" style={{ animation: 'blink 1s step-start infinite' }} />
               </div>
               <p className="font-['Inter'] text-sm sm:text-base text-[rgba(236,232,225,0.6)] max-w-lg leading-relaxed mt-4">
                 Building intelligent systems across ML, AI, and data. Based in{' '}
-                <span className="text-[#FF4655]">La Jolla, CA</span> — from model pipelines to agentic AI.
+                <span className="text-[#22D3EE]">La Jolla, CA</span> — from model pipelines to agentic AI.
               </p>
             </motion.div>
 
@@ -211,7 +211,7 @@ export default function Hero() {
                 onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}
                 className="font-['Rajdhani'] font-semibold text-sm tracking-[3px] text-[rgba(236,232,225,0.7)] hover:text-[#ECE8E1] transition-colors uppercase cursor-none flex items-center gap-2"
               >
-                <span className="text-[#FF4655]">{'>'}</span>
+                <span className="text-[#22D3EE]">{'>'}</span>
                 Contact Me
               </button>
             </motion.div>
@@ -229,7 +229,7 @@ export default function Hero() {
                 { label: 'Location', value: 'LA JOLLA' },
               ].map(stat => (
                 <div key={stat.label}>
-                  <div className="font-['Rajdhani'] text-2xl sm:text-3xl font-bold text-[#FF4655]">{stat.value}</div>
+                  <div className="font-['Rajdhani'] text-2xl sm:text-3xl font-bold text-[#22D3EE]">{stat.value}</div>
                   <div className="font-['Share_Tech_Mono'] text-[10px] text-[rgba(236,232,225,0.4)] tracking-[2px] uppercase mt-1">{stat.label}</div>
                 </div>
               ))}
@@ -252,18 +252,18 @@ export default function Hero() {
               className="relative w-64 xl:w-72"
               style={{
                 clipPath: 'polygon(0 0, calc(100% - 24px) 0, 100% 24px, 100% 100%, 24px 100%, 0 calc(100% - 24px))',
-                background: 'rgba(27, 36, 46, 0.7)',
-                border: '1px solid rgba(255, 70, 85, 0.3)',
+                background: 'rgba(14, 26, 42, 0.7)',
+                border: '1px solid rgba(34, 211, 238, 0.3)',
                 backdropFilter: 'blur(20px)',
               }}
             >
               {/* Card header */}
-              <div className="px-5 pt-4 pb-3 border-b border-[rgba(255,70,85,0.15)]">
+              <div className="px-5 pt-4 pb-3 border-b border-[rgba(34,211,238,0.15)]">
                 <div className="flex items-center justify-between">
-                  <span className="font-['Share_Tech_Mono'] text-[10px] text-[#FF4655] tracking-[3px]">PLAYER CARD</span>
+                  <span className="font-['Share_Tech_Mono'] text-[10px] text-[#22D3EE] tracking-[3px]">PLAYER CARD</span>
                   <div className="flex gap-1">
-                    <div className="w-2 h-2 bg-[#FF4655] opacity-60" style={{ clipPath: 'polygon(50% 0, 100% 100%, 0 100%)' }} />
-                    <div className="w-2 h-2 bg-[#C89B3C] opacity-60" style={{ clipPath: 'polygon(50% 0, 100% 100%, 0 100%)' }} />
+                    <div className="w-2 h-2 bg-[#22D3EE] opacity-60" style={{ clipPath: 'polygon(50% 0, 100% 100%, 0 100%)' }} />
+                    <div className="w-2 h-2 bg-[#FB923C] opacity-60" style={{ clipPath: 'polygon(50% 0, 100% 100%, 0 100%)' }} />
                   </div>
                 </div>
               </div>
@@ -274,32 +274,32 @@ export default function Hero() {
                   <motion.div
                     className="w-28 h-28 rounded-none flex items-center justify-center"
                     style={{
-                      background: 'linear-gradient(135deg, #1B242E, #0F1923)',
+                      background: 'linear-gradient(135deg, #0E1A2A, #0A1220)',
                       clipPath: 'polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 16px 100%, 0 calc(100% - 16px))',
-                      border: '1px solid rgba(255, 70, 85, 0.4)',
+                      border: '1px solid rgba(34, 211, 238, 0.4)',
                     }}
-                    animate={{ boxShadow: ['0 0 10px rgba(255,70,85,0.2)', '0 0 30px rgba(255,70,85,0.5)', '0 0 10px rgba(255,70,85,0.2)'] }}
+                    animate={{ boxShadow: ['0 0 10px rgba(34,211,238,0.2)', '0 0 30px rgba(34,211,238,0.5)', '0 0 10px rgba(34,211,238,0.2)'] }}
                     transition={{ duration: 2, repeat: Infinity }}
                   >
                     {/* VS monogram */}
-                    <span className="font-['Rajdhani'] text-5xl font-bold text-[#FF4655] opacity-80">D</span>
+                    <span className="font-['Rajdhani'] text-5xl font-bold text-[#22D3EE] opacity-80">D</span>
                   </motion.div>
                   {/* Rank badge */}
                   <div
                     className="absolute -bottom-2 -right-2 px-2 py-0.5"
                     style={{
-                      background: '#C89B3C',
+                      background: '#FB923C',
                       clipPath: 'polygon(0 0, 100% 0, 100% calc(100% - 4px), calc(100% - 4px) 100%, 0 100%)',
                     }}
                   >
-                    <span className="font-['Share_Tech_Mono'] text-[9px] text-[#070D12] font-bold tracking-wider">RANKED</span>
+                    <span className="font-['Share_Tech_Mono'] text-[9px] text-[#060A10] font-bold tracking-wider">RANKED</span>
                   </div>
                 </div>
 
                 <h3 className="font-['Rajdhani'] text-lg font-bold text-[#ECE8E1] tracking-widest text-center">
                   VIGNESHWARAN
                 </h3>
-                <p className="font-['Share_Tech_Mono'] text-[10px] text-[#FF4655] tracking-[2px] mb-5">DS & ML ENGINEER</p>
+                <p className="font-['Share_Tech_Mono'] text-[10px] text-[#22D3EE] tracking-[2px] mb-5">DS & ML ENGINEER</p>
 
                 {/* Stats */}
                 <div className="w-full space-y-2">
@@ -311,11 +311,11 @@ export default function Hero() {
                     <div key={s.label}>
                       <div className="flex justify-between mb-1">
                         <span className="font-['Share_Tech_Mono'] text-[9px] text-[rgba(236,232,225,0.5)] tracking-widest">{s.label}</span>
-                        <span className="font-['Share_Tech_Mono'] text-[9px] text-[#FF4655]">{s.val}</span>
+                        <span className="font-['Share_Tech_Mono'] text-[9px] text-[#22D3EE]">{s.val}</span>
                       </div>
-                      <div className="h-0.5 bg-[rgba(255,70,85,0.1)] relative overflow-hidden">
+                      <div className="h-0.5 bg-[rgba(34,211,238,0.1)] relative overflow-hidden">
                         <motion.div
-                          className="h-full bg-gradient-to-r from-[#FF4655] to-[#C89B3C]"
+                          className="h-full bg-gradient-to-r from-[#22D3EE] to-[#FB923C]"
                           initial={{ width: 0 }}
                           animate={{ width: `${s.val}%` }}
                           transition={{ duration: 1.5, delay: 0.5 }}
@@ -330,10 +330,10 @@ export default function Hero() {
                   {['PYTHON', 'ML', 'AI', 'DATA'].map(tag => (
                     <span
                       key={tag}
-                      className="font-['Share_Tech_Mono'] text-[9px] text-[#FF4655] tracking-wider px-2 py-0.5"
+                      className="font-['Share_Tech_Mono'] text-[9px] text-[#22D3EE] tracking-wider px-2 py-0.5"
                       style={{
-                        border: '1px solid rgba(255, 70, 85, 0.3)',
-                        background: 'rgba(255, 70, 85, 0.05)',
+                        border: '1px solid rgba(34, 211, 238, 0.3)',
+                        background: 'rgba(34, 211, 238, 0.05)',
                       }}
                     >
                       {tag}
@@ -343,9 +343,9 @@ export default function Hero() {
               </div>
 
               {/* Card footer */}
-              <div className="px-5 pb-4 pt-2 border-t border-[rgba(255,70,85,0.1)] flex justify-between items-center">
+              <div className="px-5 pb-4 pt-2 border-t border-[rgba(34,211,238,0.1)] flex justify-between items-center">
                 <span className="font-['Share_Tech_Mono'] text-[9px] text-[rgba(236,232,225,0.3)]">LA JOLLA // CA</span>
-                <span className="font-['Share_Tech_Mono'] text-[9px] text-[rgba(255,70,85,0.5)]">ID:DOTE-001</span>
+                <span className="font-['Share_Tech_Mono'] text-[9px] text-[rgba(34,211,238,0.5)]">ID:DOTE-001</span>
               </div>
             </div>
 
@@ -355,9 +355,9 @@ export default function Hero() {
               animate={{ opacity: [0.4, 1, 0.4] }}
               transition={{ duration: 2, repeat: Infinity }}
             >
-              <div className="w-8 h-px bg-[#FF4655]" />
-              <span className="font-['Share_Tech_Mono'] text-[9px] text-[#FF4655] tracking-[4px]">PORTFOLIO v2.0</span>
-              <div className="w-8 h-px bg-[#FF4655]" />
+              <div className="w-8 h-px bg-[#22D3EE]" />
+              <span className="font-['Share_Tech_Mono'] text-[9px] text-[#22D3EE] tracking-[4px]">PORTFOLIO v2.0</span>
+              <div className="w-8 h-px bg-[#22D3EE]" />
             </motion.div>
           </motion.div>
         </div>
@@ -370,7 +370,7 @@ export default function Hero() {
         transition={{ duration: 2, repeat: Infinity }}
       >
         <span className="font-['Share_Tech_Mono'] text-[9px] text-[rgba(236,232,225,0.3)] tracking-[4px]">SCROLL</span>
-        <div className="w-px h-12 bg-gradient-to-b from-[#FF4655] to-transparent" />
+        <div className="w-px h-12 bg-gradient-to-b from-[#22D3EE] to-transparent" />
       </motion.div>
     </section>
   )

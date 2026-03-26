@@ -3,12 +3,12 @@
 @tailwind utilities;
 
 :root {
-  --val-red: #FF4655;
-  --val-dark: #0F1923;
-  --val-darker: #070D12;
-  --val-dark2: #1B242E;
+  --val-red: #22D3EE;
+  --val-dark: #0A1220;
+  --val-darker: #060A10;
+  --val-dark2: #0E1A2A;
   --val-white: #ECE8E1;
-  --val-gold: #C89B3C;
+  --val-gold: #FB923C;
   --val-purple: #7B73FF;
   --val-teal: #00D4AA;
 }
@@ -42,13 +42,13 @@ body {
   background: var(--val-red);
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #ff6b78;
+  background: #67E8F9;
 }
 
 /* Selection */
 ::selection {
   background: var(--val-red);
-  color: var(--val-white);
+  color: var(--val-darker);
 }
 
 /* Custom cursor */
@@ -96,7 +96,7 @@ body {
   height: 12px;
 }
 
-/* Valorant UI elements */
+/* UI elements */
 .val-border-clip {
   clip-path: polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 16px 100%, 0 calc(100% - 16px));
 }
@@ -115,15 +115,15 @@ body {
 
 /* Glow effects */
 .glow-red {
-  box-shadow: 0 0 20px rgba(255, 70, 85, 0.4), 0 0 40px rgba(255, 70, 85, 0.2);
+  box-shadow: 0 0 20px rgba(34, 211, 238, 0.4), 0 0 40px rgba(34, 211, 238, 0.2);
 }
 
 .glow-red-text {
-  text-shadow: 0 0 10px rgba(255, 70, 85, 0.8), 0 0 20px rgba(255, 70, 85, 0.4);
+  text-shadow: 0 0 10px rgba(34, 211, 238, 0.8), 0 0 20px rgba(34, 211, 238, 0.4);
 }
 
 .glow-gold {
-  box-shadow: 0 0 20px rgba(200, 155, 60, 0.4), 0 0 40px rgba(200, 155, 60, 0.2);
+  box-shadow: 0 0 20px rgba(251, 146, 60, 0.4), 0 0 40px rgba(251, 146, 60, 0.2);
 }
 
 /* Scanline overlay */
@@ -196,7 +196,7 @@ body {
 
 .val-btn:hover {
   color: var(--val-darker);
-  box-shadow: 0 0 25px rgba(255, 70, 85, 0.5);
+  box-shadow: 0 0 25px rgba(34, 211, 238, 0.5);
 }
 
 .val-btn:hover::before {
@@ -205,16 +205,16 @@ body {
 
 /* Card style */
 .val-card {
-  background: rgba(27, 36, 46, 0.6);
-  border: 1px solid rgba(255, 70, 85, 0.15);
+  background: rgba(14, 26, 42, 0.6);
+  border: 1px solid rgba(34, 211, 238, 0.15);
   backdrop-filter: blur(10px);
   transition: all 0.3s ease;
   clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
 }
 
 .val-card:hover {
-  border-color: rgba(255, 70, 85, 0.5);
-  box-shadow: 0 0 30px rgba(255, 70, 85, 0.1), inset 0 0 30px rgba(255, 70, 85, 0.03);
+  border-color: rgba(34, 211, 238, 0.5);
+  box-shadow: 0 0 30px rgba(34, 211, 238, 0.1), inset 0 0 30px rgba(34, 211, 238, 0.03);
 }
 
 /* Section title */
@@ -353,7 +353,7 @@ body {
 /* Progress bar */
 .skill-bar {
   height: 3px;
-  background: rgba(255, 70, 85, 0.15);
+  background: rgba(34, 211, 238, 0.15);
   position: relative;
   overflow: hidden;
 }

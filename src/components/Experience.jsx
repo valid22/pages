@@ -8,7 +8,7 @@ const experiences = [
     period: 'Jul 2023 — Jun 2025',
     location: 'Chennai, India',
     type: 'Full-time',
-    color: '#FF4655',
+    color: '#22D3EE',
     highlights: [
       'Shipped production ML systems across defense (Indian Navy autonomous drone), edtech (LLM-driven learning paths), and CV (30 FPS real-time inference at 600ms) — owning end-to-end from data pipeline to deployment.',
       'Built multi-agent AI workflows (RAG + LLM + tool use) and optimized inference pipelines across 600k–800k records, cutting latency ~30% and increasing production value ~25%.',
@@ -21,7 +21,7 @@ const experiences = [
     period: 'Jan 2023 — May 2023',
     location: 'Kattankulathur, India',
     type: 'Internship',
-    color: '#C89B3C',
+    color: '#FB923C',
     highlights: [
       'Staged A/B rollout of optimized payroll API across 1M+ users — cut load latency from 5s to 2s.',
       'Optimized SQL execution paths and data-access layers, reducing query time by 15% across payroll pipelines at tens-of-millions scale.',
@@ -53,7 +53,7 @@ const education = [
     period: 'Jun 2019 — May 2023',
     location: 'Thanjavur, India',
     note: '',
-    color: '#C89B3C',
+    color: '#FB923C',
   },
 ]
 
@@ -85,7 +85,7 @@ function TimelineItem({ exp, index, inView }) {
       <div
         className="p-5 relative"
         style={{
-          background: 'rgba(27, 36, 46, 0.5)',
+          background: 'rgba(14, 26, 42, 0.5)',
           border: `1px solid ${exp.color}22`,
           borderLeft: `2px solid ${exp.color}44`,
           clipPath: 'polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px))',
@@ -163,7 +163,7 @@ export default function Experience() {
         >
           <p className="section-label mb-2">// 03 — HISTORY</p>
           <h2 className="section-title text-4xl md:text-5xl">CAREER LOG</h2>
-          <div className="mt-3 w-20 h-0.5 bg-gradient-to-r from-[#FF4655] to-transparent" />
+          <div className="mt-3 w-20 h-0.5 bg-gradient-to-r from-[#22D3EE] to-transparent" />
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
@@ -172,7 +172,7 @@ export default function Experience() {
             <motion.p
               initial={{ opacity: 0 }}
               animate={inView ? { opacity: 1 } : {}}
-              className="font-['Share_Tech_Mono'] text-[10px] text-[rgba(255,70,85,0.5)] tracking-[4px] mb-8"
+              className="font-['Share_Tech_Mono'] text-[10px] text-[rgba(34,211,238,0.5)] tracking-[4px] mb-8"
             >
               WORK EXPERIENCE // LOADED
             </motion.p>
@@ -187,7 +187,7 @@ export default function Experience() {
               initial={{ opacity: 0 }}
               animate={inView ? { opacity: 1 } : {}}
               transition={{ delay: 0.3 }}
-              className="font-['Share_Tech_Mono'] text-[10px] text-[rgba(255,70,85,0.5)] tracking-[4px] mb-8"
+              className="font-['Share_Tech_Mono'] text-[10px] text-[rgba(34,211,238,0.5)] tracking-[4px] mb-8"
             >
               TRAINING & EDUCATION
             </motion.p>
@@ -200,7 +200,7 @@ export default function Experience() {
                 transition={{ delay: 0.4 + i * 0.15 }}
                 className="mb-6 p-5 relative"
                 style={{
-                  background: 'rgba(27, 36, 46, 0.5)',
+                  background: 'rgba(14, 26, 42, 0.5)',
                   border: `1px solid ${edu.color}22`,
                   borderLeft: `2px solid ${edu.color}`,
                   clipPath: 'polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px))',
@@ -226,13 +226,13 @@ export default function Experience() {
               transition={{ delay: 0.6 }}
               className="p-5"
               style={{
-                background: 'rgba(27, 36, 46, 0.5)',
-                border: '1px solid rgba(200, 155, 60, 0.15)',
-                borderLeft: '2px solid #C89B3C',
+                background: 'rgba(14, 26, 42, 0.5)',
+                border: '1px solid rgba(251, 146, 60, 0.15)',
+                borderLeft: '2px solid #FB923C',
                 clipPath: 'polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px))',
               }}
             >
-              <span className="font-['Share_Tech_Mono'] text-[9px] tracking-[3px] mb-3 block text-[#C89B3C]">
+              <span className="font-['Share_Tech_Mono'] text-[9px] tracking-[3px] mb-3 block text-[#FB923C]">
                 DOMAIN INTERESTS
               </span>
               {[

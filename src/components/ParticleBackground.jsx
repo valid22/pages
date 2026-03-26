@@ -38,7 +38,7 @@ export default function ParticleBackground() {
         this.vx = (Math.random() - 0.5) * 0.3
         this.vy = (Math.random() - 0.5) * 0.3
         this.alpha = Math.random() * 0.5 + 0.1
-        this.color = Math.random() > 0.7 ? '#FF4655' : Math.random() > 0.5 ? '#C89B3C' : '#ECE8E1'
+        this.color = Math.random() > 0.7 ? '#22D3EE' : Math.random() > 0.5 ? '#FB923C' : '#ECE8E1'
         this.type = Math.random() > 0.8 ? 'diamond' : 'circle'
         this.pulse = Math.random() * Math.PI * 2
         this.pulseSpeed = 0.02 + Math.random() * 0.02
@@ -88,7 +88,7 @@ export default function ParticleBackground() {
 
     // Grid lines
     const drawGrid = () => {
-      ctx.strokeStyle = 'rgba(255, 70, 85, 0.03)'
+      ctx.strokeStyle = 'rgba(34, 211, 238, 0.03)'
       ctx.lineWidth = 1
       const spacing = 80
       for (let x = 0; x < canvas.width; x += spacing) {
@@ -121,7 +121,7 @@ export default function ParticleBackground() {
           if (dist < 100) {
             ctx.save()
             ctx.globalAlpha = (1 - dist / 100) * 0.08
-            ctx.strokeStyle = '#FF4655'
+            ctx.strokeStyle = '#22D3EE'
             ctx.lineWidth = 0.5
             ctx.beginPath()
             ctx.moveTo(particles[i].x, particles[i].y)

@@ -1,16 +1,16 @@
 import { useInView } from 'react-intersection-observer'
 import { motion } from 'framer-motion'
 
-const experiences = [
+const EXP = [
   {
     role: 'Founding Innovation & Development Engineer',
     company: 'RSKD Labs Pvt Ltd.',
     period: 'Jul 2023 — Jun 2025',
     location: 'Chennai, India',
-    type: 'Full-time',
-    color: '#22D3EE',
+    type: 'FULL-TIME',
+    color: 'var(--cyan)',
     highlights: [
-      'Shipped production ML systems across defense (Indian Navy autonomous drone), edtech (LLM-driven learning paths), and CV (30 FPS real-time inference at 600ms) — owning end-to-end from data pipeline to deployment.',
+      'Shipped production ML systems across defense (Indian Navy autonomous drone), edtech (LLM-driven learning paths), and CV (30 FPS real-time inference at 600ms) — end-to-end from data pipeline to deployment.',
       'Built multi-agent AI workflows (RAG + LLM + tool use) and optimized inference pipelines across 600k–800k records, cutting latency ~30% and increasing production value ~25%.',
     ],
     tags: ['Python', 'PyTorch', 'LangChain', 'RAG', 'AWS', 'Docker', 'CI/CD'],
@@ -20,8 +20,8 @@ const experiences = [
     company: 'Zoho Corporation',
     period: 'Jan 2023 — May 2023',
     location: 'Kattankulathur, India',
-    type: 'Internship',
-    color: '#FB923C',
+    type: 'INTERNSHIP',
+    color: 'var(--orange)',
     highlights: [
       'Staged A/B rollout of optimized payroll API across 1M+ users — cut load latency from 5s to 2s.',
       'Optimized SQL execution paths and data-access layers, reducing query time by 15% across payroll pipelines at tens-of-millions scale.',
@@ -30,22 +30,22 @@ const experiences = [
   },
 ]
 
-const education = [
+const EDU = [
   {
     degree: 'M.S. in Business Analytics',
-    school: 'University of California, San Diego',
+    school: 'UC San Diego',
     period: 'Jul 2025 — Dec 2026',
     location: 'La Jolla, CA',
-    note: 'Focus: ML, Agentic AI Systems & Data-Driven Decision Systems',
-    color: '#00D4AA',
+    note: 'ML, Agentic AI, Data-Driven Decision Systems',
+    color: 'var(--green)',
   },
   {
     degree: 'Diploma in Data Science & Programming',
-    school: 'Indian Institute of Technology, Madras',
+    school: 'IIT Madras',
     period: 'Aug 2020 — Dec 2022',
     location: 'Chennai, India',
     note: '',
-    color: '#7B73FF',
+    color: 'var(--purple)',
   },
   {
     degree: 'Bachelor of Technology',
@@ -53,94 +53,74 @@ const education = [
     period: 'Jun 2019 — May 2023',
     location: 'Thanjavur, India',
     note: '',
-    color: '#FB923C',
+    color: 'var(--orange)',
   },
 ]
 
-function TimelineItem({ exp, index, inView }) {
-  const isLeft = index % 2 === 0
+const DOMAINS = [
+  { n: 'Gaming & Esports Analytics', t: 'Skill Rating · SBMM · Analytics' },
+  { n: 'Healthcare AI',               t: 'Medical Imaging · Agents · RAG' },
+  { n: 'Autonomous Systems',          t: 'Drones · CV · Navigation' },
+  { n: 'Infra Optimization',          t: 'LLM Agents · Cost Modeling' },
+]
 
+function ExpCard({ exp, i, inView }) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 40 }}
+      initial={{ opacity: 0, y: 36 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.6, delay: index * 0.2 }}
-      className="relative pl-8 mb-10 last:mb-0"
-    >
-      {/* Timeline line */}
-      <div className="absolute left-0 top-0 bottom-0 w-px"
-        style={{ background: `linear-gradient(180deg, ${exp.color}, transparent)` }} />
+      transition={{ duration: 0.6, delay: i * 0.18 }}
+      className="relative pl-8 mb-8 last:mb-0">
 
-      {/* Timeline dot */}
-      <div
-        className="absolute left-0 top-1.5 w-2.5 h-2.5 -translate-x-1/2"
-        style={{
-          background: exp.color,
-          transform: 'translate(-50%, 0) rotate(45deg)',
-          boxShadow: `0 0 10px ${exp.color}`,
-        }}
-      />
+      {/* Vertical timeline line */}
+      <div style={{
+        position: 'absolute', left: 0, top: 0, bottom: 0, width: 1,
+        background: `linear-gradient(180deg, ${exp.color}, transparent)`,
+      }} />
+
+      {/* Diamond dot */}
+      <div style={{
+        position: 'absolute', left: 0, top: 6,
+        width: 10, height: 10,
+        background: exp.color,
+        transform: 'translate(-50%, 0) rotate(45deg)',
+        boxShadow: `0 0 10px ${exp.color}`,
+      }} />
 
       {/* Card */}
-      <div
-        className="p-5 relative"
-        style={{
-          background: 'rgba(14, 26, 42, 0.5)',
-          border: `1px solid ${exp.color}22`,
-          borderLeft: `2px solid ${exp.color}44`,
-          clipPath: 'polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px))',
-          backdropFilter: 'blur(8px)',
-        }}
-      >
-        {/* Header */}
+      <div className="clip-corner card p-5 relative">
+        {/* Header row */}
         <div className="flex flex-wrap items-start justify-between gap-3 mb-3">
           <div>
-            <h3 className="font-['Rajdhani'] text-xl font-bold text-[#ECE8E1] tracking-wide">{exp.role}</h3>
-            <div className="flex items-center gap-2 mt-0.5">
-              <span className="font-['Share_Tech_Mono'] text-sm" style={{ color: exp.color }}>{exp.company}</span>
-              <span className="text-[rgba(236,232,225,0.3)] text-xs">|</span>
-              <span className="font-['Share_Tech_Mono'] text-xs text-[rgba(236,232,225,0.4)]">{exp.location}</span>
+            <h3 className="section-heading" style={{ fontSize: 18 }}>{exp.role}</h3>
+            <div className="flex items-center gap-2 mt-1">
+              <span className="font-mono" style={{ fontSize: 12, color: exp.color }}>{exp.company}</span>
+              <span style={{ color: 'var(--muted)', fontSize: 10 }}>·</span>
+              <span className="font-mono" style={{ fontSize: 10, color: 'var(--muted)' }}>{exp.location}</span>
             </div>
           </div>
-          <div className="flex flex-col items-end gap-1">
-            <span className="font-['Share_Tech_Mono'] text-xs text-[rgba(236,232,225,0.5)]">{exp.period}</span>
-            <span
-              className="font-['Rajdhani'] text-[10px] font-bold tracking-widest px-2 py-0.5"
-              style={{
-                background: `${exp.color}15`,
-                border: `1px solid ${exp.color}40`,
-                color: exp.color,
-              }}
-            >
-              {exp.type.toUpperCase()}
+          <div className="flex flex-col items-end gap-1.5">
+            <span className="font-mono" style={{ fontSize: 10, color: 'var(--muted)' }}>{exp.period}</span>
+            <span className="badge badge-cyan" style={{ color: exp.color, borderColor: exp.color + '50', background: exp.color + '15' }}>
+              {exp.type}
             </span>
           </div>
         </div>
 
         {/* Highlights */}
         <ul className="space-y-2 mb-4">
-          {exp.highlights.map((h, i) => (
-            <li key={i} className="flex items-start gap-2">
-              <span className="mt-1.5 w-1 h-1 flex-shrink-0" style={{ background: exp.color, transform: 'rotate(45deg)' }} />
-              <span className="font-['Inter'] text-xs text-[rgba(236,232,225,0.65)] leading-relaxed">{h}</span>
+          {exp.highlights.map((h, j) => (
+            <li key={j} className="flex items-start gap-2">
+              <span style={{ marginTop: 6, width: 5, height: 5, flexShrink: 0, background: exp.color, transform: 'rotate(45deg)' }} />
+              <span style={{ fontSize: 13, color: 'rgba(232,244,248,0.65)', lineHeight: 1.6 }}>{h}</span>
             </li>
           ))}
         </ul>
 
         {/* Tags */}
         <div className="flex flex-wrap gap-1.5">
-          {exp.tags.map(tag => (
-            <span
-              key={tag}
-              className="font-['Share_Tech_Mono'] text-[9px] tracking-wider px-2 py-0.5"
-              style={{
-                color: exp.color,
-                border: `1px solid ${exp.color}30`,
-                background: `${exp.color}08`,
-              }}
-            >
-              {tag}
-            </span>
+          {exp.tags.map(t => (
+            <span key={t} className="chip" style={{ fontSize: 9, color: exp.color, borderColor: exp.color + '40' }}>{t}</span>
           ))}
         </div>
       </div>
@@ -149,101 +129,69 @@ function TimelineItem({ exp, index, inView }) {
 }
 
 export default function Experience() {
-  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 })
+  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.08 })
 
   return (
-    <section id="experience" className="relative py-24 md:py-32">
-      <div className="max-w-7xl mx-auto px-6" ref={ref}>
+    <section id="experience" className="relative py-24 md:py-32" ref={ref}>
+      <div className="max-w-7xl mx-auto px-6">
+
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="mb-16"
-        >
-          <p className="section-label mb-2">// 03 — HISTORY</p>
-          <h2 className="section-title text-4xl md:text-5xl">CAREER LOG</h2>
-          <div className="mt-3 w-20 h-0.5 bg-gradient-to-r from-[#22D3EE] to-transparent" />
+          className="mb-14">
+          <div className="label mb-2" style={{ opacity: 0.6 }}>// 03 — HISTORY</div>
+          <h2 className="section-heading" style={{ fontSize: 'clamp(32px, 5vw, 52px)' }}>CAREER LOG</h2>
+          <div style={{ width: 56, height: 2, background: 'linear-gradient(90deg, var(--cyan), transparent)', marginTop: 10 }} />
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-          {/* Timeline */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 lg:gap-14">
+
+          {/* ── Experience timeline ── */}
           <div className="lg:col-span-2">
-            <motion.p
-              initial={{ opacity: 0 }}
-              animate={inView ? { opacity: 1 } : {}}
-              className="font-['Share_Tech_Mono'] text-[10px] text-[rgba(34,211,238,0.5)] tracking-[4px] mb-8"
-            >
+            <div className="label mb-8" style={{ fontSize: 9, letterSpacing: '4px', opacity: 0.5 }}>
               WORK EXPERIENCE // LOADED
-            </motion.p>
-            {experiences.map((exp, i) => (
-              <TimelineItem key={i} exp={exp} index={i} inView={inView} />
-            ))}
+            </div>
+            {EXP.map((e, i) => <ExpCard key={i} exp={e} i={i} inView={inView} />)}
           </div>
 
-          {/* Education & side panel */}
+          {/* ── Right sidebar ── */}
           <div className="lg:col-span-1">
-            <motion.p
-              initial={{ opacity: 0 }}
-              animate={inView ? { opacity: 1 } : {}}
-              transition={{ delay: 0.3 }}
-              className="font-['Share_Tech_Mono'] text-[10px] text-[rgba(34,211,238,0.5)] tracking-[4px] mb-8"
-            >
+            {/* Education */}
+            <div className="label mb-6" style={{ fontSize: 9, letterSpacing: '4px', opacity: 0.5 }}>
               TRAINING & EDUCATION
-            </motion.p>
-
-            {education.map((edu, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, x: 30 }}
+            </div>
+            {EDU.map((e, i) => (
+              <motion.div key={i}
+                initial={{ opacity: 0, x: 28 }}
                 animate={inView ? { opacity: 1, x: 0 } : {}}
-                transition={{ delay: 0.4 + i * 0.15 }}
-                className="mb-6 p-5 relative"
-                style={{
-                  background: 'rgba(14, 26, 42, 0.5)',
-                  border: `1px solid ${edu.color}22`,
-                  borderLeft: `2px solid ${edu.color}`,
-                  clipPath: 'polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px))',
-                }}
-              >
-                <span className="font-['Share_Tech_Mono'] text-[9px] tracking-[3px] mb-2 block" style={{ color: edu.color }}>
-                  EDUCATION
-                </span>
-                <h4 className="font-['Rajdhani'] text-lg font-bold text-[#ECE8E1] tracking-wide">{edu.degree}</h4>
-                <p className="font-['Share_Tech_Mono'] text-xs" style={{ color: edu.color }}>{edu.school}</p>
+                transition={{ delay: 0.35 + i * 0.14 }}
+                className="mb-4 p-4 clip-corner-sm"
+                style={{ background: 'var(--bg-card)', borderLeft: `2px solid ${e.color}`, border: `1px solid ${e.color}20` }}>
+                <div className="label mb-1" style={{ fontSize: 8, color: e.color, letterSpacing: '3px' }}>EDUCATION</div>
+                <div className="section-heading" style={{ fontSize: 14, marginBottom: 2 }}>{e.degree}</div>
+                <div className="font-mono" style={{ fontSize: 11, color: e.color }}>{e.school}</div>
                 <div className="flex justify-between mt-2">
-                  <span className="font-['Inter'] text-xs text-[rgba(236,232,225,0.4)]">{edu.period}</span>
-                  <span className="font-['Inter'] text-xs text-[rgba(236,232,225,0.4)]">{edu.location}</span>
+                  <span style={{ fontSize: 10, color: 'var(--muted)' }}>{e.period}</span>
+                  <span style={{ fontSize: 10, color: 'var(--muted)' }}>{e.location}</span>
                 </div>
-                {edu.note ? <p className="font-['Inter'] text-[11px] text-[rgba(236,232,225,0.4)] mt-1 leading-snug">{edu.note}</p> : null}
+                {e.note && <p style={{ fontSize: 10, color: 'var(--muted)', marginTop: 4, lineHeight: 1.5 }}>{e.note}</p>}
               </motion.div>
             ))}
 
-            {/* Domains */}
+            {/* Domain interests */}
             <motion.div
-              initial={{ opacity: 0, x: 30 }}
+              initial={{ opacity: 0, x: 28 }}
               animate={inView ? { opacity: 1, x: 0 } : {}}
-              transition={{ delay: 0.6 }}
-              className="p-5"
-              style={{
-                background: 'rgba(14, 26, 42, 0.5)',
-                border: '1px solid rgba(251, 146, 60, 0.15)',
-                borderLeft: '2px solid #FB923C',
-                clipPath: 'polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px))',
-              }}
-            >
-              <span className="font-['Share_Tech_Mono'] text-[9px] tracking-[3px] mb-3 block text-[#FB923C]">
-                DOMAIN INTERESTS
-              </span>
-              {[
-                { name: 'Gaming & Esports Analytics', tag: 'Esports, Skill Rating, Analytics' },
-                { name: 'Healthcare AI', tag: 'Medical Imaging, Agents' },
-                { name: 'Autonomous Systems', tag: 'Drones, CV, Navigation' },
-                { name: 'Infrastructure Optimization', tag: 'LLM Agents, Cost Modeling' },
-              ].map((d, i) => (
+              transition={{ delay: 0.75 }}
+              className="p-4 mt-4 clip-corner-sm"
+              style={{ background: 'var(--bg-card)', borderLeft: '2px solid var(--orange)', border: '1px solid rgba(255,95,31,0.15)' }}>
+              <div className="label mb-3" style={{ fontSize: 8, color: 'var(--orange)', letterSpacing: '3px' }}>DOMAIN INTERESTS</div>
+              {DOMAINS.map((d, i) => (
                 <div key={i} className="mb-3 last:mb-0">
-                  <div className="font-['Rajdhani'] text-sm font-semibold text-[#ECE8E1]">{d.name}</div>
-                  <div className="font-['Share_Tech_Mono'] text-[9px] text-[rgba(236,232,225,0.4)]">{d.tag}</div>
+                  <div className="font-head" style={{ fontSize: 13, fontWeight: 600, color: 'var(--text)' }}>{d.n}</div>
+                  <div className="font-mono" style={{ fontSize: 9, color: 'var(--muted)', letterSpacing: 1 }}>{d.t}</div>
                 </div>
               ))}
             </motion.div>

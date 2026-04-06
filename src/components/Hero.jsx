@@ -1,377 +1,286 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import { TypeAnimation } from 'react-type-animation'
+import HeroCanvas from './HeroCanvas'
 
-const floatingShapes = [
-  { size: 6, x: '10%', y: '20%', delay: 0, color: '#22D3EE' },
-  { size: 4, x: '85%', y: '30%', delay: 1, color: '#FB923C' },
-  { size: 8, x: '75%', y: '70%', delay: 2, color: '#22D3EE' },
-  { size: 3, x: '20%', y: '75%', delay: 0.5, color: '#FB923C' },
-  { size: 5, x: '50%', y: '15%', delay: 1.5, color: '#7B73FF' },
-  { size: 4, x: '90%', y: '60%', delay: 2.5, color: '#22D3EE' },
+const STATS = [
+  { label: 'PERFORMANCE', val: 95 },
+  { label: 'PRECISION',   val: 90 },
+  { label: 'ADAPTABILITY', val: 88 },
 ]
 
 export default function Hero() {
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 })
+  const [mouse, setMouse] = useState({ x: 0, y: 0 })
 
   useEffect(() => {
-    const handleMouse = (e) => {
-      setMousePos({
-        x: (e.clientX / window.innerWidth - 0.5) * 20,
-        y: (e.clientY / window.innerHeight - 0.5) * 20,
-      })
-    }
-    window.addEventListener('mousemove', handleMouse)
-    return () => window.removeEventListener('mousemove', handleMouse)
+    const h = (e) => setMouse({
+      x: (e.clientX / window.innerWidth  - 0.5) * 18,
+      y: (e.clientY / window.innerHeight - 0.5) * 18,
+    })
+    window.addEventListener('mousemove', h)
+    return () => window.removeEventListener('mousemove', h)
   }, [])
 
   return (
-    <section
-      id="home"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden"
-      style={{ background: 'linear-gradient(135deg, #060b10 0%, #060A10 50%, #07111a 100%)' }}
-    >
-      {/* Decorative background elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {/* Large diagonal line */}
-        <div
-          className="absolute"
-          style={{
-            width: '200vw',
-            height: '1px',
-            background: 'linear-gradient(90deg, transparent, rgba(34,211,238,0.15), transparent)',
-            top: '35%',
-            left: '-50%',
-            transform: 'rotate(-15deg)',
-          }}
-        />
-        <div
-          className="absolute"
-          style={{
-            width: '200vw',
-            height: '1px',
-            background: 'linear-gradient(90deg, transparent, rgba(251,146,60,0.1), transparent)',
-            top: '65%',
-            left: '-50%',
-            transform: 'rotate(-15deg)',
-          }}
-        />
+    <section id="home" className="relative min-h-screen flex items-center overflow-hidden"
+      style={{ background: 'var(--bg)' }}>
 
-        {/* Corner frame top-left */}
-        <div className="absolute top-6 left-6 md:top-12 md:left-12">
-          <div className="w-16 h-16 border-t-2 border-l-2 border-[#22D3EE] opacity-30" />
-        </div>
-        {/* Corner frame bottom-right */}
-        <div className="absolute bottom-6 right-6 md:bottom-12 md:right-12">
-          <div className="w-16 h-16 border-b-2 border-r-2 border-[#22D3EE] opacity-30" />
-        </div>
-        {/* Corner frame top-right */}
-        <div className="absolute top-6 right-6 md:top-12 md:right-12">
-          <div className="w-10 h-10 border-t border-r border-[#FB923C] opacity-20" />
-        </div>
-        {/* Corner frame bottom-left */}
-        <div className="absolute bottom-6 left-6 md:bottom-12 md:left-12">
-          <div className="w-10 h-10 border-b border-l border-[#FB923C] opacity-20" />
-        </div>
+      {/* Keyword field (pretext-powered canvas) */}
+      <HeroCanvas />
 
-        {/* Floating geometric shapes */}
-        {floatingShapes.map((shape, i) => (
-          <motion.div
-            key={i}
-            className="absolute"
-            style={{
-              left: shape.x,
-              top: shape.y,
-              width: shape.size,
-              height: shape.size,
-              background: shape.color,
-              opacity: 0.4,
-              transform: 'rotate(45deg)',
-            }}
-            animate={{
-              y: [-10, 10, -10],
-              opacity: [0.2, 0.6, 0.2],
-              rotate: [45, 90, 45],
-            }}
-            transition={{
-              duration: 4 + i,
-              repeat: Infinity,
-              delay: shape.delay,
-              ease: 'easeInOut',
-            }}
-          />
-        ))}
+      {/* Radial glow blobs */}
+      <div className="hero-glow" style={{ width: 600, height: 600, background: 'rgba(0,212,255,0.04)', top: '-10%', left: '-5%' }} />
+      <div className="hero-glow" style={{ width: 500, height: 500, background: 'rgba(255,95,31,0.04)', bottom: '0%', right: '-10%' }} />
 
-        {/* Right side decorative vertical line */}
-        <motion.div
-          className="absolute right-0 top-0 bottom-0 w-px"
-          style={{ background: 'linear-gradient(180deg, transparent, rgba(34,211,238,0.3), transparent)' }}
-          animate={{ opacity: [0.3, 0.7, 0.3] }}
-          transition={{ duration: 3, repeat: Infinity }}
-        />
-      </div>
+      {/* Corner brackets */}
+      <div className="absolute top-8 left-8 w-12 h-12 pointer-events-none" style={{ borderTop: '1.5px solid var(--border-h)', borderLeft: '1.5px solid var(--border-h)' }} />
+      <div className="absolute top-8 right-8 w-12 h-12 pointer-events-none" style={{ borderTop: '1.5px solid rgba(255,95,31,0.3)', borderRight: '1.5px solid rgba(255,95,31,0.3)' }} />
+      <div className="absolute bottom-8 left-8 w-12 h-12 pointer-events-none" style={{ borderBottom: '1.5px solid rgba(255,95,31,0.2)', borderLeft: '1.5px solid rgba(255,95,31,0.2)' }} />
+      <div className="absolute bottom-8 right-8 w-12 h-12 pointer-events-none" style={{ borderBottom: '1.5px solid var(--border)', borderRight: '1.5px solid var(--border)' }} />
 
-      {/* Main content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-6 w-full">
-        <div className="flex flex-col lg:flex-row items-center lg:items-start justify-between gap-12">
+      {/* Main layout */}
+      <div className="relative z-10 max-w-7xl mx-auto px-6 w-full pt-24 pb-16">
+        <div className="flex flex-col lg:flex-row items-center lg:items-start justify-between gap-12 lg:gap-8">
 
-          {/* Left: Text content */}
-          <div className="flex-1 text-left">
-            {/* Status badge */}
+          {/* ── Left: Content ── */}
+          <div className="flex-1 max-w-2xl">
+
+            {/* System badge */}
             <motion.div
-              initial={{ opacity: 0, x: -30 }}
+              initial={{ opacity: 0, x: -24 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="flex items-center gap-3 mb-6"
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="flex items-center gap-3 mb-7"
             >
-              <div className="flex items-center gap-2 px-3 py-1.5"
-                style={{
-                  background: 'rgba(34, 211, 238, 0.1)',
-                  border: '1px solid rgba(34, 211, 238, 0.3)',
-                  clipPath: 'polygon(0 0, calc(100% - 6px) 0, 100% 6px, 100% 100%, 6px 100%, 0 calc(100% - 6px))',
-                }}
-              >
-                <div className="w-2 h-2 bg-[#00D4AA] rounded-full" style={{ boxShadow: '0 0 6px #00D4AA' }} />
-                <span className="font-['Share_Tech_Mono'] text-xs text-[#ECE8E1] tracking-[3px]">ENGINEER // ONLINE</span>
+              <div className="flex items-center gap-2 px-3 py-1.5 clip-corner-sm"
+                style={{ background: 'rgba(0,212,255,0.07)', border: '1px solid var(--border)' }}>
+                <motion.div
+                  className="w-2 h-2 rounded-full"
+                  style={{ background: 'var(--green)' }}
+                  animate={{ boxShadow: ['0 0 4px var(--green)', '0 0 10px var(--green)', '0 0 4px var(--green)'] }}
+                  transition={{ duration: 2, repeat: Infinity }}
+                />
+                <span className="label" style={{ fontSize: 9, letterSpacing: '3px' }}>DOTE.SYS // ONLINE</span>
               </div>
-              <div className="flex-1 h-px bg-gradient-to-r from-[rgba(34,211,238,0.3)] to-transparent" />
+              <div className="flex-1 h-px bg-gradient-to-r from-[var(--border)] to-transparent max-w-[120px]" />
             </motion.div>
 
             {/* Name */}
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 32 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.3 }}
-              className="mb-3"
+              transition={{ duration: 0.7, delay: 0.2 }}
+              className="mb-5"
             >
-              <p className="font-['Share_Tech_Mono'] text-xs text-[#22D3EE] tracking-[6px] mb-3">CODENAME: DOTE</p>
+              <div className="label mb-3" style={{ letterSpacing: '5px', fontSize: 10 }}>CODENAME: DOTE — ID: 001</div>
               <h1
-                className="font-['Rajdhani'] text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-bold text-[#ECE8E1] tracking-tight leading-none glitch-text"
-                data-text="VIGNESHWARAN"
-                style={{ textShadow: '0 0 40px rgba(34,211,238,0.2)' }}
+                className="section-heading glitch"
+                data-text="VIGNESH"
+                style={{ fontSize: 'clamp(52px, 9vw, 110px)', lineHeight: 0.9, marginBottom: 4 }}
               >
-                VIGNESHWARAN
+                VIGNESH
               </h1>
-              <h2 className="font-['Rajdhani'] text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight leading-tight"
-                style={{ color: '#22D3EE' }}
+              <h1
+                className="section-heading"
+                style={{
+                  fontSize: 'clamp(52px, 9vw, 110px)',
+                  lineHeight: 0.9,
+                  color: 'var(--cyan)',
+                  textShadow: '0 0 40px rgba(0,212,255,0.25)',
+                }}
               >
+                WARAN
+              </h1>
+              <div className="label mt-3" style={{ opacity: 0.4, letterSpacing: '4px', fontSize: 9 }}>
                 SIVA SANKARAN
-              </h2>
+              </div>
             </motion.div>
 
-            {/* Role typing animation */}
+            {/* Role typewriter */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ duration: 0.5, delay: 0.6 }}
-              className="mb-8"
+              transition={{ duration: 0.5, delay: 0.5 }}
+              className="mb-7"
             >
-              <div className="flex items-center gap-3 mb-2">
-                <span className="font-['Share_Tech_Mono'] text-[#22D3EE] text-sm">{'>'}</span>
+              <div className="flex items-center gap-2 mb-3">
+                <span className="font-mono" style={{ color: 'var(--cyan)', fontSize: 13 }}>{'>'}</span>
                 <TypeAnimation
                   sequence={[
-                    'ML Engineer',
-                    2000,
-                    'Data Scientist',
-                    2000,
-                    'AI Engineer',
-                    2000,
-                    'Research Engineer',
-                    2000,
-                    'Data Engineer',
-                    2000,
+                    'ML Engineer', 2200,
+                    'Data Scientist', 2200,
+                    'AI Engineer', 2200,
+                    'Research Engineer', 2200,
+                    'Esports Analyst', 2200,
                   ]}
                   wrapper="span"
-                  speed={50}
+                  speed={55}
                   repeat={Infinity}
-                  className="font-['Rajdhani'] text-xl sm:text-2xl font-semibold text-[#ECE8E1] tracking-widest"
+                  style={{
+                    fontFamily: "'Rajdhani', sans-serif",
+                    fontWeight: 600,
+                    fontSize: 'clamp(18px, 3vw, 26px)',
+                    letterSpacing: '3px',
+                    textTransform: 'uppercase',
+                    color: 'var(--text)',
+                  }}
                 />
-                <span className="w-0.5 h-6 bg-[#22D3EE] inline-block" style={{ animation: 'blink 1s step-start infinite' }} />
+                <span className="blink" style={{ color: 'var(--cyan)', fontSize: 18, marginLeft: 2 }}>_</span>
               </div>
-              <p className="font-['Inter'] text-sm sm:text-base text-[rgba(236,232,225,0.6)] max-w-lg leading-relaxed mt-4">
-                Building intelligent systems across ML, AI, and data. Based in{' '}
-                <span className="text-[#22D3EE]">La Jolla, CA</span> — from model pipelines to agentic AI.
+              <p style={{ color: 'var(--muted)', fontSize: 14, lineHeight: 1.7, maxWidth: 480 }}>
+                Building intelligent systems across{' '}
+                <span className="text-highlight">agentic AI</span>,{' '}
+                <span className="text-highlight">ML pipelines</span>, and{' '}
+                <span className="text-highlight">esports analytics</span>.
+                {' '}Based in La Jolla, CA — currently @ UCSD MS Analytics.
               </p>
             </motion.div>
 
-            {/* CTA buttons */}
+            {/* CTAs */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.8 }}
-              className="flex flex-wrap items-center gap-4"
+              transition={{ duration: 0.5, delay: 0.75 }}
+              className="flex flex-wrap gap-4 mb-12"
             >
-              <button
-                onClick={() => document.getElementById('projects').scrollIntoView({ behavior: 'smooth' })}
-                className="val-btn"
-              >
-                View Projects
+              <button className="btn-primary"
+                onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}>
+                <span>VIEW PROJECTS</span>
+                <span style={{ fontSize: 14 }}>→</span>
               </button>
-              <button
-                onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}
-                className="font-['Rajdhani'] font-semibold text-sm tracking-[3px] text-[rgba(236,232,225,0.7)] hover:text-[#ECE8E1] transition-colors uppercase cursor-none flex items-center gap-2"
-              >
-                <span className="text-[#22D3EE]">{'>'}</span>
-                Contact Me
+              <button className="btn-ghost"
+                onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}>
+                CONTACT ME
               </button>
             </motion.div>
 
-            {/* Stats */}
+            {/* Bottom stats row */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ duration: 0.5, delay: 1 }}
-              className="mt-12 flex flex-wrap gap-6 sm:gap-10"
+              transition={{ duration: 0.5, delay: 1.0 }}
+              className="flex flex-wrap gap-8"
             >
               {[
-                { label: 'ML / AI Projects', value: '6+' },
-                { label: 'Yrs Industry Exp.', value: '2+' },
-                { label: 'Location', value: 'LA JOLLA' },
-              ].map(stat => (
-                <div key={stat.label}>
-                  <div className="font-['Rajdhani'] text-2xl sm:text-3xl font-bold text-[#22D3EE]">{stat.value}</div>
-                  <div className="font-['Share_Tech_Mono'] text-[10px] text-[rgba(236,232,225,0.4)] tracking-[2px] uppercase mt-1">{stat.label}</div>
+                { v: '6+',     l: 'SHIPPED PROJECTS' },
+                { v: '2+',     l: 'YRS INDUSTRY' },
+                { v: '2×',     l: 'HACKATHON WINS' },
+                { v: 'UCSD',   l: 'MS ANALYTICS' },
+              ].map(s => (
+                <div key={s.l}>
+                  <div className="section-heading" style={{ fontSize: 28, color: 'var(--cyan)' }}>{s.v}</div>
+                  <div className="label" style={{ fontSize: 9, letterSpacing: '2px', opacity: 0.45, marginTop: 2 }}>{s.l}</div>
                 </div>
               ))}
             </motion.div>
           </div>
 
-          {/* Right: Agent card */}
+          {/* ── Right: Player Card ── */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.8, x: 50 }}
+            className="hidden lg:block"
+            initial={{ opacity: 0, scale: 0.85, x: 40 }}
             animate={{ opacity: 1, scale: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.4, type: 'spring', stiffness: 100 }}
-            className="hidden lg:flex flex-col items-center"
+            transition={{ duration: 0.8, delay: 0.35, type: 'spring', stiffness: 90 }}
             style={{
-              transform: `translate(${mousePos.x * 0.3}px, ${mousePos.y * 0.3}px)`,
-              transition: 'transform 0.1s ease',
+              transform: `translate(${mouse.x * 0.28}px,${mouse.y * 0.28}px)`,
+              transition: 'transform 0.08s linear',
             }}
           >
-            {/* Agent card */}
-            <div
-              className="relative w-64 xl:w-72"
+            <div className="relative clip-corner"
               style={{
-                clipPath: 'polygon(0 0, calc(100% - 24px) 0, 100% 24px, 100% 100%, 24px 100%, 0 calc(100% - 24px))',
-                background: 'rgba(14, 26, 42, 0.7)',
-                border: '1px solid rgba(34, 211, 238, 0.3)',
+                width: 260,
+                background: 'rgba(8,20,31,0.85)',
+                border: '1px solid var(--border-h)',
                 backdropFilter: 'blur(20px)',
-              }}
-            >
-              {/* Card header */}
-              <div className="px-5 pt-4 pb-3 border-b border-[rgba(34,211,238,0.15)]">
-                <div className="flex items-center justify-between">
-                  <span className="font-['Share_Tech_Mono'] text-[10px] text-[#22D3EE] tracking-[3px]">PLAYER CARD</span>
-                  <div className="flex gap-1">
-                    <div className="w-2 h-2 bg-[#22D3EE] opacity-60" style={{ clipPath: 'polygon(50% 0, 100% 100%, 0 100%)' }} />
-                    <div className="w-2 h-2 bg-[#FB923C] opacity-60" style={{ clipPath: 'polygon(50% 0, 100% 100%, 0 100%)' }} />
-                  </div>
+                boxShadow: '0 0 40px rgba(0,212,255,0.07)',
+              }}>
+
+              {/* Header */}
+              <div className="flex items-center justify-between px-5 py-3"
+                style={{ borderBottom: '1px solid var(--border)' }}>
+                <span className="label" style={{ fontSize: 9, letterSpacing: '3px' }}>PLAYER CARD</span>
+                <div className="flex gap-1">
+                  <div style={{ width: 6, height: 6, background: 'var(--cyan)', transform: 'rotate(45deg)', opacity: 0.7 }} />
+                  <div style={{ width: 6, height: 6, background: 'var(--orange)', transform: 'rotate(45deg)', opacity: 0.7 }} />
                 </div>
               </div>
 
-              {/* Avatar placeholder with animated border */}
-              <div className="px-5 py-6 flex flex-col items-center">
+              {/* Avatar */}
+              <div className="flex flex-col items-center px-5 py-5">
                 <div className="relative mb-4">
                   <motion.div
-                    className="w-28 h-28 rounded-none flex items-center justify-center"
+                    className="flex items-center justify-center clip-corner"
                     style={{
-                      background: 'linear-gradient(135deg, #0E1A2A, #0A1220)',
-                      clipPath: 'polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 16px 100%, 0 calc(100% - 16px))',
-                      border: '1px solid rgba(34, 211, 238, 0.4)',
+                      width: 100, height: 100,
+                      background: 'linear-gradient(135deg, #0C1C2C, #081420)',
+                      border: '1px solid var(--border-h)',
                     }}
-                    animate={{ boxShadow: ['0 0 10px rgba(34,211,238,0.2)', '0 0 30px rgba(34,211,238,0.5)', '0 0 10px rgba(34,211,238,0.2)'] }}
-                    transition={{ duration: 2, repeat: Infinity }}
+                    animate={{ boxShadow: ['0 0 10px rgba(0,212,255,0.2)', '0 0 28px rgba(0,212,255,0.5)', '0 0 10px rgba(0,212,255,0.2)'] }}
+                    transition={{ duration: 2.5, repeat: Infinity }}
                   >
-                    {/* VS monogram */}
-                    <span className="font-['Rajdhani'] text-5xl font-bold text-[#22D3EE] opacity-80">D</span>
+                    <span className="section-heading" style={{ fontSize: 48, color: 'var(--cyan)', opacity: 0.85 }}>D</span>
                   </motion.div>
-                  {/* Rank badge */}
-                  <div
-                    className="absolute -bottom-2 -right-2 px-2 py-0.5"
-                    style={{
-                      background: '#FB923C',
-                      clipPath: 'polygon(0 0, 100% 0, 100% calc(100% - 4px), calc(100% - 4px) 100%, 0 100%)',
-                    }}
-                  >
-                    <span className="font-['Share_Tech_Mono'] text-[9px] text-[#060A10] font-bold tracking-wider">RANKED</span>
+                  <div className="absolute -bottom-2 -right-2 px-2 py-0.5"
+                    style={{ background: 'var(--orange)', clipPath: 'polygon(0 0,100% 0,100% calc(100% - 4px),calc(100% - 4px) 100%,0 100%)' }}>
+                    <span className="font-mono" style={{ fontSize: 8, color: 'var(--bg)', fontWeight: 700, letterSpacing: 2 }}>RANKED</span>
                   </div>
                 </div>
 
-                <h3 className="font-['Rajdhani'] text-lg font-bold text-[#ECE8E1] tracking-widest text-center">
-                  VIGNESHWARAN
-                </h3>
-                <p className="font-['Share_Tech_Mono'] text-[10px] text-[#22D3EE] tracking-[2px] mb-5">DS & ML ENGINEER</p>
+                <div className="section-heading text-center mb-0.5" style={{ fontSize: 15, letterSpacing: 3 }}>VIGNESHWARAN</div>
+                <div className="label text-center mb-4" style={{ fontSize: 9, letterSpacing: 2, color: 'var(--cyan)' }}>DS & ML ENGINEER</div>
 
-                {/* Stats */}
-                <div className="w-full space-y-2">
-                  {[
-                    { label: 'PERFORMANCE', val: 95 },
-                    { label: 'PRECISION', val: 90 },
-                    { label: 'ADAPTABILITY', val: 88 },
-                  ].map(s => (
+                {/* Stat bars */}
+                <div className="w-full space-y-3">
+                  {STATS.map(s => (
                     <div key={s.label}>
                       <div className="flex justify-between mb-1">
-                        <span className="font-['Share_Tech_Mono'] text-[9px] text-[rgba(236,232,225,0.5)] tracking-widest">{s.label}</span>
-                        <span className="font-['Share_Tech_Mono'] text-[9px] text-[#22D3EE]">{s.val}</span>
+                        <span className="font-mono" style={{ fontSize: 9, color: 'var(--muted)', letterSpacing: 2 }}>{s.label}</span>
+                        <span className="font-mono" style={{ fontSize: 9, color: 'var(--cyan)' }}>{s.val}</span>
                       </div>
-                      <div className="h-0.5 bg-[rgba(34,211,238,0.1)] relative overflow-hidden">
-                        <motion.div
-                          className="h-full bg-gradient-to-r from-[#22D3EE] to-[#FB923C]"
+                      <div className="stat-bar">
+                        <motion.div className="stat-fill"
                           initial={{ width: 0 }}
                           animate={{ width: `${s.val}%` }}
-                          transition={{ duration: 1.5, delay: 0.5 }}
+                          transition={{ duration: 1.6, delay: 0.8, ease: 'easeOut' }}
                         />
                       </div>
                     </div>
                   ))}
                 </div>
 
-                {/* Tags */}
+                {/* Tag chips */}
                 <div className="flex flex-wrap gap-1.5 mt-4 justify-center">
-                  {['PYTHON', 'ML', 'AI', 'DATA'].map(tag => (
-                    <span
-                      key={tag}
-                      className="font-['Share_Tech_Mono'] text-[9px] text-[#22D3EE] tracking-wider px-2 py-0.5"
-                      style={{
-                        border: '1px solid rgba(34, 211, 238, 0.3)',
-                        background: 'rgba(34, 211, 238, 0.05)',
-                      }}
-                    >
-                      {tag}
-                    </span>
+                  {['PYTHON', 'ML', 'AI', 'ESPORTS'].map(t => (
+                    <span key={t} className="chip" style={{ fontSize: 9, padding: '3px 7px' }}>{t}</span>
                   ))}
                 </div>
               </div>
 
-              {/* Card footer */}
-              <div className="px-5 pb-4 pt-2 border-t border-[rgba(34,211,238,0.1)] flex justify-between items-center">
-                <span className="font-['Share_Tech_Mono'] text-[9px] text-[rgba(236,232,225,0.3)]">LA JOLLA // CA</span>
-                <span className="font-['Share_Tech_Mono'] text-[9px] text-[rgba(34,211,238,0.5)]">ID:DOTE-001</span>
+              {/* Footer */}
+              <div className="flex justify-between items-center px-5 pb-4 pt-2"
+                style={{ borderTop: '1px solid var(--border)' }}>
+                <span className="font-mono" style={{ fontSize: 9, color: 'var(--muted)', letterSpacing: 2 }}>LA JOLLA · CA</span>
+                <span className="label" style={{ fontSize: 9, color: 'var(--cyan)', opacity: 0.5 }}>ID: DOTE-001</span>
               </div>
             </div>
 
-            {/* Floating accent */}
-            <motion.div
-              className="mt-4 flex items-center gap-2"
-              animate={{ opacity: [0.4, 1, 0.4] }}
-              transition={{ duration: 2, repeat: Infinity }}
-            >
-              <div className="w-8 h-px bg-[#22D3EE]" />
-              <span className="font-['Share_Tech_Mono'] text-[9px] text-[#22D3EE] tracking-[4px]">PORTFOLIO v2.0</span>
-              <div className="w-8 h-px bg-[#22D3EE]" />
+            {/* Below card label */}
+            <motion.div className="flex items-center gap-2 mt-4 justify-center"
+              animate={{ opacity: [0.3, 0.8, 0.3] }}
+              transition={{ duration: 2.5, repeat: Infinity }}>
+              <div style={{ width: 24, height: 1, background: 'var(--cyan)' }} />
+              <span className="label" style={{ fontSize: 8, letterSpacing: '5px' }}>PORTFOLIO v2.0</span>
+              <div style={{ width: 24, height: 1, background: 'var(--cyan)' }} />
             </motion.div>
           </motion.div>
         </div>
       </div>
 
-      {/* Scroll indicator */}
-      <motion.div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
-        animate={{ y: [0, 8, 0] }}
-        transition={{ duration: 2, repeat: Infinity }}
-      >
-        <span className="font-['Share_Tech_Mono'] text-[9px] text-[rgba(236,232,225,0.3)] tracking-[4px]">SCROLL</span>
-        <div className="w-px h-12 bg-gradient-to-b from-[#22D3EE] to-transparent" />
-      </motion.div>
+      {/* Scroll hint */}
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 scroll-bounce">
+        <span className="label" style={{ fontSize: 8, letterSpacing: '4px', opacity: 0.3 }}>SCROLL</span>
+        <div style={{ width: 1, height: 48, background: 'linear-gradient(180deg, var(--cyan), transparent)' }} />
+      </div>
     </section>
   )
 }

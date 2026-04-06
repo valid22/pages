@@ -1,82 +1,65 @@
-import { useInView } from 'react-intersection-observer'
-import { motion } from 'framer-motion'
 import { useState } from 'react'
+import { motion } from 'framer-motion'
+import { useInView } from 'react-intersection-observer'
 
-const skillCategories = [
+const CATS = [
   {
-    id: 'ml',
-    label: 'PRIMARY // ML & AI',
-    icon: '◇',
-    color: '#00D4AA',
-    description: 'Deep learning, agents, vision & LLM systems',
-    skills: [
-      { name: 'Agentic AI / LLM Orchestration', level: 88 },
-      { name: 'PyTorch / TensorFlow', level: 85 },
-      { name: 'RAG / NLP / Prompt Engineering', level: 86 },
-      { name: 'CNN / RNN / LSTM', level: 83 },
-      { name: 'MC Dropout / Model Calibration', level: 80 },
+    id: 'ml', idx: '01', label: 'ML & AI', sub: 'Deep learning, agents, LLM systems',
+    color: 'var(--green)', skills: [
+      { n: 'Agentic AI / LLM Orchestration', v: 88 },
+      { n: 'PyTorch / TensorFlow',           v: 85 },
+      { n: 'RAG / NLP / Prompt Engineering', v: 86 },
+      { n: 'CNN / RNN / LSTM',               v: 83 },
+      { n: 'MC Dropout / Model Calibration', v: 80 },
     ],
   },
   {
-    id: 'ds',
-    label: 'RANKED // DATA SCIENCE',
-    icon: '⬡',
-    color: '#7B73FF',
-    description: 'Experimentation, statistics & behavioral modeling',
-    skills: [
-      { name: 'Feature Engineering / EDA', level: 90 },
-      { name: 'A/B Testing / CUPED / Power Analysis', level: 87 },
-      { name: 'Statistical Inference / Bayesian', level: 85 },
-      { name: 'Skill Rating (Elo / Glicko-2)', level: 82 },
-      { name: 'Time Series Forecasting', level: 78 },
+    id: 'ds', idx: '02', label: 'DATA SCIENCE', sub: 'Experimentation, stats, behavioral modeling',
+    color: 'var(--purple)', skills: [
+      { n: 'Feature Engineering / EDA',          v: 90 },
+      { n: 'A/B Testing / CUPED / Power Analysis', v: 87 },
+      { n: 'Statistical Inference / Bayesian',   v: 85 },
+      { n: 'Skill Rating (Elo / Glicko-2)',       v: 82 },
+      { n: 'Time Series Forecasting',             v: 78 },
     ],
   },
   {
-    id: 'eng',
-    label: 'PRECISION // ENGINEERING',
-    icon: '◈',
-    color: '#22D3EE',
-    description: 'Pipelines, infrastructure & production systems',
-    skills: [
-      { name: 'Python / SQL', level: 93 },
-      { name: 'Spark (PySpark) / Pandas / Polars', level: 88 },
-      { name: 'AWS / Docker / Kubernetes', level: 85 },
-      { name: 'CI/CD / ETL Pipelines', level: 83 },
-      { name: 'FastAPI / REST APIs', level: 82 },
+    id: 'eng', idx: '03', label: 'ENGINEERING', sub: 'Pipelines, infra, production systems',
+    color: 'var(--cyan)', skills: [
+      { n: 'Python / SQL',                   v: 93 },
+      { n: 'Spark (PySpark) / Polars',        v: 88 },
+      { n: 'AWS / Docker / Kubernetes',       v: 85 },
+      { n: 'CI/CD / ETL Pipelines',           v: 83 },
+      { n: 'FastAPI / REST APIs',             v: 82 },
     ],
   },
   {
-    id: 'frameworks',
-    label: 'UTILITY // FRAMEWORKS',
-    icon: '⬟',
-    color: '#FB923C',
-    description: 'ML stack, orchestration & data tooling',
-    skills: [
-      { name: 'scikit-learn / Spark MLlib', level: 87 },
-      { name: 'LangChain / LlamaIndex', level: 85 },
-      { name: 'NumPy / Polars / Pandas', level: 90 },
-      { name: 'C/C++ / Java / JavaScript', level: 72 },
-      { name: 'Linux / Bash / Git', level: 85 },
+    id: 'fw', idx: '04', label: 'FRAMEWORKS', sub: 'ML stack, orchestration, data tooling',
+    color: 'var(--orange)', skills: [
+      { n: 'scikit-learn / Spark MLlib',  v: 87 },
+      { n: 'LangChain / LlamaIndex',      v: 85 },
+      { n: 'NumPy / Polars / Pandas',     v: 90 },
+      { n: 'Linux / Bash / Git',          v: 85 },
+      { n: 'C/C++ / Java / JavaScript',   v: 72 },
     ],
   },
 ]
 
-const tools = ['Python', 'SQL', 'PyTorch', 'Spark', 'LangChain', 'Jupyter', 'Git', 'Docker', 'AWS', 'VS Code']
+const TOOLS = ['Python', 'SQL', 'PyTorch', 'Spark', 'LangChain', 'Jupyter', 'Git', 'Docker', 'AWS', 'VS Code', 'Pandas', 'FastAPI']
 
-function SkillBar({ name, level, color, inView, delay }) {
+function Bar({ n, v, color, inView, delay }) {
   return (
-    <div className="mb-3">
-      <div className="flex justify-between mb-1.5 items-center">
-        <span className="font-['Rajdhani'] text-sm font-medium text-[rgba(236,232,225,0.8)]">{name}</span>
-        <span className="font-['Share_Tech_Mono'] text-[10px]" style={{ color }}>{level}</span>
+    <div style={{ marginBottom: 14 }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 6, alignItems: 'center' }}>
+        <span style={{ fontFamily: "'Rajdhani',sans-serif", fontSize: 13, fontWeight: 500, color: 'rgba(232,244,248,0.85)' }}>{n}</span>
+        <span style={{ fontFamily: "'Share Tech Mono',monospace", fontSize: 10, color }}>{v}</span>
       </div>
-      <div className="h-0.5 bg-[rgba(255,255,255,0.05)] relative overflow-hidden">
-        <motion.div
-          className="h-full absolute top-0 left-0"
+      <div className="skill-track">
+        <motion.div className="skill-fill"
           style={{ background: `linear-gradient(90deg, ${color}, ${color}88)` }}
           initial={{ width: 0 }}
-          animate={inView ? { width: `${level}%` } : {}}
-          transition={{ duration: 1.2, delay, ease: 'easeOut' }}
+          animate={inView ? { width: `${v}%` } : {}}
+          transition={{ duration: 1.3, delay, ease: 'easeOut' }}
         />
       </div>
     </div>
@@ -85,149 +68,106 @@ function SkillBar({ name, level, color, inView, delay }) {
 
 export default function Skills() {
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 })
-  const [activeCategory, setActiveCategory] = useState('ml')
-  const active = skillCategories.find(c => c.id === activeCategory)
+  const [active, setActive] = useState('ml')
+  const cat = CATS.find(c => c.id === active)
 
   return (
-    <section id="skills" className="relative py-24 md:py-32 overflow-hidden">
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background: 'linear-gradient(180deg, transparent, rgba(15,25,35,0.5), transparent)',
-        }}
-      />
+    <section id="skills" className="relative py-24 md:py-32"
+      style={{ background: 'linear-gradient(180deg, transparent, rgba(0,212,255,0.015), transparent)' }}
+      ref={ref}>
+      <div className="max-w-7xl mx-auto px-6">
 
-      <div className="max-w-7xl mx-auto px-6" ref={ref}>
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="mb-16"
-        >
-          <p className="section-label mb-2">// 02 — ARSENAL</p>
-          <h2 className="section-title text-4xl md:text-5xl">SKILLS & TOOLS</h2>
-          <div className="mt-3 w-20 h-0.5 bg-gradient-to-r from-[#22D3EE] to-transparent" />
+          className="mb-14">
+          <div className="label mb-2" style={{ opacity: 0.6 }}>// 02 — ARSENAL</div>
+          <h2 className="section-heading" style={{ fontSize: 'clamp(32px, 5vw, 52px)' }}>SKILLS & TOOLS</h2>
+          <div style={{ width: 56, height: 2, background: 'linear-gradient(90deg, var(--cyan), transparent)', marginTop: 10 }} />
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
-          {/* Category selector — agent abilities style */}
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 lg:gap-8">
+
+          {/* ── Tab selector ── */}
           <div className="lg:col-span-2 flex flex-col gap-2">
-            {skillCategories.map((cat, i) => (
-              <motion.button
-                key={cat.id}
-                initial={{ opacity: 0, x: -30 }}
-                animate={inView ? { opacity: 1, x: 0 } : {}}
-                transition={{ delay: 0.2 + i * 0.1 }}
-                onClick={() => setActiveCategory(cat.id)}
-                className="text-left p-4 transition-all duration-300 relative overflow-hidden cursor-none"
-                style={{
-                  background: activeCategory === cat.id
-                    ? `rgba(${cat.color === '#22D3EE' ? '34,211,238' : cat.color === '#7B73FF' ? '123,115,255' : cat.color === '#FB923C' ? '251,146,60' : '0,212,170'}, 0.1)`
-                    : 'rgba(14, 26, 42, 0.4)',
-                  borderLeft: `2px solid ${activeCategory === cat.id ? cat.color : 'rgba(255,255,255,0.05)'}`,
-                  clipPath: 'polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px))',
-                }}
-              >
-                {/* Active indicator */}
-                {activeCategory === cat.id && (
-                  <motion.div
-                    layoutId="activeSkill"
-                    className="absolute inset-0 opacity-5"
-                    style={{ background: cat.color }}
-                  />
-                )}
-                <div className="flex items-center gap-3">
-                  <span className="text-xl" style={{ color: cat.color }}>{cat.icon}</span>
-                  <div>
-                    <div className="font-['Rajdhani'] font-bold text-sm text-[#ECE8E1] tracking-widest leading-tight">
-                      {cat.label}
+            {CATS.map((c, i) => {
+              const isActive = active === c.id
+              return (
+                <motion.button key={c.id}
+                  initial={{ opacity: 0, x: -24 }}
+                  animate={inView ? { opacity: 1, x: 0 } : {}}
+                  transition={{ delay: 0.15 + i * 0.1 }}
+                  onClick={() => setActive(c.id)}
+                  style={{
+                    cursor: 'none', textAlign: 'left',
+                    padding: '14px 16px',
+                    background: isActive ? `rgba(0,0,0,0.3)` : 'rgba(8,20,31,0.5)',
+                    borderLeft: `2px solid ${isActive ? c.color : 'rgba(255,255,255,0.06)'}`,
+                    clipPath: 'polygon(0 0,calc(100% - 7px) 0,100% 7px,100% 100%,7px 100%,0 calc(100% - 7px))',
+                    position: 'relative', overflow: 'hidden',
+                    transition: 'all 0.25s',
+                  }}>
+                  {isActive && (
+                    <motion.div layoutId="skillTab" style={{
+                      position: 'absolute', inset: 0,
+                      background: `radial-gradient(ellipse at left, ${c.color}15, transparent 70%)`,
+                    }} />
+                  )}
+                  <div style={{ position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                    <div>
+                      <div style={{ fontFamily: "'Rajdhani',sans-serif", fontWeight: 700, fontSize: 13, letterSpacing: 3,
+                        color: isActive ? c.color : 'rgba(232,244,248,0.7)', textTransform: 'uppercase' }}>{c.label}</div>
+                      <div style={{ fontSize: 11, color: 'var(--muted)', marginTop: 2, fontFamily: "'Inter',sans-serif" }}>{c.sub}</div>
                     </div>
-                    <div className="font-['Inter'] text-xs text-[rgba(236,232,225,0.4)] mt-0.5 leading-tight">
-                      {cat.description}
-                    </div>
+                    <span className="label" style={{ fontSize: 8, opacity: 0.4 }}>{c.idx}</span>
                   </div>
-                </div>
-                {/* Key indicator */}
-                <div
-                  className="absolute top-2 right-3 font-['Share_Tech_Mono'] text-[9px] tracking-widest"
-                  style={{ color: cat.color, opacity: 0.5 }}
-                >
-                  {['01', '02', '03', '04'][i]}
-                </div>
-              </motion.button>
-            ))}
+                </motion.button>
+              )
+            })}
           </div>
 
-          {/* Skill bars panel */}
-          <motion.div
-            key={activeCategory}
-            initial={{ opacity: 0, y: 10 }}
+          {/* ── Skill bars panel ── */}
+          <motion.div key={active}
+            initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4 }}
-            className="lg:col-span-3 p-6 relative"
-            style={{
-              background: 'rgba(14, 26, 42, 0.5)',
-              border: '1px solid rgba(34, 211, 238, 0.1)',
-              backdropFilter: 'blur(10px)',
-              clipPath: 'polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 16px 100%, 0 calc(100% - 16px))',
-            }}
-          >
-            {/* Panel header */}
-            <div className="flex items-center justify-between mb-6 pb-3" style={{ borderBottom: '1px solid rgba(34,211,238,0.1)' }}>
-              <span className="font-['Share_Tech_Mono'] text-[10px] tracking-[3px]" style={{ color: active.color }}>
-                {active.label}
-              </span>
-              <div className="w-2 h-2" style={{ background: active.color, transform: 'rotate(45deg)', boxShadow: `0 0 8px ${active.color}` }} />
+            transition={{ duration: 0.35 }}
+            className="lg:col-span-3 clip-corner card p-6 relative">
+
+            <div className="flex items-center justify-between mb-6 pb-4"
+              style={{ borderBottom: '1px solid var(--border)' }}>
+              <span className="label" style={{ fontSize: 10, letterSpacing: '4px', color: cat.color }}>{cat.label}</span>
+              <div style={{ width: 8, height: 8, background: cat.color, transform: 'rotate(45deg)',
+                boxShadow: `0 0 8px ${cat.color}` }} />
             </div>
 
-            {/* Skills */}
-            <div>
-              {active.skills.map((skill, i) => (
-                <SkillBar
-                  key={skill.name}
-                  name={skill.name}
-                  level={skill.level}
-                  color={active.color}
-                  inView={inView}
-                  delay={0.1 + i * 0.12}
-                />
-              ))}
-            </div>
+            {cat.skills.map((s, i) => (
+              <Bar key={s.n} n={s.n} v={s.v} color={cat.color} inView={inView} delay={0.1 + i * 0.1} />
+            ))}
 
-            {/* Corner decoration */}
-            <div
-              className="absolute bottom-0 right-0 w-4 h-4"
-              style={{ background: active.color, opacity: 0.3, clipPath: 'polygon(100% 0, 100% 100%, 0 100%)' }}
-            />
+            {/* Corner accent */}
+            <div style={{ position: 'absolute', bottom: 0, right: 0, width: 14, height: 14,
+              background: cat.color, opacity: 0.3,
+              clipPath: 'polygon(100% 0, 100% 100%, 0 100%)' }} />
           </motion.div>
         </div>
 
-        {/* Tools / Tech */}
+        {/* Tools */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5, delay: 0.7 }}
-          className="mt-12"
-        >
-          <p className="font-['Share_Tech_Mono'] text-[10px] text-[rgba(34,211,238,0.6)] tracking-[4px] mb-4">
-            TOOLS & UTILITIES
-          </p>
-          <div className="flex flex-wrap gap-3">
-            {tools.map((tool, i) => (
-              <motion.span
-                key={tool}
-                initial={{ opacity: 0, scale: 0.8 }}
+          transition={{ delay: 0.65 }}
+          className="mt-12">
+          <div className="label mb-4" style={{ fontSize: 9, letterSpacing: '4px', opacity: 0.55 }}>TOOLS & UTILITIES</div>
+          <div className="flex flex-wrap gap-2">
+            {TOOLS.map((t, i) => (
+              <motion.span key={t}
+                initial={{ opacity: 0, scale: 0.85 }}
                 animate={inView ? { opacity: 1, scale: 1 } : {}}
-                transition={{ delay: 0.8 + i * 0.05 }}
-                className="font-['Rajdhani'] text-sm font-semibold text-[rgba(236,232,225,0.6)] hover:text-[#22D3EE] transition-colors tracking-wider px-3 py-1.5 cursor-none"
-                style={{
-                  background: 'rgba(14, 26, 42, 0.6)',
-                  border: '1px solid rgba(255, 255, 255, 0.06)',
-                  clipPath: 'polygon(0 0, calc(100% - 6px) 0, 100% 6px, 100% 100%, 6px 100%, 0 calc(100% - 6px))',
-                }}
-              >
-                {tool}
+                transition={{ delay: 0.7 + i * 0.05 }}
+                className="chip">
+                {t}
               </motion.span>
             ))}
           </div>

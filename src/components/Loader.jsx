@@ -1,109 +1,87 @@
 import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 
-const bootLines = [
-  { text: 'booting portfolio v2.0',                              ok: false },
-  { text: 'user  : vigneshwaran siva sankaran',                  ok: false },
-  { text: 'role  : ds & ml engineer // la jolla, ca',           ok: false },
-  { text: 'stack : python · pytorch · langchain · sql · aws',   ok: true  },
-  { text: 'projects  [6 shipped]............... loading',        ok: true  },
-  { text: 'experience [2yr+ industry].......... loading',        ok: true  },
-  { text: 'status : available for new opportunities',            ok: false },
-  { text: 'all systems ready.',                                  ok: false, ready: true },
+const BOOT = [
+  { text: '> INITIALIZING DOTE.SYS v2.0...', color: 'var(--cyan)', delay: 0 },
+  { text: '> [NEURAL_ENGINE]........... OK', color: 'var(--green)', delay: 220 },
+  { text: '> [ML_CORE]................. OK', color: 'var(--green)', delay: 400 },
+  { text: '> [ESPORTS_ANALYTICS]....... OK', color: 'var(--green)', delay: 580 },
+  { text: '> [AGENTIC_AI_STACK]........ OK', color: 'var(--green)', delay: 760 },
+  { text: '> [TACTICAL_SYSTEMS]........ OK', color: 'var(--green)', delay: 920 },
+  { text: '> USER: VIGNESHWARAN SIVA SANKARAN', color: '#E8F4F8', delay: 1100 },
+  { text: '> ROLE: AI/ML ENGINEER // DS & ML', color: '#E8F4F8', delay: 1260 },
+  { text: '> STATUS: AVAILABLE', color: 'var(--orange)', delay: 1420 },
+  { text: '> BOOT SEQUENCE COMPLETE ✓', color: 'var(--cyan)', delay: 1620, final: true },
 ]
 
-const STEP = 210 // ms per line
-
 export default function Loader({ onComplete }) {
-  const [visible, setVisible] = useState(0)
-  const [done, setDone]       = useState(false)
+  const [step, setStep] = useState(0)
+  const [done, setDone] = useState(false)
 
   useEffect(() => {
-    const timers = bootLines.map((_, i) =>
-      setTimeout(() => setVisible(i + 1), i * STEP)
+    const timers = BOOT.map((line, i) =>
+      setTimeout(() => setStep(i + 1), line.delay)
     )
     const finish = setTimeout(() => {
       setDone(true)
-      setTimeout(onComplete, 450)
-    }, bootLines.length * STEP + 350)
+      setTimeout(onComplete, 500)
+    }, 2000)
 
     return () => { timers.forEach(clearTimeout); clearTimeout(finish) }
   }, [onComplete])
 
   return (
     <motion.div
-      className="fixed inset-0 z-[9999] flex items-center justify-center"
-      style={{ background: '#060A10' }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 0.4 }}
+      className="fixed inset-0 z-[9999] flex flex-col items-center justify-center"
+      style={{ background: 'var(--bg)' }}
+      exit={{ opacity: 0, scale: 0.98 }}
+      transition={{ duration: 0.45 }}
     >
-      <div className="w-full max-w-xl px-8 md:px-0">
-        {/* Terminal chrome */}
-        <div
-          className="rounded-none border border-[rgba(34,211,238,0.12)]"
-          style={{ background: 'rgba(14,26,42,0.5)', backdropFilter: 'blur(10px)' }}
-        >
-          {/* Title bar */}
-          <div
-            className="flex items-center gap-2 px-4 py-3 border-b border-[rgba(34,211,238,0.08)]"
-            style={{ background: 'rgba(6,10,16,0.6)' }}
-          >
-            <div className="w-2.5 h-2.5 rounded-full bg-[#22D3EE] opacity-50" />
-            <div className="w-2.5 h-2.5 rounded-full bg-[#FB923C] opacity-50" />
-            <div className="w-2.5 h-2.5 rounded-full bg-[#00D4AA] opacity-50" />
-            <span className="font-['Share_Tech_Mono'] text-[10px] text-[rgba(34,211,238,0.35)] ml-3 tracking-widest">
-              dote@portfolio:~
+      {/* Scanline on loader */}
+      <div className="scanlines" />
+
+      <div className="w-full max-w-lg px-6">
+        {/* Terminal header */}
+        <div style={{
+          border: '1px solid var(--border)',
+          background: 'rgba(8,20,31,0.9)',
+          backdropFilter: 'blur(12px)',
+        }}>
+          <div style={{
+            borderBottom: '1px solid var(--border)',
+            background: 'rgba(4,13,20,0.8)',
+            padding: '10px 16px',
+            display: 'flex', alignItems: 'center', gap: 8,
+          }}>
+            <div style={{ width: 8, height: 8, borderRadius: '50%', background: 'var(--green)', opacity: 0.7 }} />
+            <div style={{ width: 8, height: 8, borderRadius: '50%', background: 'var(--orange)', opacity: 0.7 }} />
+            <div style={{ width: 8, height: 8, borderRadius: '50%', background: 'var(--cyan)', opacity: 0.7 }} />
+            <span className="font-mono label ml-2" style={{ opacity: 0.4, fontSize: 9 }}>
+              dote@system:~$ boot
             </span>
           </div>
 
-          {/* Boot output */}
-          <div className="px-5 py-5 space-y-2 min-h-[220px]">
-            {bootLines.slice(0, visible).map((line, i) => (
+          {/* Boot lines */}
+          <div style={{ padding: '20px 20px', minHeight: 240 }}>
+            {BOOT.slice(0, step).map((line, i) => (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, x: -6 }}
+                initial={{ opacity: 0, x: -8 }}
                 animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.12 }}
-                className="flex items-center gap-2"
+                transition={{ duration: 0.1 }}
+                style={{
+                  fontFamily: "'Share Tech Mono', monospace",
+                  fontSize: 12,
+                  color: line.color,
+                  letterSpacing: '0.05em',
+                  marginBottom: 8,
+                  display: 'flex', alignItems: 'center',
+                }}
               >
-                {/* Prompt */}
-                <span
-                  className="font-['Share_Tech_Mono'] text-xs flex-shrink-0"
-                  style={{ color: line.ready ? '#00D4AA' : 'rgba(34,211,238,0.5)' }}
-                >
-                  {line.ready ? '✓' : '>'}
-                </span>
-
-                {/* Text */}
-                <span
-                  className="font-['Share_Tech_Mono'] text-xs flex-1"
-                  style={{
-                    color: line.ready
-                      ? '#22D3EE'
-                      : i === 0
-                      ? 'rgba(236,232,225,0.9)'
-                      : 'rgba(236,232,225,0.65)',
-                    letterSpacing: '0.04em',
-                  }}
-                >
-                  {line.text}
-                </span>
-
-                {/* OK badge */}
-                {line.ok && (
-                  <span
-                    className="font-['Share_Tech_Mono'] text-[9px] tracking-widest flex-shrink-0"
-                    style={{ color: '#00D4AA' }}
-                  >
-                    [ OK ]
-                  </span>
-                )}
-
-                {/* Blinking cursor on current line */}
-                {i === visible - 1 && !done && (
+                {line.text}
+                {i === step - 1 && !done && (
                   <motion.span
-                    className="inline-block w-[7px] h-[13px] flex-shrink-0"
-                    style={{ background: '#22D3EE' }}
+                    style={{ display: 'inline-block', width: 7, height: 13, background: 'var(--cyan)', marginLeft: 4 }}
                     animate={{ opacity: [1, 0, 1] }}
                     transition={{ duration: 0.7, repeat: Infinity }}
                   />
@@ -113,15 +91,19 @@ export default function Loader({ onComplete }) {
           </div>
         </div>
 
-        {/* Name below terminal */}
-        <motion.p
-          className="font-['Share_Tech_Mono'] text-[10px] text-center mt-4 tracking-[6px]"
-          style={{ color: 'rgba(34,211,238,0.2)' }}
-          animate={{ opacity: [0.15, 0.4, 0.15] }}
-          transition={{ duration: 2, repeat: Infinity }}
-        >
-          VIGNESHWARAN // PORTFOLIO
-        </motion.p>
+        {/* Progress bar */}
+        <div style={{ height: 2, background: 'var(--bg-card)', marginTop: 12, overflow: 'hidden' }}>
+          <motion.div
+            style={{ height: '100%', background: 'linear-gradient(90deg, var(--cyan), var(--orange))', boxShadow: '0 0 8px var(--cyan)' }}
+            initial={{ width: '0%' }}
+            animate={{ width: done ? '100%' : `${(step / BOOT.length) * 100}%` }}
+            transition={{ duration: 0.3 }}
+          />
+        </div>
+
+        <div className="label text-center mt-4" style={{ opacity: 0.3, letterSpacing: '8px', fontSize: 9 }}>
+          DOTE.SYS PORTFOLIO
+        </div>
       </div>
     </motion.div>
   )

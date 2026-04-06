@@ -1,66 +1,68 @@
 import { motion } from 'framer-motion'
 
+const LINKS = [
+  { l: 'About',      id: 'about' },
+  { l: 'Skills',     id: 'skills' },
+  { l: 'Experience', id: 'experience' },
+  { l: 'Projects',   id: 'projects' },
+  { l: 'Contact',    id: 'contact' },
+]
+
 export default function Footer() {
   return (
-    <footer
-      className="relative py-10 mt-0"
-      style={{
-        borderTop: '1px solid rgba(34, 211, 238, 0.1)',
-        background: 'rgba(6, 10, 16, 0.8)',
-      }}
-    >
+    <footer style={{ borderTop: '1px solid var(--border)', background: 'rgba(4,13,20,0.92)', padding: '32px 0' }}>
       <div className="max-w-7xl mx-auto px-6">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+
           {/* Logo */}
           <div className="flex items-center gap-3">
-            <div
-              className="w-7 h-7 flex items-center justify-center"
-              style={{
-                border: '1px solid rgba(34, 211, 238, 0.3)',
-                clipPath: 'polygon(0 0, calc(100% - 6px) 0, 100% 6px, 100% 100%, 6px 100%, 0 calc(100% - 6px))',
-              }}
-            >
-              <span className="font-['Rajdhani'] text-xs font-bold text-[#22D3EE]">D</span>
+            <div className="flex items-center justify-center clip-corner-sm"
+              style={{ width: 30, height: 30, border: '1px solid var(--border-h)' }}>
+              <span className="section-heading" style={{ fontSize: 12, color: 'var(--cyan)' }}>D</span>
             </div>
             <div>
-              <p className="font-['Rajdhani'] text-xs font-bold text-[#ECE8E1] tracking-[2px]">VIGNESHWARAN SIVA SANKARAN</p>
-              <p className="font-['Share_Tech_Mono'] text-[9px] text-[rgba(34,211,238,0.5)] tracking-[3px]">
-                // DS & ML ENGINEER
-              </p>
+              <div className="section-heading" style={{ fontSize: 11, letterSpacing: 2 }}>VIGNESHWARAN SIVA SANKARAN</div>
+              <div className="label" style={{ fontSize: 8, letterSpacing: '3px', opacity: 0.45, lineHeight: 1.3 }}>// DS & ML ENGINEER</div>
             </div>
           </div>
 
-          {/* Center */}
-          <div className="flex items-center gap-3">
-            <div className="w-6 h-px bg-[rgba(34,211,238,0.3)]" />
-            <motion.p
-              className="font-['Share_Tech_Mono'] text-[9px] text-[rgba(236,232,225,0.2)] tracking-[3px]"
-              animate={{ opacity: [0.2, 0.5, 0.2] }}
-              transition={{ duration: 3, repeat: Infinity }}
-            >
-              BUILT WITH REACT + VITE
-            </motion.p>
-            <div className="w-6 h-px bg-[rgba(34,211,238,0.3)]" />
+          {/* Nav links */}
+          <div className="flex flex-wrap gap-5 justify-center">
+            {LINKS.map(l => (
+              <button key={l.id}
+                onClick={() => document.getElementById(l.id)?.scrollIntoView({ behavior: 'smooth' })}
+                className="font-mono"
+                style={{ fontSize: 9, letterSpacing: '2px', color: 'var(--muted)', cursor: 'none', transition: 'color 0.2s', textTransform: 'uppercase' }}
+                onMouseEnter={e => e.currentTarget.style.color = 'var(--cyan)'}
+                onMouseLeave={e => e.currentTarget.style.color = 'var(--muted)'}>
+                {l.l}
+              </button>
+            ))}
           </div>
 
-          {/* Right */}
-          <p className="font-['Share_Tech_Mono'] text-[9px] text-[rgba(236,232,225,0.2)] tracking-[3px]">
+          {/* Copyright */}
+          <div className="label" style={{ fontSize: 8, letterSpacing: '3px', opacity: 0.25 }}>
             © {new Date().getFullYear()} // ALL RIGHTS RESERVED
-          </p>
+          </div>
         </div>
 
-        {/* Bottom decoration */}
-        <div className="mt-6 flex items-center gap-2 justify-center">
-          {[...Array(5)].map((_, i) => (
-            <motion.div
-              key={i}
-              className="w-1 h-1 bg-[#22D3EE]"
-              style={{ transform: 'rotate(45deg)' }}
-              animate={{ opacity: [0.1, 0.5, 0.1] }}
-              transition={{ duration: 2, repeat: Infinity, delay: i * 0.3 }}
-            />
+        {/* Divider dots */}
+        <div className="flex items-center gap-2 justify-center mt-6">
+          {[0, 1, 2, 3, 4].map(i => (
+            <motion.div key={i} style={{ width: 4, height: 4, background: 'var(--cyan)', transform: 'rotate(45deg)' }}
+              animate={{ opacity: [0.1, 0.45, 0.1] }}
+              transition={{ duration: 2.2, repeat: Infinity, delay: i * 0.28 }} />
           ))}
         </div>
+
+        {/* Built with line */}
+        <motion.div className="text-center mt-4"
+          animate={{ opacity: [0.15, 0.35, 0.15] }}
+          transition={{ duration: 4, repeat: Infinity }}>
+          <span className="label" style={{ fontSize: 8, letterSpacing: '5px', opacity: 1 }}>
+            BUILT WITH REACT + VITE + PRETEXT
+          </span>
+        </motion.div>
       </div>
     </footer>
   )
